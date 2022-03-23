@@ -3,3 +3,6 @@
 
 '/login':
   controller: 'TimeTravel\Controller\Login::log_in'
+
+'/register':
+  controller: 'TimeTravel\Controller\Register::regis'

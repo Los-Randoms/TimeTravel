@@ -7,7 +7,7 @@ abstract class Query {
 	protected string $data_types = '';
 	protected array $data_values = [];
 
-	public function execute(): mysqli_result {
+	public function execute(): bool|mysqli_result {
 		$db = Database::instance();
 		$stmt = $db->prepare($this->__toString());
 		$stmt->bind_param($this->data_types, ...$this->data_values);
