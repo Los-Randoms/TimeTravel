@@ -14,7 +14,7 @@ class Session {
 	}
 
 	private function __construct() {
-		$this->is_logged = session_status() == PHP_SESSION_ACTIVE;
+		$this->is_logged = session_status() == PHP_SESSION_NONE;
 		if($this->is_logged) {
 			session_start();
 			$db = Database::instance();

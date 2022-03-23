@@ -1,2 +1,5 @@
 '/':
   controller: 'TimeTravel\Controller\Main::index'
+
+'/login':
+  controller: 'TimeTravel\Controller\Login::log_in'
