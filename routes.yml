@@ -3,3 +3,6 @@
 
 '/login':
   controller: 'TimeTravel\Controller\Login::log_in'
+
+'/change':
+  controller: 'TimeTravel\Controller\ChangeP::change'
