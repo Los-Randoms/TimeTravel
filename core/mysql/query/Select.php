@@ -35,7 +35,7 @@ class Select extends Query {
 	public function __toString(): string {
 		$query = "SELECT {$this->columns} FROM `{$this->table}`";
 		if($conditions = $this->conditions->__toString())
-			$query .= "WHERE $conditions";
+			$query .= " WHERE $conditions";
 		return $query;
 	}
 }

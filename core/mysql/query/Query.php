@@ -10,7 +10,7 @@ abstract class Query {
 	public function execute(): mysqli_result {
 		$db = Database::instance();
 		$stmt = $db->prepare($this->__toString());
-		$stmt->bind_param($this->data_types, $this->data_values);
+		$stmt->bind_param($this->data_types, ...$this->data_values);
 		$stmt->execute();
 		return $stmt->get_result();
 	}
