@@ -1,0 +1,2 @@
+'/':
+  controller: 'MinPHP\Controller\Main::index'

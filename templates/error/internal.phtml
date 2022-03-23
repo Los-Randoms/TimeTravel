@@ -1,0 +1,19 @@
+<?php
+/** @var Exception */
+$e = $_self['exception'];
+?>
+<h1>Something went wrong!</h1>
+
+<?php if($_ENV['site']['development'] ?? 0): ?>
+<div>
+	<h3>Exception: </h3>
+	<code><?= $e->getMessage() ?></code>
+	<h5>On file: </h5>
+	<code><?= $e->getFile() ?>:<?= $e->getLine() ?></code>
+</div>
+
+<div>
+	<h3>Trace: </h3>
+	<code><?= $e->getTraceAsString() ?></code>
+</div>
+<?php endif ?>
