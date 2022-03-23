@@ -19,10 +19,10 @@ class Register extends PageBase
         $password2 = $_POST['contraseña2'] ?? null;
 
         $user = new User();
-
+        $incrip = password_hash($password, PASSWORD_DEFAULT);
         $user->email=$mail;
         $user->username=$name;
-        $user->password=$password;
+        $user->password=$incrip;
 
         if ($password!=$password2) {
             $html->set('mensaje', "La contraseña no es igual") ;
@@ -32,6 +32,7 @@ class Register extends PageBase
         $db = Database::instance();
         $tabla = $db->storage(User::class);
         $tabla->save($user);
+        $html->set('mensaje', "Se ha registrado exitosamente") ;
         }
         return $html;
     }

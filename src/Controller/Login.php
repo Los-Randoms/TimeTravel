@@ -27,9 +27,8 @@ class Login extends PageBase {
 				session_start();
 				$_SESSION['user_id'] = $user->id;
 				echo 'Sesion iniciada';
-				return;
-			}
-			echo 'Inforamcion invalida';
+			} else 
+				echo 'Inforamcion invalida';
 		}
 	
 		// Envio la template del formulario de login
