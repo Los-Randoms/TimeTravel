@@ -1,2 +1,2 @@
 '/':
-  controller: 'MinPHP\Controller\Main::index'
+  controller: 'TimeTravel\Controller\Main::index'
