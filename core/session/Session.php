@@ -14,12 +14,12 @@ class Session {
 	}
 
 	private function __construct() {
-		$this->is_logged = session_status() == PHP_SESSION_NONE;
+		$this->is_logged = session_status() == PHP_SESSION_ACTIVE;
 		if($this->is_logged) {
 			session_start();
 			$db = Database::instance();
 			$storage = $db->storage(User::class);
-			$user_id = $_SESSION['user_id'];
+			$user_id = $_SESSION['user_id'] ?? 0;
 			$user = $storage->get($user_id);
 			$this->user = $user;
 		}

@@ -6,3 +6,6 @@
 
 '/change':
   controller: 'TimeTravel\Controller\ChangeP::change'
+  
+'/register':
+  controller: 'TimeTravel\Controller\Register::regis'
