@@ -1,5 +1,7 @@
-create table if not exists publicacion(
+create table if not exists publicacions(
     id int not null auto_increment primary key, 
-    username varchar(20) not null,
+
+    text_write varchar(255) not null,
+    img        
     
 );
