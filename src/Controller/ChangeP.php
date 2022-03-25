@@ -13,7 +13,7 @@ class ChangeP extends PageBase {
 			$query->condition('email', $mail);
 			$result = $query->execute();
 			$user = $result->fetch_object(User::class);
-
+            
     
     
     
