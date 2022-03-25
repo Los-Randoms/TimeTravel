@@ -1,7 +1,4 @@
-create table if not exists publicacions(
+create table if not exists publications(
     id int not null auto_increment primary key, 
-
-    text_write varchar(255) not null,
-    img        
-    
+    image int not null foreign key files(id)
 );
