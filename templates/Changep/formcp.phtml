@@ -1,15 +1,22 @@
 <link rel="stylesheet" href="/public/assets/change.css">
 <head > 
-	<br><br><h1>Recuperar contraseña</h1><br><br><br>
+	<h1>Recuperar contraseña</h1>
 </head>
-<h3>Ingrese su correo electronico</h3><br><br>
+<h3>Ingrese su correo electronico</h3>
 <div>
-	<form enctype="application/x-www-form-urlencoded" action="/login?submit" method="POST">
+	<form enctype="application/x-www-form-urlencoded" action="/change?submit" method="POST">
 		<label for="input-correo">Ingresa tu correo</label>
 		<input type="" name="correo" placeholder="example@example.xyz">
-		<button>Recuperar</button>
+		<button>Enviar correo</button>
 		<div class="mensaje">
-				<?= $_self['mensaje'] ?? null ?>
-			</div>
+			<?= $_self['mensaje'] ?? null ?>
+		</div>
+		
+		<div>
+			
+			<label type="input-nuevacontraseña">Ingresa tu nueva contraseña</label>
+			<input type="" name="newpass" placeholder="**********">
+		</div>
 	</form>
+	
 </div>

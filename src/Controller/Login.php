@@ -28,10 +28,10 @@ class Login extends PageBase {
 				$_SESSION['user_id'] = $user->id;
 				echo 'Sesion iniciada';
 			} else 
-				echo 'Inforamcion invalida';
-		}
-	
-		// Envio la template del formulario de login
+				echo 'Inforamcion invalida'; 
+	 	}
+	  
+	                                                             	// Envio la template del formulario de login
 		return new Template('login/form');
 	}
 }

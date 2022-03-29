@@ -13,26 +13,26 @@ class Register extends PageBase
         $html = new Template("register");
 
         if(isset($_GET['submit'])) {
-        $mail = $_POST['correo'] ?? null;
-        $name = $_POST['nombre'] ?? null;
-		$password = $_POST['contraseña'] ?? null;
-        $password2 = $_POST['contraseña2'] ?? null;
+            $mail = $_POST['correo'] ?? null;
+            $name = $_POST['nombre'] ?? null;
+            $password = $_POST['contraseña'] ?? null;
+            $password2 = $_POST['contraseña2'] ?? null;
 
-        $user = new User();
-        $incrip = password_hash($password, PASSWORD_DEFAULT);
-        $user->email=$mail;
-        $user->username=$name;
-        $user->password=$incrip;
+            $user = new User();
+            $incrip = password_hash($password, PASSWORD_DEFAULT);
+            $user->email=$mail;
+            $user->username=$name;
+            $user->password=$incrip;
 
-        if ($password!=$password2) {
-            $html->set('mensaje', "La contraseña no es igual") ;
-            return $html;
-        }
+            if ($password!=$password2) {
+                $html->set('mensaje', "La contraseña no es igual") ;
+                return $html;
+            }
 
-        $db = Database::instance();
-        $tabla = $db->storage(User::class);
-        $tabla->save($user);
-        $html->set('mensaje', "Se ha registrado exitosamente") ;
+            $db = Database::instance();
+            $tabla = $db->storage(User::class);
+            $tabla->save($user);
+            $html->set('mensaje', "Se ha registrado exitosamente") ;
         }
         return $html;
     }
