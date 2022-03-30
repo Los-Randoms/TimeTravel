@@ -53,15 +53,13 @@ class Storage {
 		return $rows;
 	}
 
-	public function update(object $entity) {
+	public function update(EntityBase $entity) {
 		$query = new Update($this->table);
-
-		if(!($entity instanceof $this->T))
-			throw new Error("Entity is not of type {$this->T}");
-			
+		$id = $entity->id;
 		unset($entity->id);
 		foreach($entity as $param => $value)
 			$query->set($param, $value);
+		$query->condition('id', $id);
 		$query->execute();
 	}
 
