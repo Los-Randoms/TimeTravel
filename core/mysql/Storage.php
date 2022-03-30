@@ -58,7 +58,8 @@ class Storage {
 
 		if(!($entity instanceof $this->T))
 			throw new Error("Entity is not of type {$this->T}");
-
+			
+		unset($entity->id);
 		foreach($entity as $param => $value)
 			$query->set($param, $value);
 		$query->execute();

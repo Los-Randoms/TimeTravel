@@ -3,8 +3,9 @@ use Core\controller\PageBase;
 use Core\mysql\Database;
 use Core\session\User;
 use Core\mysql\query\Select;
-use Core\mysql\query\Update;
 use Core\phtml\Template;
+
+$mysql_database = "TimeTrave";
 
 
 class ChangeP extends PageBase {
@@ -12,25 +13,22 @@ class ChangeP extends PageBase {
     if(isset($_GET["submit"])){
        //$html= new Template('ChangeP/formcp');
        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz_-.$#';
-       $correo=$_POST["correo"];
-       $busqueda=new Select(User::table());
+       $correo = $_POST["correo"];
+       $busqueda = new Select(User::table());
        $busqueda->condition("email", $correo);
        
-       $resul=$busqueda->execute();
-       $resul=$resul->fetch_all();
-       $user=$resul;
-       $tempc=str_shuffle($permitted_chars);
-       
-       //$user = new User("password");
-       
-       $user->password=$tempc;
+       $resul = $busqueda->execute();
+        
+       echo '<pre>';
+       $res=$resul->fetch_object(User::class);
+       print_r($res->password);
+       $res->password='asdasdsdas';
+       echo PHP_EOL;
+       print_r($res->password);
 
-       $db = Database::instance();
-       $tabla = $db->storage(User::class);
-       $tabla->save($user);
-       
-
-
+       $database=Database::instance();
+       $storage=$database->storage(User::class);
+       $storage->update($res);
     }
    return new Template("Changep/formcp");
  }
