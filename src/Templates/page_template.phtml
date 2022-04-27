@@ -1,3 +1,4 @@
+<?php use Controller\Component\Navbar; ?>
 <?php use Modules\Kernel\View; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +21,7 @@
 	<?php endforeach; ?>
 </head>
 <body>
+	<?php View::render(new Navbar); ?>
 	<main id="main-container">
 		<?php View::render($view->content); ?>
 	</main>

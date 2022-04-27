@@ -1,6 +1,21 @@
+@import url("/public/css/navbar.css");
+@import url("/public/css/theme.css");
+@import url("/public/css/button.css");
+
 :root {
 	--background: whitesmoke;
 	--foreground: #16161d;
+	--threshold: 60;
+
+	/** Colors */
+	--primary-color: #FCEEA3;
+	--secondary-color: #AEC4FB;
+	--shadow-color: #0F0F0F50;
+	/* --publication-1 #FFC4AA; */
+	/* --secondary-2: #D0F1BD; */
+
+ 	/** Default properties */
+	--default-shadow: 0 0 8px var(--shadow-color);
 	--default-font: 'Roboto', sans-serif;
 }
 
@@ -27,4 +42,9 @@ img {
 	box-sizing: border-box;
 	max-width: 100vmin;
 	margin: auto;
+}
+
+button, input, textarea {
+	font-family: inherit;
+	font-size: 1em;
 }
