@@ -1,12 +1,16 @@
 <?php use Modules\Kernel\Session; ?>
-<nav id="site-nav">
-	<div class="branding">
-		<h1><?= $_ENV['Site']['name']; ?></h1>
-	</div>
-	<div class="options">
+
+
+<nav class="navbar nav-h primary">
+	<h1 class="logo"><?= $_ENV['Site']['name']; ?></h1>
+	<div class="items">
 		<form action="search" method="GET">
-			<input name="q" type="text" required>
-			<button type="submit" class="btn secondary">Ir</button>
+			<div class="search-bar">
+				<input name="q" id="main-search-input" type="text" placeholder="Buscar..." required>
+				<label for="main-search-input">
+					<object data="/public/icons/search.svg">
+				</label>
+			</div>
 		</form>
 		<?php if(Session::isLogged()): ?>
 		<a href="/login">Iniciar sesion</a>

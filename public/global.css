@@ -5,17 +5,15 @@
 :root {
 	--background: whitesmoke;
 	--foreground: #16161d;
-	--threshold: 60;
+	--rotation: 30deg;
+	--dim: -10%;
+	--border-radius: 4px;
+	--threshold: 35%;
 
-	/** Colors */
-	--primary-color: #FCEEA3;
-	--secondary-color: #AEC4FB;
-	--shadow-color: #0F0F0F50;
 	/* --publication-1 #FFC4AA; */
 	/* --secondary-2: #D0F1BD; */
 
  	/** Default properties */
-	--default-shadow: 0 0 8px var(--shadow-color);
 	--default-font: 'Roboto', sans-serif;
 }
 
@@ -45,6 +43,12 @@ img {
 }
 
 button, input, textarea {
+	box-sizing: border-box;
 	font-family: inherit;
 	font-size: 1em;
+	padding: 6px 12px;
+	outline: 0px solid transparent;
+	border: 1px solid lightgray;
+	border-radius: var(--border-radius);
 }
+
