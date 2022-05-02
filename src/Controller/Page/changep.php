@@ -4,11 +4,11 @@ use Modules\Kernel\Form;
 use Modules\Kernel\User;
 
 
-class CP extends Form {
+class changep extends Form {
     function __construct()
     {
-        parent::__construct('change-pass.phtml');
-        $this->addStyle('css/cp.css');
+        parent::__construct('changp.phtml');
+        $this->addStyle('css/changep.css');
         $this->setTitle('Cambiar contraseña');
     }
 
