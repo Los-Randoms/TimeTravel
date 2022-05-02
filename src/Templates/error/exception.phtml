@@ -1,8 +1,22 @@
-<h1>Something went wrong!</h1>
-<p>Sorry but We are facing serious problems :(</p>
-<?php if($_ENV['Site']['devel'] ?? false): ?>
-<h3>Message: </h3>
-<p><?= $view->error->getMessage(); ?></p>
-<h3>Trace: </h3>
-<code><?= $view->error->getTraceAsString(); ?></code>
-<?php endif; ?>
+<div class="container">
+	<h1>Something went wrong!</h1>
+	<p>Sorry but We are facing serious problems :(</p>
+	<?php if($_ENV['Site']['devel'] ?? false): ?>
+	<h3>Message: </h3>
+	<p><?= $view->error->getMessage(); ?></p>
+	<h3>Trace: </h3>
+	<pre class="trace"><code><?= $view->error->getTraceAsString(); ?></code></pre>
+	<?php endif; ?>
+
+	<style>
+		.trace {
+			max-width: 100vw;
+			border: 2px solid gray;
+			overflow: auto;
+			padding: 1em;
+			line-height: 1.5em;
+			background-color: #282828;
+			color: whitesmoke;
+		}
+	</style>
+</div>

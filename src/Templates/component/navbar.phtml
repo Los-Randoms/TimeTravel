@@ -1,22 +1,26 @@
 <?php use Modules\Kernel\Session; ?>
 
-
-<nav class="navbar nav-h primary">
-	<h1 class="logo"><?= $_ENV['Site']['name']; ?></h1>
+<nav class="navbar primary" id="main-nav">
+	<div class="head">
+		<a class="logo" href="/"><?= $_ENV['Site']['name']; ?></a>
+		<button class="btn burger" event-type="nav-toggle" data-target="main-nav">
+			<object class="icon" data="/public/icons/menu.svg"></object>
+		</button>	
+	</div>
 	<div class="items">
 		<form action="search" method="GET">
-			<div class="search-bar">
-				<input name="q" id="main-search-input" type="text" placeholder="Buscar..." required>
-				<label for="main-search-input">
-					<object data="/public/icons/search.svg">
-				</label>
+			<div class="inpt-search">
+				<input required name="q" class="inpt" type="text" placeholder="Buscar...">
+				<button class="btn" type="submit">
+					<object class="icon" data="/public/icons/search.svg"></object>
+				</button>
 			</div>
 		</form>
 		<?php if(Session::isLogged()): ?>
-		<a href="/login">Iniciar sesion</a>
+		<a class="btn" href="/login">Iniciar sesion</a>
 		<?php else: ?>
-		<a href="/login">Iniciar sesion</a>
-		<a href="/register">Registrarse</a>
+		<a class="btn" href="/login">Iniciar sesion</a>
+		<a class="btn" href="/register">Registrarse</a>
 		<?php endif; ?>
 	</div>
 </nav>

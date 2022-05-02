@@ -10,6 +10,9 @@
 
 	<!-- Site stylesheets -->
 	<link href="/public/global.css" rel="stylesheet">
+	<link href="/public/theme.css" rel="stylesheet">
+	<link href="/public/site.css" rel="stylesheet">
+
 	<?php foreach($view->styles as $style_href): ?>
 	<link href="/public/<?= $style_href; ?>" rel="stylesheet">
 	<?php endforeach; ?>
@@ -23,6 +26,11 @@
 <body>
 	<?php View::render(new Navbar); ?>
 	<main id="main-container">
+		<div class="messages">
+		<?php foreach($view->messages as $message): ?>
+			<?php View::render($message); ?>
+		<?php endforeach; ?>
+		</div>
 		<?php View::render($view->content); ?>
 	</main>
 </body>

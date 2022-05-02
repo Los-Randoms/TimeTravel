@@ -6,5 +6,7 @@ class Main extends Page {
 	function __construct() {
 		parent::__construct('index.phtml');
 		$this->setTitle('Time travel');
+		$this->addStyle('css/index.css');
+		$this->addStyle('css/publication.css');
 	}
 }

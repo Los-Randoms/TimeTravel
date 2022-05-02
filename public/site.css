@@ -1,0 +1,50 @@
+#main-nav {
+	background-color: var(--color);
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+#main-nav > .head {
+	display: flex;
+	align-items: center;
+	flex-flow: row nowrap;
+	flex: 1 1 auto;
+}
+
+#main-nav > .head > .logo {
+	flex: 0 0 auto;
+	font-size: 1.5em;
+	text-decoration: none;
+	color: inherit;
+}
+
+
+#main-nav .btn.burger {
+	margin-left: auto;
+	display: none;
+}
+
+#main-nav .btn.burger:hover {
+	background-color: #00000022;
+}
+
+@media screen and (max-width: 800px) {
+	#main-nav {
+		align-items: stretch;
+		flex-flow: column nowrap;
+	}
+
+	#main-nav .btn.burger {
+		display: initial;
+	}
+
+	#main-nav .items {
+		display: none;
+	}
+
+	#main-nav .items.enabled {
+		display: block;
+	}
+}
+

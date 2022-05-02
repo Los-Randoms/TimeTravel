@@ -11,6 +11,7 @@ class Page extends View {
 		$this->page = new View('page_template.phtml');
 		$this->page->styles = [];
 		$this->page->scripts = [];
+		$this->page->messages = [];
 		$this->setContent($this);
 	}
 
@@ -55,5 +56,12 @@ class Page extends View {
 
 	function addScript(string $file) {
 		$this->page->scripts[] = $file;
+	}
+
+	function addMessage(string $message, string $type = 'message') {
+		$view = new View('component/message.phtml');
+		$view->message = $message;
+		$view->type = $type;
+		$this->page->messages[] = $view;
 	}
 }
