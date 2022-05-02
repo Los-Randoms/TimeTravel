@@ -1,5 +1,4 @@
 {
 	"/": "Controller\\Page\\Main",
-	"/user/add": "Controller\\Form\\AddUser",
-	"/user/edit": "Controller\\Form\\EditUser"
+	"/change-password": "Controller\\Page\\CP"
 }

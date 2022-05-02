@@ -16,7 +16,7 @@ button, .btn {
 	background-color: var(--background);
 	border-style: solid;
 	border-color: var(--emphasis);
-	border-width: 4px;
+	border-width: 1px;
 }
 
 button:hover, .btn:hover {

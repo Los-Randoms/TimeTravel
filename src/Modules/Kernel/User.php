@@ -6,5 +6,5 @@ class User extends Entity {
 	public string $email;
 	public string $password;
 	public string $role;
-	public int $avatar;
+	public ?int $avatar;
 }
