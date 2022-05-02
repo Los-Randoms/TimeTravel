@@ -7,7 +7,7 @@ use Modules\Kernel\User;
 class CP extends Form {
     function __construct()
     {
-        parent::__construct('cp.phtml');
+        parent::__construct('change-pass.phtml');
         $this->addStyle('css/cp.css');
         $this->setTitle('Cambiar contraseña');
     }

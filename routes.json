@@ -1,4 +1,4 @@
 {
 	"/": "Controller\\Page\\Main",
-	"/change-password": "Controller\\Page\\CP"
+	"/cambiar-contraseña": "Controller\\Page\\CP"
 }
