@@ -1,0 +1,9 @@
+<div class="alert alert-<?= $view->type; ?>">
+	<object class="icon" data="/public/icons/<?= $view->type; ?>-circle.svg"></object>
+	<div class="body">
+		<button class="btn close">
+			<object class="icon" data="/public/icons/x.svg"></object>
+		</button>
+		<p><?= $view->message ?></p>
+	</div>
+</div>

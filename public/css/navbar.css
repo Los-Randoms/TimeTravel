@@ -1,6 +1,0 @@
-#site-nav {
-	background: var(--primary-color);
-	color: inherit;
-	display: flex;
-	flex-flow: row nowrap;
-}

@@ -1,7 +1,9 @@
 <?php namespace Modules\Mysql;
-use mysqli;
-mysqli_report(MYSQLI_REPORT_ERROR);
 
+use Error;
+use mysqli;
+
+mysqli_report(MYSQLI_REPORT_STRICT);
 class Database extends mysqli {
 	static private Database $connection;
 
@@ -30,7 +32,8 @@ class Database extends mysqli {
 	}
 
 	private function __construct() {
-		$this->connect(...$_ENV['Mysql']);
+		if(!$this->connect(...$_ENV['Mysql']))
+			throw new Error($this->connect_error);
 	}
 	
 	function __destruct() {
