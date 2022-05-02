@@ -1,7 +1,7 @@
-import * as nav from './js/navbar.js';
+import * as messages from './js/messages.js';
 
 function main(ev) {
-	nav.load();
+	messages.init();
 }
 
 document.addEventListener('DOMContentLoaded', main);

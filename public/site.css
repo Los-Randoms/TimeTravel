@@ -40,7 +40,11 @@
 	}
 
 	#main-nav .items {
-		display: none;
+		/* display: none; */
+		padding: 1em;
+		background-color: whitesmoke;
+		border: 1px solid lightgray;
+		border-radius: 5px;
 	}
 
 	#main-nav .items.enabled {

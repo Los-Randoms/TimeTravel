@@ -25,12 +25,14 @@
 </head>
 <body>
 	<?php View::render(new Navbar); ?>
-	<main id="main-container">
+	<div class="message-container">
 		<div class="messages">
 		<?php foreach($view->messages as $message): ?>
 			<?php View::render($message); ?>
 		<?php endforeach; ?>
 		</div>
+	</div>
+	<main id="main-container">
 		<?php View::render($view->content); ?>
 	</main>
 </body>

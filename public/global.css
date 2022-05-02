@@ -56,11 +56,17 @@ img {
 }
 
 /** Alerts */
+.message-container {
+	width: 100vw;
+	position: fixed;
+	margin-top: 1em;
+}
+
 .messages {
-	display: flex;
-	flex-flow: column nowrap;
+	margin: auto;
 	max-width: 500px;
-	margin: 1em auto;
+	flex-flow: column nowrap;
+	display: flex;
 	gap: 1em;
 }
 
@@ -69,9 +75,39 @@ img {
 	background: white;
 	border-radius: 5px;
 	position: relative;
-	border: 2px solid lightgray;
-	color: gray;
+	box-shadow: 0px 0px 10px lightgray;
+	display: flex;
+	flex-flow: row nowrap;
 }
+
+.alert.alert-message {
+	background-color: aqua;
+	border-color: skyblue;
+}
+
+.alert > .icon {
+	height: 25px;
+	align-self: center;
+	padding: 8px 1em;
+	border-right: 1px solid;
+	border-color: inherit;
+}
+
+.alert .body {
+	flex: 1 1 auto;
+	padding: 8px 1em;
+	position: relative;
+}
+
+.alert .body .close {
+	border: none;
+	outline: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 8px;
+}
+
 
 /** Buttons */
 .btn {
@@ -117,6 +153,7 @@ img {
 }
 
 .inpt-search > .inpt {
+	flex: 1 1 auto;
 	border-radius: 0px;
 }
 
@@ -147,7 +184,8 @@ img {
 }
 
 .navbar .items {
-	display: contents;
+	display: flex;
+	flex-flow: inherit;
 }
 
 .navbar .btn {
