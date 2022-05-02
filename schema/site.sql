@@ -23,7 +23,8 @@ create table if not exists user(
 		on update cascade 
 		on delete set null,
 	avatar int unsigned references file(id) 
-		on delete set null
+		on delete set null,
+	banned boolean not null default false
 );
 
 

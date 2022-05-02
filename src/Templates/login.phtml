@@ -1,14 +1,18 @@
-<h1>Log-in</h1>
-<div>
-	<form enctype="application/x-www-form-urlencoded" action="/login?submit" method="POST">
-		<label for="input-correo">Ingresa tu correo</label>
-		<input type="text" id="input-correo" name="correo">
-		<label for="input-contraseña">Ingresa tu contraseña</label>
-		<input type="password" id="input-contraseña" name="contraseña">
-		<button>Entrar</button>
+<div class="container">
+	<h1>Log-in</h1>
+	<form enctype="application/x-www-form-urlencoded" action="?e=submit" method="POST">
+		<div class="field">
+			<label for="login-mail">Ingresa tu correo</label>
+			<input required class="inpt" type="email" id="login-mail" name="email">
+		</div>
+		<div class="field">
+			<label for="login-password">Ingresa tu contraseña</label>
+			<input required class="inpt" type="password" id="login-password" name="password">
+		</div>
+		<button type="submit" class="btn primary">Entrar</button>
 	</form>
-</div>
-<div>
-	<h4>¿No tienes cuenta? <a href="Registro.html">Registrate</a></h4>
-	<a href="ContraseñaOlvidada.html">¿Olvido su contraseña?</a>
+	<div>
+		<h4>¿No tienes cuenta? <a href="/register">Registrate</a></h4>
+		<a href="/password-recovery">¿Olvido su contraseña?</a>
+	</div>
 </div>

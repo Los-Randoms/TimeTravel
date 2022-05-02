@@ -1,0 +1,12 @@
+#main-banner {
+	background-image: url(/public/beach.png);
+	background-size: cover;
+	background-position: center;
+}
+
+#main-banner > h1 {
+	text-shadow: 2px 2px 0 gray;
+	margin: 0;
+	font-size: 3em;
+	padding: 2em 1em;
+}
