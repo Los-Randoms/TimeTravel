@@ -5,7 +5,8 @@ abstract class Session {
 		$cookie_name = session_name();
 		if(!isset($_COOKIE[$cookie_name]))
 			return false;
-		session_start();
+		if(session_status() != PHP_SESSION_ACTIVE)
+			session_start();
 		if(!isset($_SESSION['uid'])) {
 			session_destroy();
 			return false;

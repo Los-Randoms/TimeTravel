@@ -36,7 +36,7 @@ img {
 }
 
 .inpt, .btn, button, input, textarea {
-	transition: 0.1s all ease-in-out;
+	transition: 0.1s none ease-in-out;
 	box-sizing: border-box;
 	font-family: inherit;
 	font-size: 1em;
@@ -140,7 +140,7 @@ img {
 }
 
 .inpt-search {
-	transition: 0.1s all ease-in-out;
+	transition: 0.1s none ease-in-out;
 	overflow: hidden;
 	border-radius: 4px;
 	display: flex;
@@ -168,6 +168,12 @@ img {
 	outline: 1px solid lightgray;
 }
 
+
+textarea.inpt {
+	resize: vertical;
+	min-height: 2em;
+}
+
 /** Navbar */
 .navbar {
 	padding: 8px;
@@ -187,6 +193,7 @@ img {
 .navbar .items {
 	display: flex;
 	flex-flow: inherit;
+	gap: inherit;
 }
 
 .navbar .btn {
@@ -211,4 +218,10 @@ form {
 
 form .field {
 	display: contents;
+}
+
+/** Images */
+img.avatar {
+	display: inline;
+	min-width: initial;
 }

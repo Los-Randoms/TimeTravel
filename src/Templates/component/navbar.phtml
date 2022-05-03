@@ -17,7 +17,12 @@
 			</div>
 		</form>
 		<?php if(Session::isLogged()): ?>
-		<a class="btn" href="/iniciar-sesion">Iniciar sesion</a>
+		<?php $user = Session::currentUser(); ?>
+		<a class="btn" href="/account">
+			<img class="avatar" src="<?= $user->avatar; ?>">
+			<span><?= $user->username; ?></span>
+		</a>
+		<a class="btn" href="/salir">Cerrar sesion</a>
 		<?php else: ?>
 		<a class="btn" href="/iniciar-sesion">Iniciar sesion</a>
 		<a class="btn" href="/registro">Registrarse</a>
