@@ -1,13 +1,13 @@
 <?php use Modules\Kernel\Session; ?>
 
-<nav class="navbar primary" id="main-nav">
+<nav class="navbar primary" controller="navbar" id="main-nav">
 	<div class="head">
 		<a class="logo" href="/"><?= $_ENV['Site']['name']; ?></a>
-		<button class="btn burger" event-type="nav-toggle" data-target="main-nav">
+		<button class="btn burger" trigger="click#toggle">
 			<object class="icon" data="/public/icons/menu.svg"></object>
-		</button>	
+		</button>
 	</div>
-	<div class="items">
+	<div class="items" element="items">
 		<form action="search" method="GET">
 			<div class="inpt-search">
 				<input required name="q" class="inpt" type="text" placeholder="Buscar...">
@@ -17,10 +17,15 @@
 			</div>
 		</form>
 		<?php if(Session::isLogged()): ?>
-		<a class="btn" href="/login">Iniciar sesion</a>
+		<?php $user = Session::currentUser(); ?>
+		<a class="btn" href="/account">
+			<img class="avatar" src="<?= $user->avatar; ?>">
+			<span><?= $user->username; ?></span>
+		</a>
+		<a class="btn" href="/salir">Cerrar sesion</a>
 		<?php else: ?>
-		<a class="btn" href="/login">Iniciar sesion</a>
-		<a class="btn" href="/register">Registrarse</a>
+		<a class="btn" href="/iniciar-sesion">Iniciar sesion</a>
+		<a class="btn" href="/registro">Registrarse</a>
 		<?php endif; ?>
 	</div>
 </nav>

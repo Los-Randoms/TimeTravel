@@ -3,7 +3,7 @@
 use Error;
 use mysqli;
 
-mysqli_report(MYSQLI_REPORT_STRICT);
+mysqli_report(MYSQLI_REPORT_ERROR);
 class Database extends mysqli {
 	static private Database $connection;
 

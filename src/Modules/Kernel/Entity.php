@@ -107,7 +107,7 @@ class Entity {
 		$stmt->close();
 	}
 
-	static function search(array ...$conditions): array {
+	static function search(array $conditions, ?int $offset = null, ?int $limit = null): array {
 		$rows = [];
 		$data_values = [];
 		$data_types = '';
@@ -115,7 +115,7 @@ class Entity {
 		$query = "SELECT * FROM `$table`";
 		$db = Database::getConnection();
 		if(count($conditions) > 0) {
-			$query .= " WHERE ";
+			$query .= " WHERE";
 			foreach($conditions as $cond) {
 				$query .= "{$cond[0]} ?, ";
 				$data_values[] = $cond[1];
@@ -123,8 +123,14 @@ class Entity {
 			}
 			$query = substr($query, 0, -2);
 		}
+		if($limit !== null)
+			$query .= " LIMIT $limit";
+		if($offset!== null)
+			$query .= " OFFSET $offset";
+
 		$stmt = $db->prepare($query);
-		$stmt->bind_param($data_types, ...$data_values);
+		if(!empty($bind_param))
+			$stmt->bind_param($data_types, ...$data_values);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		while($row = $result->fetch_object(static::class))

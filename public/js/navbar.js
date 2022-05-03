@@ -1,6 +1,10 @@
-function toggleNav(ev) {
-	console.log(this.dataset.target);
-}
+"use strict"
 
-export function load() {
+export default class {
+	constructor() {
+	}
+
+	toggle() {
+		this.items.classList.toggle('enabled');
+	}
 }
