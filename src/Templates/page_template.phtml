@@ -26,7 +26,7 @@
 <body>
 	<?php View::render(new Navbar); ?>
 	<div class="message-container">
-		<div class="messages">
+		<div id="site-alerts" class="messages">
 		<?php foreach($view->messages as $message): ?>
 			<?php View::render($message); ?>
 		<?php endforeach; ?>

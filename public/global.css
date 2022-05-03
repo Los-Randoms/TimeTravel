@@ -64,7 +64,8 @@ img {
 
 .messages {
 	margin: auto;
-	max-width: 500px;
+	width: 500px;
+	max-width: 95vw;
 	flex-flow: column nowrap;
 	display: flex;
 	gap: 1em;
