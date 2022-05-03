@@ -1,0 +1,8 @@
+body.post-type-post .row-actions .trash,
+body.post-type-post .row-actions .inline{
+  display: none;
+}
+
+body.post-type-post .row-actions .edit a{
+  color:skyblue;
+}
