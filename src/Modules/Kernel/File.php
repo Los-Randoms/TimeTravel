@@ -10,21 +10,39 @@ class File extends Entity {
 	/** @return File[] */
 	static function uploadedFiles(): array {
 		$files = [];
-		foreach($_FILES as $name => $fields) {
-			$files[$name] = [];
-			$cant_files = count($fields['error']);
-			for($i = 0; $i < $cant_files; $i++) {
-				if($fields['error'][$i] != UPLOAD_ERR_OK)
-					continue;
-				$file = new File;
-				$file->mime = $fields['type'][$i];
-				$file->filename = $fields['name'][$i];
-				$file->path = $fields['tmp_name'][$i];
-				$file->size = $fields['size'][$i];
-				$files[$name][] = $file;
-			}
-		}
+		foreach(array_keys($_FILES) as $name)
+			$files[] = self::getUploadedFile($name);
 		return $files;
+	}
+
+	static function getUploadedFile(string $name): File|array|null {
+		if(!isset($_FILES[$name]))
+			return null;
+		$uploaded = $_FILES[$name];
+		if(is_array($uploaded['error'])) {
+			$files = [];
+			$cant_files = count($uploaded['error']);
+			for($i = 0; $i < $cant_files; $i++) {
+				$file = new File;
+				if($uploaded['error'][$i] != UPLOAD_ERR_OK)
+					continue;
+				$file->mime = $uploaded['type'][$i];
+				$file->filename = $uploaded['name'][$i];
+				$file->path = $uploaded['tmp_name'][$i];
+				$file->size = $uploaded['size'][$i];
+			}
+			return $files;
+		} else {
+			$uploaded = $_FILES[$name];
+			$file = new File;
+			if($uploaded['error'] != UPLOAD_ERR_OK)
+				return null;
+			$file->mime = $uploaded['type'];
+			$file->filename = $uploaded['name'];
+			$file->path = $uploaded['tmp_name'];
+			$file->size = $uploaded['size'];
+			return $file;
+		}
 	}
 
 	function moveTo(string $dir): bool {
