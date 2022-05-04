@@ -7,7 +7,7 @@ use Modules\Kernel\Session;
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><?= $this->title ?? $_ENV['Site']['name'] ?></title>
+	<title><?= $this->title ?? SITE_NAME  ?></title>
 	<link href="/public/favicon.ico" rel="icon">
 
 	<!-- Site stylesheets -->
@@ -23,7 +23,6 @@ use Modules\Kernel\Session;
 	<?php endif ?>
 </head>
 <body>
-	<?= Session::exists() ?>
 	<header></header>
 	<main><?php parent::render(); ?></main>
 	<footer></footer>

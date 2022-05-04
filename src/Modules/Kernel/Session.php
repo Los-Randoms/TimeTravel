@@ -17,6 +17,7 @@ abstract class Session {
 	}
 
 	static function create(User $account): bool {
+		session_start();
 		return true;
 	}
 }

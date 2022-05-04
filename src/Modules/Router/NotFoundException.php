@@ -1,4 +1,4 @@
-<?php namespace Modules\Kernel;
+<?php namespace Modules\Router;
 
 use Exception;
 
