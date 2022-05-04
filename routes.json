@@ -1,6 +1,11 @@
 {
 	"/": "Controller\\Page\\Main",
 	"/iniciar-sesion": "Controller\\Form\\Login",
+	"/registro": "Controller\\Form\\Register",
+	"/salir": "Controller\\Page\\Logout",
 	"/admin": "Controller\\Page\\Admin",
-	"/admin/publicacion": "Controller\\Form\\Publication"
+	"/admin/publicaciones": "Controller\\Page\\AdminPublications",
+	"/admin/publicaciones/nueva": "Controller\\Form\\AddPub",
+	"/admin/publicaciones/editar": "Controller\\Form\\EditPub",
+	"/admin/publicaciones/eliminar": "Controller\\Form\\DelPub"
 }

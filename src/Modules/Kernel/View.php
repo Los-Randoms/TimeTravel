@@ -1,13 +1,9 @@
 <?php namespace Modules\Kernel;
 
-use Error;
-
 class View {
 	private string $file;
-	
+
 	function __construct(string $file) {
-		if(!isset($file))
-			throw new Error('Views needs a template');
 		$this->file = "src/Templates/$file";
 	}
 
@@ -15,9 +11,9 @@ class View {
 		return $this->file;
 	}
 
-	static function render(View $view): bool {
+	function render(): bool {
 		ob_start();
-		include $view;
+		include $this->file;
 		return ob_end_flush();
 	}
 }

@@ -5,11 +5,14 @@ use Modules\Kernel\Enviroment;
 use Modules\Kernel\NotFoundException;
 use Modules\Kernel\Page;
 use Modules\Kernel\Router;
-use Modules\Kernel\View;
 
+ini_set('upload_tmp_dir', 'tmp/files');
+ini_set('session.use_strict_mode', true);
+session_save_path('tmp/sessions');
+session_name('_SSID');
 Enviroment::read('site.ini');
 Enviroment::include('local.ini');
-Router::read($_ENV['Site']['routes']);
+Router::read('routes.json');
 
 try {
 	$request_url = parse_url($_SERVER['REQUEST_URI']);
@@ -19,13 +22,13 @@ try {
 		throw new NotFoundException('Page not found');
 	$event = $content->init();
 	if($event) $event->invoke($content);
-	View::render($content->getPage());
+	$content->render();
 } catch(NotFoundException $not_found) {
-	$view = new Page($_ENV['Site']['not_found']);
+	$view = new $_ENV['Site']['not_found'];
 	$view->error = $not_found;
-	View::render($view->getPage());
+	// View::render($view->getPage());
 } catch(Error|Exception $error) {
-	$view = new Page($_ENV['Site']['error_page']);
+	$view = new $_ENV['Site']['error_page'];
 	$view->error = $error;
-	View::render($view->getPage());
+	// View::render($view->getPage());
 }

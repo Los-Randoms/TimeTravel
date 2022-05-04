@@ -115,7 +115,7 @@ class Entity {
 		$query = "SELECT * FROM `$table`";
 		$db = Database::getConnection();
 		if(count($conditions) > 0) {
-			$query .= " WHERE";
+			$query .= " WHERE ";
 			foreach($conditions as $cond) {
 				$query .= "{$cond[0]} ?, ";
 				$data_values[] = $cond[1];
@@ -123,14 +123,14 @@ class Entity {
 			}
 			$query = substr($query, 0, -2);
 		}
+		if(empty($data_types))
+			return [];
 		if($limit !== null)
 			$query .= " LIMIT $limit";
 		if($offset!== null)
 			$query .= " OFFSET $offset";
-
 		$stmt = $db->prepare($query);
-		if(!empty($bind_param))
-			$stmt->bind_param($data_types, ...$data_values);
+		$stmt->bind_param($data_types, ...$data_values);
 		$stmt->execute();
 		$result = $stmt->get_result();
 		while($row = $result->fetch_object(static::class))

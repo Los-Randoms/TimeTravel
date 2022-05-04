@@ -19,12 +19,13 @@ create table if not exists user(
 	username varchar(40) not null,
 	email varchar(255) not null unique,
 	password varchar(60) not null,
-	role varchar(30) references role(name) 
+	role varchar(30) references role(name) default set null
 		on update cascade 
 		on delete set null,
 	avatar int unsigned references file(id) 
 		on delete set null,
-	banned boolean not null default false
+	banned boolean not null default false,
+	creation datetime not null default current_timestamp
 );
 
 
