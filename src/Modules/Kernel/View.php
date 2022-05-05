@@ -1,10 +1,14 @@
 <?php namespace Modules\Kernel;
 
+
 class View {
+	const DIR = 'src/Templates/';
 	private string $file;
 
 	function __construct(string $file) {
-		$this->file = "src/Templates/$file";
+		if($file[0] != '/')
+			$file = self::DIR . $file;
+		$this->file = $file;
 	}
 
 	function __toString() {

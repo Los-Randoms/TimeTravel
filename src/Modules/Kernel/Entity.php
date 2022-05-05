@@ -1,11 +1,10 @@
 <?php namespace Modules\Kernel;
 
-use Modules\Mysql\Database;
-
 class Entity {
 	const TABLE = self::TABLE;
 	public int $id;
-
+	
+	/*
 	function save() {
 		$data_values = [];
 		$data_types = '';
@@ -68,7 +67,7 @@ class Entity {
 		return $row;
 	}
 
-	/** @return static[] */
+	/** @return static[] /
 	static function loadAll(int ...$ids): array {
 		$rows = [];
 		$table = static::TABLE;
@@ -139,5 +138,6 @@ class Entity {
 		$stmt->close();
 		return $rows;
 	}
+	 */
 }
 

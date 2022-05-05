@@ -1,5 +1,7 @@
 <?php namespace Modules\Account;
 
+use Modules\Kernel\Entity;
+
 class User extends Entity {
 	const TABLE = 'user';
 	public string $username;

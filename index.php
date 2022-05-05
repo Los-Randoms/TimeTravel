@@ -3,20 +3,28 @@ require_once "src/autoloader.php";
 require_once 'settings.php';
 include_once 'local.settings.php';
 
-session_start();
 use Modules\Router\Router;
+use Modules\Kernel\Session;
+use Modules\Kernel\Storage;
+use Modules\Router\Error as ErrorPage;
+
+print_r(Storage::driver());
+die;
+Session::start();
 Router::file('routes.json');
 
-$content = Router::current();
-$content->render();
+try {
+	$page = Router::current();
+	$page->init();
+	$page->render();
+} catch(Error|Exception $e) {
+	while(ob_get_level() > 0)
+		ob_end_clean();
+	/** @var Page */
+	$page = new ErrorPage;
+	$page->error = $e;
+	$page->render();
+}
 
-# try {
-# 	/** @var Page */
-# 	$event = $content->init();
-# 	if($event) $event->invoke($content);
-# 	$content->render();
-# } catch(Error|Exception $error) {
-# 	/** @var Page */
-# 	# $view->error = $error;
-# 	# $view->render();
-# }
+Session::stop();
+Storage::close();
