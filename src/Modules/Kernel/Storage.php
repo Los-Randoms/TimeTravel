@@ -1,5 +1,7 @@
 <?php namespace Modules\Kernel;
 
+use mysqli_stmt;
+
 abstract class Storage {
 	static private StorageDriver $driver;
 
@@ -22,6 +24,12 @@ interface StorageDriver {
 	function read(string $table): SelectQuery;
 	function update(string $table): UpdateQuery;
 	function delete(string $table): DeleteQuery;
+	function prepare(string $query): StorageStmt|false;
+}
+
+interface StorageStmt {
+	function bindObject(object &$obj, array $keys = []);
+	function bindArray(array $data, array $keys = []);
 }
 
 interface SelectQuery {
