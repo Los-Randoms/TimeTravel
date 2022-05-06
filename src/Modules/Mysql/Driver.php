@@ -1,10 +1,6 @@
 <?php namespace Modules\Mysql;
 
-use Modules\Kernel\DeleteQuery;
-use Modules\Kernel\InsertQuery;
-use Modules\Kernel\SelectQuery;
-use Modules\Kernel\StorageDriver;
-use Modules\Kernel\UpdateQuery;
+use Modules\Kernel\Driver as KernelDriver;
 use Modules\Mysql\Query\Delete;
 use Modules\Mysql\Query\Insert;
 use Modules\Mysql\Query\Select;
@@ -12,7 +8,7 @@ use Modules\Mysql\Query\Update;
 use mysqli;
 
 mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
-class Driver extends mysqli implements StorageDriver {
+class Driver extends mysqli implements KernelDriver {
 	function __construct() {
 		$this->connect(...STORAGE['credentials'] ?? []);
 	}
@@ -25,20 +21,20 @@ class Driver extends mysqli implements StorageDriver {
 		return new Stmt($this, $query);
 	}
 
-	function create(string $table): InsertQuery {
-		return new Insert($this);
+	function create(string $table): Insert {
+		return new Insert($this, $table);
 	}
 
-	function read(string $table): SelectQuery {
-		return new Select($this);
+	function read(string $table): Select {
+		return new Select($this, $table);
 	}
 
-	function update(string $table): UpdateQuery {
-		return new Update($this);
+	function update(string $table): Update {
+		return new Update($this, $table);
 	}
 	
-	function delete(string $table): DeleteQuery {
-		return new Delete($this);
+	function delete(string $table): Delete {
+		return new Delete($this, $table);
 	}
 }
 

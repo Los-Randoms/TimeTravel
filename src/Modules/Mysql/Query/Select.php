@@ -3,11 +3,13 @@
 use Modules\Kernel\SelectQuery;
 use Modules\Mysql\Driver;
 
-class Select implements SelectQuery {
+class Select extends Query implements SelectQuery {
 	private Driver $db = $db;
+	private string $table;
 
-	function __construct(Driver $db) {
+	function __construct(Driver $db, string $table) {
 		$this->db = $db;
+		$this->table = $table;
 	}
 
 	function condition(string $field, &$ref, array $opt) {

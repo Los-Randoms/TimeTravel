@@ -1,11 +1,9 @@
 <?php namespace Modules\Kernel;
 
-use mysqli_stmt;
-
 abstract class Storage {
-	static private StorageDriver $driver;
+	static private Driver $driver;
 
-	static function driver(): ?StorageDriver {
+	static function driver(): ?Driver {
 		$class = STORAGE['driver'] ?? null;
 		$credentials = STORAGE['credentials'] ?? [];
 		if(!isset(self::$driver))
@@ -19,20 +17,29 @@ abstract class Storage {
 	}
 }
 
-interface StorageDriver {
-	function create(string $table): InsertQuery;
-	function read(string $table): SelectQuery;
-	function update(string $table): UpdateQuery;
-	function delete(string $table): DeleteQuery;
-	function prepare(string $query): StorageStmt|false;
+abstract class Query {
+	protected Stmt $stmt;
+
+	abstract function row(string $class): object|array;
+	abstract function results(string $class): array;
+	abstract function execute();
+	abstract function __toString();
 }
 
-interface StorageStmt {
+interface Driver {
+	function create(string $table): Insert;
+	function read(string $table): Select;
+	function update(string $table): Update;
+	function delete(string $table): Delete;
+	function prepare(string $query): Stmt|false;
+}
+
+interface Stmt {
 	function bindObject(object &$obj, array $keys = []);
 	function bindArray(array $data, array $keys = []);
 }
 
-interface SelectQuery {
+interface Select {
 	function condition(string $field, &$ref, array $opt);
 	function select(string $field);
 	function groupBy(string $field);
@@ -40,18 +47,17 @@ interface SelectQuery {
 	function orderBy(string $field, array $opt);
 }
 
-interface DeleteQuery {
+interface Delete {
 	function condition(string $field, &$ref, array $opt);
 	function limit(int $count, int $offset);
 }
 
-interface InsertQuery {
+interface Insert {
 	function set(string $field, &$ref);
 }
 
-interface UpdateQuery {
-	function set(string $field, &$ref);
-	function condition(string $field, &$ref, array $opt);
+interface Update {
 	function orderBy(string $field, array $opt);
 	function limit(int $count, int $offset);
 }
+
