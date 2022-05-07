@@ -1,10 +1,10 @@
-<?php namespace Controller\Page;
+<?php namespace Controller\Form;
 
 use Modules\Kernel\Form;
 use Modules\Kernel\User;
 
 
-class changep extends Form {
+class Changep extends Form {
     function __construct()
     {
         parent::__construct('changep.phtml');
@@ -14,7 +14,6 @@ class changep extends Form {
 
     public function verify(): bool
     {
-        echo 'Confirmando...';
         if(!isset($_POST['correo']) || empty($_POST['correo']))
             return false;   
         return true;
@@ -37,10 +36,11 @@ class changep extends Form {
        $incrip = password_hash($user->password, PASSWORD_DEFAULT); //encriptado de contraseña
        $user->password=$incrip;
        $user->update();
+       $this->addMessage("Se ha enviado a su correo una nueva contraseña temporal");
        
        //mail($correo, 
        //'Cambio de contraseña',  
        //"Hemos recibido su solicitud de cambio de contraseña y su nueva contraseña es: $newp");
-       echo 'Se ha enviado a su correo una nueva contraseña temporal';
+       
     }
 }

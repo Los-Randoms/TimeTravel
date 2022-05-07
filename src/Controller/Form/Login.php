@@ -7,9 +7,9 @@ class Login extends Form {
 	function __construct() {
 		parent::__construct('login.phtml');
 		$this->setTitle('Iniciar sesión');
-		$this->addMessage('Prueba');
-		$this->addMessage('Prueba');
-		$this->addMessage('Prueba');
+		//$this->addMessage('Prueba');
+		//$this->addMessage('Prueba');
+		//$this->addMessage('Prueba');
 	}
 
 	function _submit() {

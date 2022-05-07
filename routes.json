@@ -1,5 +1,6 @@
 {
 	"/": "Controller\\Page\\Main",
-	"/cambiar-contra": "Controller\\Page\\changep",
-	"/login": "Controller\\Form\\Login"
+	"/cambiar-contra": "Controller\\Form\\Changep",
+	"/login": "Controller\\Form\\Login",
+	"/registro": "Controller\\Form\\Register"
 }
