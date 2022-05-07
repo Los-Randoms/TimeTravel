@@ -1,28 +1,7 @@
 <?php namespace Modules\Mysql\Query;
 
-use Modules\Kernel\UpdateQuery;
-use Modules\Mysql\Driver;
+use Modules\Kernel\Query;
+use Modules\Kernel\Update as KernelUpdate;
 
-class Update implements UpdateQuery {
-	private Driver $db = $db;
-
-	function __construct(Driver $db) {
-		$this->db = $db;
-	}
-
-	function set(string $field, &$ref) {
-		
-	}
-
-	function condition(string $field, &$ref, array $opt) {
-		
-	}
-
-	function orderBy(string $field, array $opt) {
-		
-	}
-
-	function limit(int $count, int $offset) {
-		
-	}
+class Update extends Query implements KernelUpdate {
 }

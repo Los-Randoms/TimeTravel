@@ -1,16 +1,7 @@
 <?php namespace Modules\Mysql\Query;
 
-use Modules\Kernel\InsertQuery;
-use Modules\Mysql\Driver;
+use Modules\Kernel\Insert as KernelInsert;
+use Modules\Kernel\Query;
 
-class Insert implements InsertQuery {
-	private Driver $db = $db;
-
-	function __construct(Driver $db) {
-		$this->db = $db;
-	}
-
-	function set(string $field, &$ref) {
-		
-	}
+class Insert extends Query implements KernelInsert {
 }

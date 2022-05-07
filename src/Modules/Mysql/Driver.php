@@ -9,16 +9,8 @@ use mysqli;
 
 mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
 class Driver extends mysqli implements KernelDriver {
-	function __construct() {
-		$this->connect(...STORAGE['credentials'] ?? []);
-	}
-
 	function __destruct() {
 		$this->close();
-	}
-
-	function prepare(string $query): Stmt|false {
-		return new Stmt($this, $query);
 	}
 
 	function create(string $table): Insert {
@@ -39,8 +31,12 @@ class Driver extends mysqli implements KernelDriver {
 }
 
 
+trait setQuery {
+	protected array $setRefs = [];
+	protected string $setTypes = '';
+}
+
 /*
-trait setQuery { }
 trait limitQuery { }
 trait orderQuery { }
 trait groupQuery { }

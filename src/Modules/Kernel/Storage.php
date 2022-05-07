@@ -7,7 +7,7 @@ abstract class Storage {
 		$class = STORAGE['driver'] ?? null;
 		$credentials = STORAGE['credentials'] ?? [];
 		if(!isset(self::$driver))
-			self::$driver = new $class($credentials);
+			self::$driver = new $class(...$credentials);
 		return self::$driver;
 	}
 
@@ -18,7 +18,13 @@ abstract class Storage {
 }
 
 abstract class Query {
-	protected Stmt $stmt;
+	protected Driver $driver;
+	protected string $table;
+
+	function __construct(Driver $driver, string $table) {
+		$this->driver = $driver;
+		$this->table = $table;
+	}
 
 	abstract function row(string $class): object|array;
 	abstract function results(string $class): array;
@@ -31,12 +37,6 @@ interface Driver {
 	function read(string $table): Select;
 	function update(string $table): Update;
 	function delete(string $table): Delete;
-	function prepare(string $query): Stmt|false;
-}
-
-interface Stmt {
-	function bindObject(object &$obj, array $keys = []);
-	function bindArray(array $data, array $keys = []);
 }
 
 interface Select {
