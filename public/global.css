@@ -1,6 +1,17 @@
+/** Global and default properties */
 :root {
-	--background: whitesmoke;
+	--background: white;
 	--foreground: #16161d;
+	--outline-width: 1px;
+	--outline-style: solid;
+	--outline-color: skyblue;
+	--border-width: 1px;
+	--border-style: solid;
+	--border-color: lightgray;
+	--shadow-color: rgb(var(--foreground) / 2%);
+	--shadow-blur: 10px;
+
+	/** Calc variables */
 	--rotation: 30deg;
 	--dim: -10%;
 	--border-radius: 4px;
@@ -8,12 +19,14 @@
 
  	/** Default properties */
 	--default-font: 'Roboto', sans-serif;
+	--default-outline: var(--outline-width) var(--outline-style) var(--outline-color);
+	--default-shadow: 0px 0px var(--shadow-blur) var(--shadow-color);
 }
 
 html {
 	background: var(--background);
-	font-family: var(--default-font);
 	color: var(--foreground);
+	font-family: var(--default-font);
 	box-sizing: border-box;
 }
 
@@ -21,41 +34,55 @@ body {
 	box-sizing: border-box;
 	margin: 0;
 	display: block;
+	max-width: 1080px;
 }
 
 img {
-	display: block;
-	max-width: 100%;
-	min-width: 200px;
+	display: inline-block;
+	max-width: 100vw;
+}
+
+nav {
+	display: flex;
+	box-sizing: border-box;
 }
 
 .container {
+	display: block;
 	box-sizing: border-box;
-	max-width: 95vmin;
 	margin: auto;
 }
 
-.inpt, .btn, button, input, textarea {
-	transition: 0.1s all ease-in-out;
-	box-sizing: border-box;
-	font-family: inherit;
-	font-size: 1em;
-	padding: 6px 12px;
-	outline: 1px solid lightgray;
-	background-color: white;
-	color: var(--foreground);
-	border: 0px solid transparent;
-	border-radius: var(--border-radius);
+.container main {
+	display: block;
+	margin: 8px;
 }
 
-.icon {
-	display: inline-block;
-	height: 1em;
-	pointer-events: none;
-	vertical-align: middle;
+.container header {
+	display: block;
 }
 
-/** Alerts */
+button { }
+
+a { }
+
+
+
+input, textarea {
+}
+
+
+
+
+
+
+
+
+
+
+
+/*
+/** Alerts /
 .message-container {
 	width: 100vw;
 	position: fixed;
@@ -64,7 +91,8 @@ img {
 
 .messages {
 	margin: auto;
-	max-width: 500px;
+	width: 500px;
+	max-width: 95vw;
 	flex-flow: column nowrap;
 	display: flex;
 	gap: 1em;
@@ -109,7 +137,7 @@ img {
 }
 
 
-/** Buttons */
+/** Buttons /
 .btn {
 	cursor: pointer;
 	border-radius: 4px;
@@ -128,7 +156,7 @@ img {
 	outline-color: hsl(var(--h) calc(var(--s) - 50%) var(--l) / 50%);;
 }
 
-/** Inputs */
+/** Inputs /
 .inpt:hover, .inpt:hover {
 	outline-color: skyblue;
 }
@@ -139,7 +167,7 @@ img {
 }
 
 .inpt-search {
-	transition: 0.1s all ease-in-out;
+	transition: 0.1s none ease-in-out;
 	overflow: hidden;
 	border-radius: 4px;
 	display: flex;
@@ -167,7 +195,13 @@ img {
 	outline: 1px solid lightgray;
 }
 
-/** Navbar */
+
+textarea.inpt {
+	resize: vertical;
+	min-height: 2em;
+}
+
+/** Navbar /
 .navbar {
 	padding: 8px;
 	background: inherit;
@@ -186,6 +220,7 @@ img {
 .navbar .items {
 	display: flex;
 	flex-flow: inherit;
+	gap: inherit;
 }
 
 .navbar .btn {
@@ -193,7 +228,7 @@ img {
 	color: gray;
 	background: transparent;
 	outline-width: 0px;
-	/* border-radius: 5px; */
+	/* border-radius: 5px; /
 }
 
 .navbar .btn:hover {
@@ -201,7 +236,7 @@ img {
 	color: inherit;
 }
 
-/** Forms */
+/** Forms /
 form {
 	display: flex;
 	flex-flow: column nowrap;
@@ -210,4 +245,10 @@ form {
 
 form .field {
 	display: contents;
+}
+
+/** Images /
+img.avatar {
+	display: inline;
+	min-width: initial;
 }
