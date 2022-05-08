@@ -7,9 +7,6 @@ class Main extends Page {
 
 	function __construct() {
 		parent::__construct('index.phtml');
-		// $this->setTitle($_ENV['Site']['name']);
-		// $this->addStyle('css/index.css');
-		// $this->addStyle('css/publication.css');
-		// $this->publicaciones = Publication::search([]);
+		$this->style('css/index.css');
 	}
 }
