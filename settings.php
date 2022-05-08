@@ -2,8 +2,9 @@
 
 const SECRET = '#F&55reeTh#4T2$2';
 const DEVEL = true;
-const SITE_NAME = 'Travel Time';
+const SITE_NAME = 'Ejemplo';
 const UPLOAD_DIR = './public/files';
+const TMP_DIR = __DIR__ . '/tmp';
 
 if(DEVEL) {
 	ini_set('upload_tmp_dir', __DIR__ .'/tmp/files');

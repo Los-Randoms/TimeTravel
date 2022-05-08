@@ -1,7 +1,6 @@
-<?php namespace Modules\Kernel;
+<?php namespace Modules\Account;
 
 use DateTime;
-use Modules\Account\User;
 
 abstract class Session {
 	static function exists(): bool {

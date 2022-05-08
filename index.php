@@ -4,18 +4,18 @@ require_once 'settings.php';
 include_once 'local.settings.php';
 
 use Modules\Router\Router;
-use Modules\Kernel\Session;
+use Modules\Account\Session;
 use Modules\Kernel\Storage;
 use Modules\Router\Error as ErrorPage;
 
-print_r(Storage::driver());
-die;
 Session::start();
 Router::file('routes.json');
 
 try {
 	$page = Router::current();
-	$page->init();
+	$fn = $page->init();
+	if(!empty($fn))
+		$fn->invoke($page);
 	$page->render();
 } catch(Error|Exception $e) {
 	while(ob_get_level() > 0)

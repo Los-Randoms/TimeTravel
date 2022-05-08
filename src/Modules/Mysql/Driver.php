@@ -30,16 +30,3 @@ class Driver extends mysqli implements KernelDriver {
 	}
 }
 
-
-trait setQuery {
-	protected array $setRefs = [];
-	protected string $setTypes = '';
-}
-
-/*
-trait limitQuery { }
-trait orderQuery { }
-trait groupQuery { }
-trait selectQuery { }
-
-*/

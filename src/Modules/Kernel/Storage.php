@@ -17,19 +17,14 @@ abstract class Storage {
 	}
 }
 
-abstract class Query {
-	protected Driver $driver;
-	protected string $table;
+interface Query {
+	function execute(): bool|Results;
+	function __toString(): string;
+}
 
-	function __construct(Driver $driver, string $table) {
-		$this->driver = $driver;
-		$this->table = $table;
-	}
-
-	abstract function row(string $class): object|array;
-	abstract function results(string $class): array;
-	abstract function execute();
-	abstract function __toString();
+interface Results {
+	function row(string $class = null): object|array|null;
+	function all(string $class = null): array;
 }
 
 interface Driver {
@@ -40,24 +35,38 @@ interface Driver {
 }
 
 interface Select {
-	function condition(string $field, &$ref, array $opt);
+	function condition(
+		string $field, &$ref, string $type = 's', 
+		string $condition = '=',
+		string $operator = 'AND',
+	);
 	function select(string $field);
-	function groupBy(string $field);
-	function limit(int $count, int $offset);
-	function orderBy(string $field, array $opt);
+	function groupBy(string $field, string $order = 'ASC');
+	function limit(int $count, int $offset = 0);
+	function orderBy(string $field, string $order = 'ASC');
 }
 
 interface Delete {
-	function condition(string $field, &$ref, array $opt);
+	function condition(
+		string $field, &$ref, string $type = 's',
+		string $condition = '=',
+		string $operator = 'AND',
+	);
 	function limit(int $count, int $offset);
 }
 
 interface Insert {
-	function set(string $field, &$ref);
+	function set(string $field, &$ref, string $type = 's');
 }
 
 interface Update {
-	function orderBy(string $field, array $opt);
+	function orderBy(string $field, string $order = 'ASC');
 	function limit(int $count, int $offset);
+	function set(string $field, &$ref, string $type = 's');
+	function condition(
+		string $field, &$ref, string $type = 's',
+		string $condition = '=',
+		string $operator = 'AND',
+	);
 }
 

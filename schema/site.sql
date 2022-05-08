@@ -1,5 +1,5 @@
-create database if not exists TimeTravel;
-use TimeTravel;
+create database if not exists test;
+use test;
 
 create table if not exists role(
 	id int unsigned not null auto_increment primary key,
@@ -19,7 +19,7 @@ create table if not exists user(
 	username varchar(40) not null,
 	email varchar(255) not null unique,
 	password varchar(60) not null,
-	role varchar(30) references role(name) default set null
+	role varchar(30) default null references role(name)
 		on update cascade 
 		on delete set null,
 	avatar int unsigned references file(id) 

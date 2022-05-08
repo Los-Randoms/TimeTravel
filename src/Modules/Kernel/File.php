@@ -47,7 +47,7 @@ class File extends Entity {
 
 	function moveTo(string $dir): bool {
 		$old_path = $this->path;
-		$new_path = "{$_ENV['Site']['files_dir']}/$dir";
+		$new_path = UPLOAD_DIR . "/$dir";
 		if(!file_exists($new_path)) {
 			if(!mkdir($new_path, 0o755, true));
 				return false;
@@ -55,21 +55,22 @@ class File extends Entity {
 		$ufilename = "$_SERVER[REQUEST_TIME_FLOAT]|{$this->filename}";
 		$ufilename = md5($ufilename);
 		$new_path = "$new_path/$ufilename";
-		$this->path = "$dir/$ufilename";
 		if(is_uploaded_file($this->path))
-			return move_uploaded_file($old_path, $new_path);
+			$ret = move_uploaded_file($old_path, $new_path);
 		else
-			return rename($old_path, $new_path);
+			$ret = rename($old_path, $new_path);
+		$this->path = "$dir/$ufilename";
+		return $ret;
 	}
 
 	function delete() {
-		$file_path = "{$_ENV['Site']['files_dir']}/{$this->path}";
+		$file_path = UPLOAD_DIR . "/{$this->path}";
 		if(file_exists($file_path))
 			unlink($file_path);
 		$this::remove($this->id);
 	}
 
 	function url(): string {
-		return "/{$_ENV['Site']['files_dir']}/{$this->path}";
+		return UPLOAD_DIR . "/{$this->path}";
 	}
 }
