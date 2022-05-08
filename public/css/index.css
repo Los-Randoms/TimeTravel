@@ -1,3 +1,5 @@
+@import url(/public/icons/heart.css);
+
 #main-banner {
 	background-image: url(/public/beach.png);
 	background-size: cover;

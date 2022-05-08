@@ -3,6 +3,10 @@
 	"/cambiar-contra": "Controller\\Form\\Changep",
 	"/iniciar-sesion": "Controller\\Form\\Login",
 	"/registro": "Controller\\Form\\Register",
+<<<<<<< HEAD
 	"/salir": "Controller\\Page\\Logout",
 	"/admin": "Controller\\Page\\Admin",
+=======
+	"/salir": "Controller\\Page\\Logout"
+>>>>>>> f979bcc (updated)
 }

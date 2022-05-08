@@ -1,7 +1,7 @@
 server {
 	listen 80 default_server;
 	listen [::] default_server;
-	root /var/www/Test;
+	root /var/www/TimeTravel;
 	server_name test.xyz;
 
 	location / {
