@@ -3,13 +3,12 @@
 }
 
 
-.a{
-    text-align: center;
-    margin-top: 3em;
-    margin-left: auto;
-    margin-right: auto;
+.contenedor {
+	box-sizing: border-box;
+	max-width: 95vmin;
+	margin: auto;
 }
 
-.f{
-    text-align: center;
+.inpt:hover, .inpt:hover {
+	outline-color: skyblue;
 }
