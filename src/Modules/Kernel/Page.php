@@ -34,7 +34,6 @@ abstract class Page extends View {
 	public function init(): ?ReflectionMethod {
 		// Check if the user has permissions
 		
-
 		// Process the event
 		$event = $_GET['e'] ?? NULL;
 		if(isset($event) && !empty($event)) {

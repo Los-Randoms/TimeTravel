@@ -1,5 +1,6 @@
 <?php namespace Modules\Kernel;
 
+use Modules\Messenger\Messages;
 use ReflectionMethod;
 
 abstract class Form extends Page {
@@ -10,6 +11,11 @@ abstract class Form extends Page {
 		if(!$this->verify())
 			return null;
 		return $event;
+	}
+
+	protected function error(string $message, string $field = null): bool {
+		Messages::add($message, 'error');
+		return false;
 	}
 
 	// format: [?!#]string|30

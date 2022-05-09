@@ -1,6 +1,5 @@
 <?php namespace Modules\Account;
 
-use DateTime;
 use Modules\Kernel\Entity;
 
 class User extends Entity {
