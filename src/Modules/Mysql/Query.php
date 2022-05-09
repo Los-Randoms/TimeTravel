@@ -25,7 +25,7 @@ abstract class Query implements KernelQuery {
 	protected function exec(string $types, array $refs) {
 		if(!$this->ready) {
 			$this->stmt = $this->driver->prepare($this);
-			if(!empty($this->condTypes))
+			if(!empty($types))
 				$this->stmt->bind_param($types, ...$refs);
 		}
 		$this->stmt->execute();

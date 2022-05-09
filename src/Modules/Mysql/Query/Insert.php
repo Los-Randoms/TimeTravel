@@ -9,7 +9,7 @@ class Insert extends Query implements KernelInsert {
 	use QuerySetTrait;
 
 	function execute(): bool {
-		$this->exec($this->setTypes, ...$this->setValues);
+		$this->exec($this->setTypes, $this->setValues);
 		return true;
 	}
 

@@ -4,8 +4,10 @@
 	<?php if(DEVEL): ?>
 	<div class="section">
 		<h3>Message: </h3>
+		<pre><?= $this->error->getMessage() ?></pre>
 	</div>
 	
 	<h3>Trace: </h3>
+	<pre><?= $this->error->getTraceAsString() ?></pre>
 	<?php endif ?>
 </div>

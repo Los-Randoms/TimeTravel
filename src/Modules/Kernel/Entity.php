@@ -29,9 +29,8 @@ class Entity {
 		$driver = Storage::driver();
 		$select = $driver->read(static::TABLE);
 		$select->condition('id', $id);
-		$res = $select->execute();
-		$entity = $res->row(static::class);
-		$res->free();
+		$select->execute();
+		$entity = $select->fetch(static::class);
 		return $entity;
 	}
 
@@ -43,15 +42,13 @@ class Entity {
 		if(count($ids) > 0) {
 			$select->condition('id', $id);
 			foreach($ids as $id) {
-				$res = $select->execute();
-				$rows[] = $res->row(static::class);
-				$res->free();
+				$select->execute();
+				$rows[] = $select->fetch(static::class);
 			}
 			return $rows;
 		} else {
-			$res = $select->execute();
-			$rows = $res->all(static::class);
-			$res->free();
+			$select->execute();
+			$rows = $select->results(static::class);
 			return $rows;
 		}
 	}
