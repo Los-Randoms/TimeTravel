@@ -1,15 +1,11 @@
 <div class="container">
 	<h1>Log-in</h1>
 	<form enctype="application/x-www-form-urlencoded" action="?e=submit" method="POST">
-		<div class="field">
-			<label>Ingresa tu correo</label>
-			<input required class="inpt" type="email" name="email">
-		</div>
-		<div class="field">
-			<label>Ingresa tu contraseña</label>
-			<input required class="inpt" type="password" name="password">
-		</div>
-		<button type="submit" class="btn primary">Entrar</button>
+		<label>Ingresa tu correo</label>
+		<input required type="email" name="email">
+		<label>Ingresa tu contraseña</label>
+		<input required type="password" name="password">
+		<button type="submit">Entrar</button>
 	</form>
 	<div>
 		<h4>¿No tienes cuenta? <a href="/registro">Registrate</a></h4>
