@@ -2,7 +2,6 @@
 
 use Modules\Kernel\Select as KernelSelect;
 use Modules\Mysql\Query;
-use Modules\Mysql\Results;
 use Modules\Mysql\Traits\QueryConditionTrait;
 use Modules\Mysql\Traits\QueryGroupTrait;
 use Modules\Mysql\Traits\QueryLimitTrait;
@@ -16,16 +15,10 @@ class Select extends Query implements KernelSelect {
     use QueryOrderTrait;
     use QueryConditionTrait;
 
-    function execute(): bool|Results {
-        $result = false;
-		$stmt = $this->driver->prepare($this);
-        if(!empty($this->condTypes))
-            $stmt->bind_param($this->condTypes, ...$this->condValues);
-		if($stmt->execute()) 
-            $result = new Results($stmt->get_result());
-        $stmt->close();
-        return $result;
-    }
+	function execute(): bool {
+		$this->exec($this->condTypes, $this->condValues);
+		return true;
+	}
 
     function __toString(): string {
         $query = "SELECT {$this->selectPart} FROM `{$this->table}`";

@@ -13,7 +13,9 @@ abstract class Storage {
 }
 
 interface Query {
-	function execute(): bool|Results;
+	function execute(): bool;
+	function results(string $class = null): array;
+	function fetch(string $class = null): object|array|null;
 	function __toString(): string;
 }
 

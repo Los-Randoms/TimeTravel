@@ -1,7 +1,6 @@
 <?php namespace Modules\Mysql\Query;
 
 use Modules\Kernel\Delete as KernelDelete;
-use Modules\Mysql\Driver;
 use Modules\Mysql\Query;
 use Modules\Mysql\Results;
 use Modules\Mysql\Traits\QueryConditionTrait;
@@ -11,12 +10,8 @@ class Delete extends Query implements KernelDelete {
 	use QueryConditionTrait;
 	use QueryLimitTrait;
 
-	function execute(): bool|Results {
-		$stmt = $this->driver->prepare($this);
-		if(!empty($this->condTypes))
-			$stmt->bind_param($this->condTypes, ...$this->condValues);
-		$stmt->execute();
-		$stmt->close();
+	function execute(): bool {
+		$this->exec($this->condTypes, $this->condValues);
 		return true;
 	}
 
