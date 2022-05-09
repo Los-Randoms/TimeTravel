@@ -9,9 +9,6 @@ use mysqli;
 
 mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
 class Driver extends mysqli implements KernelDriver {
-	function __destruct() {
-		$this->close();
-	}
 
 	function create(string $table): Insert {
 		return new Insert($this, $table);

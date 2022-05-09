@@ -10,11 +10,6 @@ abstract class Storage {
 			self::$driver = new $class(...$credentials);
 		return self::$driver;
 	}
-
-	static function close() {
-		if(isset(self::$driver) && !empty(self::$driver))
-			unset(self::$driver);
-	}
 }
 
 interface Query {
@@ -32,6 +27,7 @@ interface Driver {
 	function read(string $table): Select;
 	function update(string $table): Update;
 	function delete(string $table): Delete;
+	function close();
 }
 
 interface Select {
