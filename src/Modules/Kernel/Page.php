@@ -8,8 +8,6 @@ abstract class Page extends View {
 	private string $script;
 	private string $title;
 	private array $permissions = [];
-	protected array $header = [];
-	protected array $footer = [];
 
 	function render(): bool {
 		ob_start();
