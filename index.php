@@ -27,4 +27,4 @@ try {
 }
 
 Session::stop();
-Storage::close();
+Storage::driver()->close();
