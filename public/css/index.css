@@ -1,3 +1,9 @@
 @import url(/public/icons/search.css);
+@import url(/public/css/background-image.css);
 
+.index--banner {
+	height: 400px;
+}
 
+.index-banner {
+}

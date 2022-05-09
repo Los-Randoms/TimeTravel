@@ -6,11 +6,12 @@ use Modules\Kernel\Form;
 use Modules\Kernel\Storage;
 
 class Login extends Form {
-	private User $user;
+	private ?User $user;
 
 	function __construct() {
 		parent::__construct('login.phtml');
 		$this->title('Iniciar sesión');
+		$this->style('css/login.css');
 	}
 
 	function _submit() {
@@ -33,7 +34,8 @@ class Login extends Form {
 		$driver = Storage::driver();
 		$select = $driver->read(User::TABLE);
 		$select->condition('email', $_POST['email']);
-		$this->user = $select->execute()->row(User::class);
+		$select->execute();
+		$this->user = $select->fetch(User::class);
 		if(empty($this->user))
 			return $this->error('Verifique los datos');
 		if(!password_verify($this->user->password, $_POST['password']))
