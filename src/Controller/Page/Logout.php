@@ -1,6 +1,5 @@
 <?php namespace Controller\Page;
 
-use Entity\Publication;
 use Modules\Kernel\Page;
 
 class Logout extends Page {
