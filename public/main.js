@@ -1,14 +1,16 @@
 "use strict"
 
 async function main(ev) {
-	let comp = document.querySelector("[controller]");
-	while(comp !== null) {
-		await component(comp);
-		comp = document.querySelector("[controller]");
+	let components = document.querySelectorAll("[manager]");
+	for(let component of components) {
+		console.log(component);
 	}
 }
+document.addEventListener('DOMContentLoaded', main);
 
-async function component(element) {
+
+/*
+async function bindController(element) {
 	if(element === null) 
 		return;
 	await component(element.querySelector("[controller]"));
@@ -39,5 +41,4 @@ async function component(element) {
 	element.removeAttribute('controller');
 	element.controller = controller;
 }
-
-document.addEventListener('DOMContentLoaded', main);
+*/
