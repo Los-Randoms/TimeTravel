@@ -1,0 +1,14 @@
+.body{
+    text-align: center;
+}
+
+
+.contenedor {
+	box-sizing: border-box;
+	max-width: 95vmin;
+	margin: auto;
+}
+
+.inpt:hover, .inpt:hover {
+	outline-color: skyblue;
+}

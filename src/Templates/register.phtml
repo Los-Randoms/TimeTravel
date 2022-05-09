@@ -1,32 +1,24 @@
-<link href="/public/assets/register.css" rel="stylesheet">
+<div class="contenedor">
+<h1>Registro</h1>
 
-<head><br>
-		<center>
-			<h1>Bienvendo a Travel Time</h1>
-		</center>
-	</head>
 
-<div>
-		<center>
-			<h1>Registro</h1>
-		</center>
-		<div><br>
-			<center>
-				<form action="/register?submit" method="POST">
-				<h3>Ingresa tu correo electronico</h3>
-				<input type="" name="correo" placeholder="example@example.xyz"><br><br>
-				<h3>Ingresa tu nombre completo</h3>
-				<input type="" name="nombre" placeholder="Carlos Reyes Gutierrez"><br><br>
-				<h3>Ingresa tu contraseña</h3>
-				<input type="password" name="contraseña" placeholder="**********"><br><br>
-				<h3>Confirma tu contraseña</h3>
-				<input type="password" name="contraseña2" placeholder="**********"><br><br>
-				<button>
-					Registrarse
-					</form>
-				</button><br><br>
-			<div class="mensaje">
-				<?= $_self['mensaje'] ?? null ?>
-			</div>
-			</center>
-		</div>
+<form enctype="application/x-www-form-urlencoded" action="?e=submit" method="POST">
+
+
+<h3>Ingresa tu correo electronico</h3>
+<input required class="inpt" type="" name="correo" placeholder="example@example.xyz">
+
+<h3>Ingresa tu nombre completo</h3>
+<input required class="inpt" type="" name="nombre" placeholder="Carlos Reyes Gutierrez">
+
+<h3>Ingresa tu contraseña</h3>
+<input required class="inpt" type="password" name="contraseña" placeholder="**********">
+<h3>Confirma tu contraseña</h3>
+<input required class="inpt" type="password" name="contraseña2" placeholder="**********">
+
+<button type="submit" class="btn primary"> Registrarse </button> </form>
+<h4>¿Ya estas registrado? <a href="/login">Inicia sesion</a></h4>
+<br><br>
+<div class="mensaje">
+	<?= $_self['mensaje'] ?? null ?>
+</div>

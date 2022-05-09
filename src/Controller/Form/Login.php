@@ -11,7 +11,9 @@ class Login extends Form {
 
 	function _submit() {
 		/** @var User */
-		$user = User::search(['email=', $_POST['email']])[0];
+		$user = User::search([
+			['email=', $_POST['email']]
+		])[0];
 		if(empty($user))
 			return $this->addMessage("Verifique sus credenciales");
 		if(!password_verify($_POST['password'], $user->password))
