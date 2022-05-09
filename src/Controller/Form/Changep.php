@@ -1,32 +1,21 @@
 <?php namespace Controller\Form;
 
 use Modules\Kernel\Form;
-use Modules\Kernel\User;
-
 
 class Changep extends Form {
-    function __construct()
-    {
+    function __construct() {
         parent::__construct('changep.phtml');
-        $this->addStyle('css/changep.css');
-        $this->setTitle('Cambiar contraseña');
+        $this->style('css/changep.css');
+        $this->title('Cambiar contraseña');
     }
 
-    public function verify(): bool
-    {
+    public function verify(): bool {
         if(!isset($_POST['correo']) || empty($_POST['correo']))
             return false;   
         return true;
     }
 
-    public function _submit()
-    {
-       $user = User::search(
-          ['email = ', $_POST['correo']]
-       )[0];
-       
-       
-       
+    public function _submit() {
        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz$#';
        $correo = $_POST["correo"];
        $newp=substr(str_shuffle($permitted_chars), 0, 8); //genera carcteres aleatorio
