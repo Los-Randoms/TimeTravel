@@ -13,7 +13,7 @@ class Publication extends Form {
 
 	function __construct() {
 		parent::__construct('publication.phtml');
-		$this->Title('Publicacion');
+		$this->title('Publicacion');
 		$this->currentUser = AccountSession::exists();
 		if(isset($_GET['id']) && is_numeric($_GET['id']))
 			$this->pub = EntityPublication::load($_GET['id']);

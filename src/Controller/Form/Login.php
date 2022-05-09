@@ -1,8 +1,7 @@
 <?php namespace Controller\Form;
 
-use Modules\Account\User as AccountUser;
+use Modules\Account\User;
 use Modules\Kernel\Form;
-use Modules\Kernel\User;
 use Modules\Kernel\Storage;
 
 
@@ -13,12 +12,13 @@ class Login extends Form {
 	}
 
 	function _submit() {
-		/** @var User */
-        /** @var \Module\Mysql\Driver */
-        $driver=Storage::driver();
-        $select=$driver->read(AccountUser::TABLE);
-        $select->condition('email', $_POST['correo']);
-        $user=$select->execute();
+		 /** @var \Modules\Mysql\Driver */
+		$driver=Storage::driver();
+        $select=$driver->read(User::TABLE);
+        $select->condition('email', $_POST['email'], 's', '=');
+        $select->execute();
+         /** @var User */
+        $this->user = $select->fetch(User::class);
 
 		if(empty($user))
 			return /*$this->addMessage("Verifique sus credenciales")*/;
