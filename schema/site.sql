@@ -1,12 +1,24 @@
-create database if not exists test;
-use test;
+create database TimeTravel;
+use TimeTravel;
 
-create table if not exists role(
+create table role(
 	id int unsigned not null auto_increment primary key,
 	name varchar(30) not null unique
 );
 
-create table if not exists file(
+create table permission(
+	id int unsigned not null auto_increment primary key,
+	name varchar(50) not null unique
+);
+
+create table access(
+	rol int unsigned not null references role(id)
+		on delete cascade,
+	permission int unsigned not null references permission(id)
+		on delete cascade,
+);
+
+create table file(
 	id int unsigned not null auto_increment primary key,
 	filename varchar(255) not null,
 	mime varchar(255) not null,
@@ -14,12 +26,12 @@ create table if not exists file(
 	size int unsigned not null
 );
 
-create table if not exists user(
+create table user(
 	id int unsigned not null auto_increment primary key,
 	username varchar(40) not null,
 	email varchar(255) not null unique,
 	password varchar(60) not null,
-	role varchar(30) default null references role(name)
+	rol varchar(30) default null references role(name)
 		on update cascade 
 		on delete set null,
 	avatar int unsigned references file(id) 
@@ -29,15 +41,9 @@ create table if not exists user(
 );
 
 
-delimiter &&
-if not(select count(1) from user where id = 1) then
-	insert into role(name) values
-		('admin'),
-		('user');
-	insert into user set
-		username = 'admin',
-		email = 'admin@test.xyz',
-		password = '$2a$12$kj3KOoRbikek6Sb3s24T4.imUwRFnVDUrUqtwCYMtwbWwtOcb.x1a',
-		role = 'admin';
-end if&&
-delimiter ;
+insert into role(name) values ('admin');
+insert into user set
+	username = 'admin',
+	email = 'admin@test.xyz',
+	password = '$2y$10$.gS76CywJEtagdz8HGzqKeUsLWfmS/RUmhThFqXZlb4kJAkN0cUF6',
+	role = 'admin';
