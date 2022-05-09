@@ -1,15 +1,17 @@
 <?php namespace Controller\Form;
 
+use Modules\Account\User as AccountUser;
 use Modules\Kernel\Form;
-use Modules\Kernel\User;
+use Modules\Kernel\Storage;
+
 
 
 class Changep extends Form {
     function __construct()
     {
         parent::__construct('changep.phtml');
-        $this->addStyle('css/changep.css');
-        $this->setTitle('Cambiar contraseña');
+        $this->Style('css/changep.css');
+        $this->Title('Cambiar contraseña');
     }
 
     public function verify(): bool
@@ -21,10 +23,13 @@ class Changep extends Form {
 
     public function _submit()
     {
-       $user = User::search(
-          ['email = ', $_POST['correo']]
-       )[0];
-       
+        print_r($_POST['correo']);
+        /** @var \Modules\Mysql\Driver */
+        $driver=Storage::driver();
+        $select=$driver->read(AccountUser::TABLE);
+        $select->condition('email', $correo);
+        $user=$select->execute();
+
        
        
        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz$#';
@@ -35,8 +40,8 @@ class Changep extends Form {
        $user->password=$newp;
        $incrip = password_hash($user->password, PASSWORD_DEFAULT); //encriptado de contraseña
        $user->password=$incrip;
-       $user->update();
-       $this->addMessage("Se ha enviado a su correo una nueva contraseña temporal");
+       $user->Driver::update();
+       //$this->addMessage("Se ha enviado a su correo una nueva contraseña temporal");
        
        //mail($correo, 
        //'Cambio de contraseña',  

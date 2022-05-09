@@ -1,14 +1,15 @@
 <?php namespace Controller\Form;
 
+use Modules\Account\User as AccountUser;
 use Modules\Kernel\Form;
-use Modules\Kernel\User;
+
 
 class Register extends Form {
     function __construct()
     {
         parent::__construct('register.phtml');
-        $this->addStyle('css/register.css');
-        $this->setTitle('Registro');
+        $this->Style('css/register.css');
+        $this->Title('Registro');
     }
     public function verify(): bool
     {
@@ -22,13 +23,13 @@ class Register extends Form {
     
     public function _submit()
     {
-    $html = new User("register");
+    $html = new AccountUser("register");
     $mail = $_POST['correo'] ?? null;
     $name = $_POST['nombre'] ?? null;
     $password = $_POST['contraseña'] ?? null;
     $password2 = $_POST['contraseña2'] ?? null;
 
-    $user = new User();
+    $user = new AccountUser();
     $incrip = password_hash($password, PASSWORD_DEFAULT);
     $user->email=$mail;
     $user->username=$name;
@@ -36,11 +37,11 @@ class Register extends Form {
     $user->role="user";
 
     if ($password!=$password2) {
-        $this->addMessage("Las contraseñas ingresadas no son iguales");
+        //$this->addMessage("Las contraseñas ingresadas no son iguales");
         return $html;
     }
 
     $user->save();
-    $this->addMessage("Se ha registrado exitosamente!");;
+    //$this->addMessage("Se ha registrado exitosamente!");;
     }
 }
