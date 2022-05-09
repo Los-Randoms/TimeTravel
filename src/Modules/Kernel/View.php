@@ -2,11 +2,11 @@
 
 
 class View {
-	const DIR = 'src/Templates/';
+	const DIR = './src/Templates/';
 	private string $file;
 
-	function __construct(string $file) {
-		if($file[0] != '/')
+	function __construct(string $file, bool $absolute = false) {
+		if(!$absolute)
 			$file = self::DIR . $file;
 		$this->file = $file;
 	}

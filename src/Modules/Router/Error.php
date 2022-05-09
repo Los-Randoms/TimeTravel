@@ -8,7 +8,7 @@ class Error extends Page {
 	public GlobalError|Exception $error;
 
 	function __construct() {
-		parent::__construct(__DIR__ . '/Templates/exception.phtml');
+		parent::__construct(__DIR__ . '/Templates/exception.phtml', true);
 		http_response_code(500);
 	}
 }
