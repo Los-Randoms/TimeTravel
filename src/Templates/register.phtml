@@ -1,24 +1,16 @@
-<div class="contenedor">
-<h1>Registro</h1>
+<div class="container">
+	<h1>Registro</h1>
 
-
-<form enctype="application/x-www-form-urlencoded" action="?e=submit" method="POST">
-
-
-<h3>Ingresa tu correo electronico</h3>
-<input required class="inpt" type="" name="correo" placeholder="example@example.xyz">
-
-<h3>Ingresa tu nombre completo</h3>
-<input required class="inpt" type="" name="nombre" placeholder="Carlos Reyes Gutierrez">
-
-<h3>Ingresa tu contraseña</h3>
-<input required class="inpt" type="password" name="contraseña" placeholder="**********">
-<h3>Confirma tu contraseña</h3>
-<input required class="inpt" type="password" name="contraseña2" placeholder="**********">
-
-<button type="submit" class="btn primary"> Registrarse </button> </form>
-<h4>¿Ya estas registrado? <a href="/login">Inicia sesion</a></h4>
-<br><br>
-<div class="mensaje">
-	<?= $_self['mensaje'] ?? null ?>
-</div>
+	<form enctype="application/x-www-form-urlencoded" action="?e=submit" method="POST">
+		<label>Correo electronico: </label>
+		<input required type="mail" name="email">
+		<label>Nombre de usuario: </label>
+		<input required type="text" name="username">
+		<label>Contraseña: </label>
+		<input required type="password" name="password[]">
+		<label>Confirmar contraseña: </label>
+		<input required type="password" name="password[]">
+		<button type="submit">Registrarse</button>
+	</form>
+	<p><b>¿Ya estas registrado?</b> <a href="/iniciar-sesion">Inicia sesion</a></p>
+<div>

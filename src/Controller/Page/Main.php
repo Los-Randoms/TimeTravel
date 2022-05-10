@@ -6,7 +6,7 @@ use Modules\Kernel\Page;
 use Modules\Kernel\View;
 
 class Main extends Page {
-	public array $publicaciones;
+	public array $publications;
 
 	function __construct() {
 		parent::__construct('index.phtml');

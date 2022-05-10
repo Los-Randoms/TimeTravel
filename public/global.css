@@ -39,6 +39,12 @@ body {
 	margin: 0;
 }
 
+body > header,
+body > main,
+body > footer {
+	display: contents;
+}
+
 .container {
 	padding: 1em;
 	margin: auto;
@@ -52,7 +58,7 @@ img, .img {
 }
 
 /** Input elements and buttons */
-input, textarea, .input {
+input, textarea, select, .input {
 	--background: #F8F8F8;
 	--border: #A0A0A0;
 	--outline: #A0A0A0;
@@ -72,9 +78,17 @@ input, textarea, .input {
 	border-radius: 4px;
 }
 
+input[type=radio],
+input[type=checkbox] {
+	outline: 0;
+	width: 1em;
+	height: 1em;
+}
+
 input:hover, 
 textarea:hover, 
 .input:hover, 
+select:hover,
 .search:hover {
 	--outline: #696969;
 	--background: #FFFFFF;
@@ -82,6 +96,7 @@ textarea:hover,
 
 input:focus, 
 textarea:focus,
+select:focus,
 .input:focus, 
 .search:focus-within {
 	--background: #FFFFFF;

@@ -24,13 +24,13 @@
 </head>
 <body>
 	<header>
-	<?php foreach($this->header ?? [] as $block): ?>
+	<?php foreach($this->header as $block): ?>
 	<?php $block->render() ?>
 	<?php endforeach ?>
 	</header>
 	<main><?php parent::render() ?></main>
 	<footer>
-	<?php foreach($this->footer ?? [] as $block): ?>
+	<?php foreach($this->footer as $block): ?>
 	<?php $block->render() ?>
 	<?php endforeach ?>
 	</footer>
