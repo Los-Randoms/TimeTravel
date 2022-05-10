@@ -1,6 +1,6 @@
   /* Contenedor centrado de bienvenida  */
 
-  .margin-auto {
+  /*.margin-auto {
     display: flex;
     height: 400px;
     width: 600px;
@@ -22,13 +22,13 @@
    
    /* items del menu */
    
-   #menu ul li {
-    background-color:skyblue;
+  /* #menu ul li {
+    background-color:skyblue; 
    }
    
    /* enlaces del menu */
    
-   #menu ul a {
+  /* #menu ul a {
     display:block;
     color:#fff;
     text-decoration:none;
@@ -42,7 +42,7 @@
    
    /* items del menu */
    
-   #menu ul li {
+  /* #menu ul li {
     position:relative;
     float:left;
     margin:0;
@@ -51,6 +51,6 @@
    
    /* efecto al pasar el ratón por los items del menu */
    
-   #menu ul li:hover {
+  /* #menu ul li:hover {
     background:#0a4c78;
-   }
+   } 
