@@ -21,7 +21,8 @@ abstract class Router {
 	}
 
 	static function current(): Page {
-		$path = parse_url($_SERVER['REQUEST_URI'])['path'];
+		$uri = urldecode($_SERVER['REQUEST_URI']);
+		$path = parse_url($uri)['path'];
 		if(!self::exitst($path))
 			throw new Exception('Page not found', 404);
 		$route = Router::get($path);
