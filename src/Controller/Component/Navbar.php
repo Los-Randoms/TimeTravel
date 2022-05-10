@@ -2,7 +2,7 @@
 
 use Modules\Kernel\View;
 
-class MainNavbar extends View {
+class Navbar extends View {
 	function __construct() {
 		parent::__construct('component/navbar.phtml');
 	}

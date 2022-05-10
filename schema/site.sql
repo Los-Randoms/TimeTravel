@@ -1,24 +1,12 @@
 create database TimeTravel;
 use TimeTravel;
 
-create table role(
+create table roles(
 	id int unsigned not null auto_increment primary key,
 	name varchar(30) not null unique
 );
 
-create table permission(
-	id int unsigned not null auto_increment primary key,
-	name varchar(50) not null unique
-);
-
-create table access(
-	rol int unsigned not null references role(id)
-		on delete cascade,
-	permission int unsigned not null references permission(id)
-		on delete cascade,
-);
-
-create table file(
+create table files(
 	id int unsigned not null auto_increment primary key,
 	filename varchar(255) not null,
 	mime varchar(255) not null,
@@ -26,24 +14,25 @@ create table file(
 	size int unsigned not null
 );
 
-create table user(
+create table users(
 	id int unsigned not null auto_increment primary key,
 	username varchar(40) not null,
 	email varchar(255) not null unique,
 	password varchar(60) not null,
-	rol varchar(30) default null references role(name)
+	rol varchar(30) default null references roles(name)
 		on update cascade 
 		on delete set null,
-	avatar int unsigned references file(id) 
+	avatar int unsigned references files(id) 
 		on delete set null,
 	banned boolean not null default false,
 	creation datetime not null default current_timestamp
 );
 
 
-insert into role(name) values ('admin');
-insert into user set
+insert into roles(name) values ('admin');
+insert into users set
 	username = 'admin',
 	email = 'admin@test.xyz',
 	password = '$2y$10$.gS76CywJEtagdz8HGzqKeUsLWfmS/RUmhThFqXZlb4kJAkN0cUF6',
-	role = 'admin';
+	rol = 'admin';
+

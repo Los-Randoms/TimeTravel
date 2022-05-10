@@ -38,7 +38,7 @@ abstract class Query implements KernelQuery {
 
 	function fetch(?string $class = null): object|array|null {
 		if(!isset($this->result))
-			throw new Error('Querys cannot be fethed after execute');
+			throw new Error('Querys cannot be fethed after execute', 505);
 		if($this->result->field_count < 1)
 			return null;
 		if(empty($class))

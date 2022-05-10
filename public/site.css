@@ -1,1 +1,24 @@
+@import url(/public/icons/menu.css);
+
+#main-nav {
+	position: sticky;
+	top: 0;
+	background: white;
+	margin: 0 1em;
+}
+
+#main-nav > .toggle {
+	display: none;
+}
+
+#main-nav > nav > .center {
+	margin: auto;
+}
+
+#main-nav > nav > .logo {
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 1.6em;
+	color: black;
+}
 
