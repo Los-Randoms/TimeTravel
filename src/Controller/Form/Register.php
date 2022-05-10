@@ -1,5 +1,6 @@
 <?php namespace Controller\Form;
 
+use Modules\Account\User;
 use Modules\Kernel\Form;
 
 class Register extends Form {
@@ -18,7 +19,6 @@ class Register extends Form {
 			return false;   
 		return true;
     }
-    
     public function _submit() {
 	#	$incrip = password_hash($password, PASSWORD_DEFAULT);
 	#	$user->email=$mail;
