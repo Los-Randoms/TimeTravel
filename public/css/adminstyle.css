@@ -1,20 +1,23 @@
   /* Contenedor centrado de bienvenida  */
 
-  /*.margin-auto {
+  .margin-auto {
     display: flex;
-    height: 400px;
-    width: 600px;
+    justify-content: center;
+    align-items: center;
+    height: 260px;
+    width: 1300px;
+ 
   
-    background: whitesmoke;
+    background: white;
     color: black;
   }
   
   .margin-auto__content {
-    margin: auto;
+    margin: center;
   }
 
 
-#menu ul {
+/*#menu ul {
     list-style:none;
     margin:0;
     padding:0;
@@ -22,7 +25,7 @@
    
    /* items del menu */
    
-  /* #menu ul li {
+  /*/ #menu ul li {
     background-color:skyblue; 
    }
    
