@@ -1,9 +1,9 @@
 <?php namespace Controller\Form;
 
+use Modules\Account\Session;
 use Modules\Account\User;
 use Modules\Kernel\Form;
 use Modules\Kernel\Storage;
-use Modules\Account\Session;
 
 class Login extends Form {
 	private ?User $user;
@@ -11,37 +11,24 @@ class Login extends Form {
 	function __construct() {
 		parent::__construct('login.phtml');
 		$this->title('Iniciar sesión');
+		$this->style('css/login.css');
 	}
 
 	function _submit() {
-		 /** @var \Modules\Mysql\Driver */
-		$driver=Storage::driver();
-        $select=$driver->read(User::TABLE);
-        $select->condition('email', $_POST['email'], 's', '=');
-        $select->execute();
-         /** @var User */
-        $this->user = $select->fetch(User::class);
-
-		if(empty($user))
-			return /*$this->addMessage("Verifique sus credenciales")*/;
-			if(!password_verify($_POST['password'], $user->password))
-			return /*$this->addMessage("Verifique sus credenciales")*/;
-		session_start();
-		$_SESSION['uid'] = $user->id;
+		if(empty($this->user))
+			return $this->error('Verifique sus credenciales');
+		if(!password_verify($_POST['password'], $this->user->password))
+			return $this->error('Verifique sus credenciales');
+		Session::create($this->user);
 		header('Location: /');
 		die;
 	}
 
 	function verify(): bool {
-		if(!isset($_POST['email']) || empty($_POST['email'])) {
-			//$this->addMessage('Rellene los campos correctamente');
-			return false;
-		}
-
-		if(!isset($_POST['password']) || empty($_POST['password'])) {
-			//$this->addMessage('Rellene los campos correctamente');
-			return false;
-		}
+		if(!isset($_POST['email']) || empty($_POST['email']))
+			return $this->error('Rellene los campos correctamente');
+		if(!isset($_POST['password']) || empty($_POST['password']))
+			return $this->error('Rellene los campos correctamente');
 
 		/** @var \Modules\Mysql\Driver */
 		$driver = Storage::driver();
