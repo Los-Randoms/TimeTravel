@@ -1,31 +1,20 @@
-<?php use Modules\Kernel\Session; ?>
-
-<nav class="navbar primary" controller="navbar" id="main-nav">
-	<div class="head">
-		<a class="logo" href="/"><?= $_ENV['Site']['name']; ?></a>
-		<button class="btn burger" trigger="click#toggle">
-			<object class="icon" data="/public/icons/menu.svg"></object>
-		</button>
-	</div>
-	<div class="items" element="items">
-		<form action="search" method="GET">
-			<div class="inpt-search">
-				<input required name="q" class="inpt" type="text" placeholder="Buscar...">
-				<button class="btn" type="submit">
-					<object class="icon" data="/public/icons/search.svg"></object>
-				</button>
-			</div>
-		</form>
-		<?php if(Session::isLogged()): ?>
-		<?php $user = Session::currentUser(); ?>
-		<a class="btn" href="/account">
-			<img class="avatar" src="<?= $user->avatar; ?>">
-			<span><?= $user->username; ?></span>
-		</a>
-		<a class="btn" href="/salir">Cerrar sesion</a>
-		<?php else: ?>
-		<a class="btn" href="/iniciar-sesion">Iniciar sesion</a>
-		<a class="btn" href="/registro">Registrarse</a>
-		<?php endif; ?>
-	</div>
-</nav>
+<div id="main-nav" class="">
+	<button class="toggle"><i class="gg-menu"></i></button>
+	<nav>
+		<a href="/" class="logo"><?= SITE_NAME ?></a>
+		<div class="items center">
+			<form action="search" method="GET">
+				<div class="search">
+					<input required name="q" type="text" placeholder="Buscar...">
+					<button type="submit">
+						<i class="gg-search" style="color: gray"></i>
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class="items">
+			<a class="btn" href="/iniciar-sesion">Iniciar sesion</a>
+			<a class="btn" href="/registro">Registrarse</a>
+		</div>
+	</nav>
+</div>

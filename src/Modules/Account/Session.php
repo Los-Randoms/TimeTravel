@@ -34,7 +34,7 @@ abstract class Session {
 			session_commit();
 		}
 		session_start();
-		$_SESSION['uid'] = $account->id;
+		$_SESSION['user'] = $account;
 		$_SESSION['date'] = new DateTime();
 		return true;
 	}

@@ -3,12 +3,14 @@
 use Modules\Account\User;
 use Modules\Kernel\Form;
 use Modules\Kernel\Storage;
-
+use Modules\Account\Session;
 
 class Login extends Form {
+	private ?User $user;
+
 	function __construct() {
 		parent::__construct('login.phtml');
-		$this->Title('Iniciar sesión');
+		$this->title('Iniciar sesión');
 	}
 
 	function _submit() {
@@ -41,6 +43,16 @@ class Login extends Form {
 			return false;
 		}
 
+		/** @var \Modules\Mysql\Driver */
+		$driver = Storage::driver();
+		$select = $driver->read(User::TABLE);
+		$select->condition('email', $_POST['email']);
+		$select->execute();
+		$this->user = $select->fetch(User::class);
+		if(empty($this->user))
+			return $this->error('Verifique los datos');
+		if(!password_verify($this->user->password, $_POST['password']))
+			return $this->error('Verifique los datos');
 		return true;
 	}
 }

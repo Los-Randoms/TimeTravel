@@ -1,5 +1,7 @@
 <?php namespace Modules\Kernel;
 
+use Exception;
+use Modules\Account\Session;
 use ReflectionClass;
 use ReflectionMethod;
 
@@ -8,6 +10,9 @@ abstract class Page extends View {
 	private string $script;
 	private string $title;
 	private array $permissions = [];
+	private array $messages = [];
+	protected array $header = [];
+	protected array $footer = [];
 
 	function render(): bool {
 		ob_start();
@@ -27,15 +32,23 @@ abstract class Page extends View {
 		$this->script = $src;
 	}
 
-	protected function access(string ...$permissions) {
-		$this->permissions = $permissions;
+	protected function access(string ...$roles) {
+		$this->permissions = $roles;
 	}
 
 	public function init(): ?ReflectionMethod {
 		// Check if the user has permissions
+		if(!empty($this->permissions)) {
+			if(!Session::started())
+				throw new Exception('Permiso denegado', 403);
+			/** @var \Modules\Account\User */
+			$user = $_SESSION['user'];
+			if(!in_array($user->role, $this->permissions))
+				throw new Exception('Permiso denegado', 403);
+		}
 		
 		// Process the event
-		$event = $_GET['e'] ?? NULL;
+		$event = $_GET['e'] ?? null;
 		if(isset($event) && !empty($event)) {
 			$refl = new ReflectionClass(static::class);
 			if($refl->hasMethod("_$event")) {

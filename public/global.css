@@ -37,27 +37,28 @@ html {
 body {
 	box-sizing: border-box;
 	margin: 0;
-	display: grid;
-	grid-template: 
-		'header'
-		'main'
-		'footer'
-		/ 1fr;
+}
+
+body > header,
+body > main,
+body > footer {
+	display: contents;
 }
 
 .container {
+	padding: 1em;
 	margin: auto;
 	max-width: 1080px;
 }
 
 /** Media tags html */
-img {
+img, .img {
 	display: inline-block;
 	max-width: 100%;
 }
 
 /** Input elements and buttons */
-input, textarea {
+input, textarea, select, .input {
 	--background: #F8F8F8;
 	--border: #A0A0A0;
 	--outline: #A0A0A0;
@@ -77,8 +78,17 @@ input, textarea {
 	border-radius: 4px;
 }
 
+input[type=radio],
+input[type=checkbox] {
+	outline: 0;
+	width: 1em;
+	height: 1em;
+}
+
 input:hover, 
 textarea:hover, 
+.input:hover, 
+select:hover,
 .search:hover {
 	--outline: #696969;
 	--background: #FFFFFF;
@@ -86,6 +96,8 @@ textarea:hover,
 
 input:focus, 
 textarea:focus,
+select:focus,
+.input:focus, 
 .search:focus-within {
 	--background: #FFFFFF;
 	--outline: skyblue;
@@ -97,8 +109,8 @@ textarea {
 	resize: vertical;
 }
 
-button, .btn, 
-input[type=button], 
+button, .button, 
+input[type=button],
 input[type=submit] {
 	--background: #F8F8F8;
 	--border: #A0A0A0;
@@ -119,28 +131,29 @@ input[type=submit] {
 	cursor: pointer;
 }
 
-button:hover, .btn:hover,
+button:hover, .button:hover,
 input[type=button]:hover, 
 input[type=submit]:hover {
 	--background: #E8E8E8;
 	--border: #696969;
 }
 
-button:focus, .btn:focus,
+button:focus, .button:focus,
 input[type=button]:focus, 
 input[type=submit]:focus {
 	outline-width: 4px;
 }
 
 /** Form element */
-form {
+form, .form {
 	box-sizing: border-box;
 	display: flex;
 	flex-flow: column nowrap;
+	margin: 0;
 }
 
 /** Navigation elements */
-nav {
+nav, .nav {
 	--text-color: #505050;
 	display: flex;
 	flex-flow: row wrap;
@@ -148,14 +161,16 @@ nav {
 	padding: 6px;
 }
 
-nav > .items {
+nav > .items,
+.nav > .items {
 	display: inherit;
 	flex-flow: row wrap;
 	align-items: center;
 	gap: 6px;
 }
 
-nav > .items > a {
+nav > .items > a,
+.nav > .items > a {
 	transition: 0.1s background-color ease-in-out;
 	--background: #90909000;
 	--border: #696969;
@@ -170,7 +185,8 @@ nav > .items > a {
 	cursor: pointer;
 }
 
-nav > .items > a:hover {
+nav > .items > a:hover,
+.nav > .items > a:hover {
 	--background: #90909055;
 }
 
@@ -209,5 +225,4 @@ nav > .items > a:hover {
 .search > button {
 	border-left: 1px solid var(--border);
 }
-
 

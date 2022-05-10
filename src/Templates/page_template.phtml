@@ -1,6 +1,3 @@
-<?php
-use Modules\Kernel\Session;
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +9,13 @@ use Modules\Kernel\Session;
 
 	<!-- Site stylesheets -->
 	<link href="/public/global.css" rel="stylesheet">
+	<link href="/public/site.css" rel="stylesheet">
+	<link href="/public/site-tablet.css" rel="stylesheet" media="(max-width: 800px)">
+	<link href="/public/site-mobile.css" rel="stylesheet" media="(max-width: 500px)">
 	<?php if(isset($this->styleSheet)): ?>
 	<link href="/public/<?= $this->styleSheet ?>" rel="stylesheet">
 	<?php endif ?>
+
 	<!-- Site scripts -->
 	<script src="/public/main.js" type="module"></script>
 	<?php if(isset($this->script)): ?>
@@ -22,8 +23,16 @@ use Modules\Kernel\Session;
 	<?php endif ?>
 </head>
 <body>
-	<header></header>
-	<main><?php parent::render(); ?></main>
-	<footer></footer>
+	<header>
+	<?php foreach($this->header as $block): ?>
+	<?php $block->render() ?>
+	<?php endforeach ?>
+	</header>
+	<main><?php parent::render() ?></main>
+	<footer>
+	<?php foreach($this->footer as $block): ?>
+	<?php $block->render() ?>
+	<?php endforeach ?>
+	</footer>
 </body>
 </html>

@@ -1,11 +1,8 @@
 <?php namespace Controller\Component;
 
-use Modules\Kernel\User;
 use Modules\Kernel\View;
 
-class MainNavbar extends View {
-	public User $user;
-
+class Navbar extends View {
 	function __construct() {
 		parent::__construct('component/navbar.phtml');
 	}

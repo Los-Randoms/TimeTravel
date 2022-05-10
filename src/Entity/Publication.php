@@ -3,7 +3,7 @@
 use Modules\Kernel\Entity;
 
 class Publication extends Entity {
-	const TABLE = 'publication';
+	const TABLE = 'publications';
 	public bool $published = true;
 	public string $title;
 	public string $body;

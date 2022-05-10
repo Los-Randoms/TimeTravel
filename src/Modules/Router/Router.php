@@ -1,6 +1,7 @@
 <?php namespace Modules\Router;
 /** @ */
 
+use Exception;
 use Modules\Kernel\Page;
 
 abstract class Router {
@@ -21,13 +22,10 @@ abstract class Router {
 
 	static function current(): Page {
 		$path = parse_url($_SERVER['REQUEST_URI'])['path'];
-		if(!self::exitst($path)) {
-			$page = new NotFound;
-			$page->message = 'Pagina no encontrada';
-		} else {
-			$route = Router::get($path);
-			$page = new $route;
-		}
+		if(!self::exitst($path))
+			throw new Exception('Page not found', 404);
+		$route = Router::get($path);
+		$page = new $route;
 		return $page;
 	}
 }

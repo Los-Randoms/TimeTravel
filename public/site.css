@@ -1,54 +1,24 @@
+@import url(/public/icons/menu.css);
+
 #main-nav {
-	background-color: var(--color);
 	position: sticky;
 	top: 0;
-	z-index: 10;
+	background: white;
+	padding: 0 1em;
 }
 
-#main-nav > .head {
-	display: flex;
-	align-items: center;
-	flex-flow: row nowrap;
-	flex: 1 1 auto;
-}
-
-#main-nav > .head > .logo {
-	flex: 0 0 auto;
-	font-size: 1.5em;
-	text-decoration: none;
-	color: inherit;
-}
-
-
-#main-nav .btn.burger {
-	margin-left: auto;
+#main-nav > .toggle {
 	display: none;
 }
 
-#main-nav .btn.burger:hover {
-	background-color: #00000022;
+#main-nav > nav > .center {
+	margin: auto;
 }
 
-@media screen and (max-width: 800px) {
-	#main-nav {
-		align-items: stretch;
-		flex-flow: column nowrap;
-	}
-
-	#main-nav .btn.burger {
-		display: initial;
-	}
-
-	#main-nav .items {
-		display: none;
-		padding: 1em;
-		background-color: whitesmoke;
-		border: 1px solid lightgray;
-		border-radius: 5px;
-	}
-
-	#main-nav .items.enabled {
-		display: flex;
-	}
+#main-nav > nav > .logo {
+	font-weight: bold;
+	text-decoration: none;
+	font-size: 1.6em;
+	color: black;
 }
 

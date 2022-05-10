@@ -4,11 +4,8 @@ use Modules\Account\User;
 use Modules\Kernel\Form;
 use Modules\Kernel\Storage;
 
-
-
 class Changep extends Form {
-    function __construct()
-    {
+    function __construct() {
         parent::__construct('changep.phtml');
         $this->style('css/changep.css');
         $this->title('Cambiar contraseña');
@@ -33,7 +30,6 @@ class Changep extends Form {
 
     public function _submit()
     {
-    
        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz$#';
        $newp=substr(str_shuffle($permitted_chars), 0, 8); //genera carcteres aleatorio
        //fetch_object es para que los resultados de la busqueda se guarden como un objeto, y para poder buscar un objeto 
