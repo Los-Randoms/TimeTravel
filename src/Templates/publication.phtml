@@ -1,22 +1,19 @@
 <div class="container">
-	<?php if(isset($view->pub)): ?>
-	<h1><?= $view->pub->title; ?></h1>
-	<?php else: ?>
-	<h1>Nueva publicacion</h1>
-	<?php endif; ?>
-	<form enctype="multipart/form-data" action="?e=submit" method="POST">
-		<div class="field">
-			<label for="pub-title">Titulo</label>
-			<input required class="inpt" type="text" id="pub-title" name="title">
-		</div>
-		<div class="field">
-			<label for="pub-body">Contenido</label>
-			<textarea required class="inpt" id="pub-body" name="body"></textarea>
-		</div>
-		<div class="field">
-			<label for="pub-image">Imagen</label>
-			<input required class="inpt" type="file" id="pub-image" name="image">
-		</div>
-		<button type="submit" class="btn primary">Entrar</button>
-	</form>
+    <img src="https://www.bbva.com/wp-content/uploads/2021/03/noruega.jpg">
+    <div>
+        <div class="header">
+            <span>autor: Jooheon</span>    
+            <span class="text-right">fecha: 06 de Octubre</span>
+        </div>
+        <h2>
+            N O R U E G A
+        </h2>
+        <div class="body">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui quaerat totam quia. In consequuntur perferendis, tenetur obcaecati corrupti porro voluptatibus, aspernatur praesentium aliquam labore laboriosam quisquam, sed at et dignissimos?
+        </div>
+    </div>
+    <button>
+        <object data="/public/icons/heart.svg"></object>
+        400
+    </button>
 </div>

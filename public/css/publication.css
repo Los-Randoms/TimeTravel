@@ -1,1 +1,9 @@
-
+.text-right {
+    float: inline-end;
+}
+.header {
+    margin-top: 25px;
+}
+h2 {
+    text-align: center;
+}

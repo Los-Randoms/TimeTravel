@@ -4,5 +4,6 @@
 	"/iniciar-sesion": "Controller\\Form\\Login",
 	"/registro": "Controller\\Form\\Register",
 	"/salir": "Controller\\Page\\Logout",
-	"/admin": "Controller\\Page\\Admin"
+	"/admin": "Controller\\Page\\Admin",
+	"/publicacion": "Controller\\Page\\Publication"
 }
