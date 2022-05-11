@@ -1,0 +1,15 @@
+.container {
+    background-color: rgb(250, 226, 118);
+    margin-top: 20px;
+    width: auto;
+    height: 50%;
+    
+}
+
+.titulo {
+    text-align: center;
+}
+
+.avatar {
+    float: left;
+}

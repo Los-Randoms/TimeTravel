@@ -1,0 +1,23 @@
+    <div class="container">
+        <div id="datos">
+
+            <div class="titulo">
+                <h1>Perfil del usuario</h1>
+            </div>
+        <h2>Nombre del usuario: </h2>
+        <h3><?= $this->user->username?></h3>    <!-- Nombre del usuario -->4
+        
+        <div class="avatar">
+            <?php if(!is_null($this->imagen)): ?>
+            <img src="<?= $this->imagen->url() ?>" alt="">
+            <?php endif ?>                               <!-- Avatar -->
+        </div>
+
+        <h2>Email del usuario: </h2>
+        <h3><?= $this->user->email?></h3>        <!-- Email del usuario -->
+        <h2>Rol del usuario: </h2> 
+        <h3><?//= $this->user->rol?></h3>     
+        <h2>Descripción: </h2> 
+        <h3>Le gustan los pitos</h3>
+       </div>
+    </div>
