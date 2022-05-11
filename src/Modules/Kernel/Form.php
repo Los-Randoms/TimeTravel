@@ -13,13 +13,8 @@ abstract class Form extends Page {
 		return $event;
 	}
 
-	protected function error(string $message, string $field = null): bool {
-		Messages::add($message, 'error');
-		return false;
-	}
-
 	// format: [?!#]string|30
-	static function verifyFields(array $fields, array $conditions) {
+	static function checkFields(array $conditions) {
 		foreach($conditions as $key => $condition) {
 			$data = preg_match('/^\[(.*)\](.*)\|(\d*)$/', $condition, $results, PREG_OFFSET_CAPTURE);
 			print_r($data);
