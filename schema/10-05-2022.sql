@@ -1,3 +1,4 @@
+use TimeTravel;
 alter table role rename to roles;
 alter table file rename to files;
 

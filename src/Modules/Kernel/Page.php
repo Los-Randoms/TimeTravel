@@ -10,7 +10,6 @@ abstract class Page extends View {
 	private string $script;
 	private string $title;
 	private array $permissions = [];
-	private array $messages = [];
 	protected array $header = [];
 	protected array $footer = [];
 

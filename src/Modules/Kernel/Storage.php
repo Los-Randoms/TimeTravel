@@ -10,6 +10,10 @@ abstract class Storage {
 			self::$driver = new $class(...$credentials);
 		return self::$driver;
 	}
+
+	static function connected(): bool {
+		return isset(self::$driver);
+	}
 }
 
 interface Query {
