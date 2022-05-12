@@ -4,7 +4,7 @@ use Modules\Account\User;
 use Modules\Kernel\Form;
 use Modules\Kernel\Storage;
 
-class EditUser extends Form {
+class EditAdmin extends Form {
     function __construct() {
         parent::__construct('edituser.phtml');
         //$this->style('css/changep.css');
@@ -20,6 +20,6 @@ class EditUser extends Form {
 
     
     function _submit(): ?string {
-        return 'Sesion iniciada';
+		return 'Sesion iniciada';
     }
 }

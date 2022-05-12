@@ -1,6 +1,7 @@
 <?php namespace Controller\Form;
 
 use Modules\Account\User;
+use Modules\Kernel\File;
 use Modules\Kernel\Form;
 
 
@@ -11,37 +12,32 @@ class Register extends Form {
         $this->title('Registro');
 	}
 
-    public function verify(): bool {
-        if(!isset($_POST['email']) || empty($_POST['email']))
-			return false;   
-        if(!isset($_POST['username']) || empty($_POST['username']))
-			return false;   
-        if(!isset($_POST['password']) || empty($_POST['password']))
-			return false;   
-		if(!isset($_POST['password2']) || empty($_POST['password2']))
-			return false;   	
-		return true;
-    }
-    public function _submit() {
-
-		$password=$_POST['password'];
-		$password2=$_POST['password2'];
+    public function verify() {
+		if(!Form::check($_POST, [
+			'email' => '[!?#]string|',
+			'username' => '[!?#]string|',
+			'password' => '[!?#]string|8',
+			'password2' => '[!?#]string|8',
+		])) $this->error('Formulario invalido');
+		if ($_POST['password']!=$_POST['password2']) {
+			$this->error("Las contraseñas ingresadas no son iguales");
+		}
+		$this->file=File::getUploadedFile('avatar');
+		$this->file->moveTo('avatars');
+		$this->file->save();
+	}
+	
+	function _submit(): ?string {
 		$mail=$_POST['email'];
 		$name=$_POST['username'];
-		
 		$user = new User();
-		$incrip = password_hash($password, PASSWORD_DEFAULT);
+		$incrip = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		$user->email=$mail;
 		$user->username=$name;
 		$user->password=$incrip;
-		$user->role="user";
-    
-		if ($password!=$password2) {
-			$this->error("Las contraseñas ingresadas no son iguales");
-			return ;
-		}
-    
+		$user->rol="user";
+		$user->avatar=$this->file->id;
 		$user->save();
-		$this->error("Se ha registrado exitosamente!");;
-    }
+		return 'Se ha registrado exitosamente!';
+	}
 }

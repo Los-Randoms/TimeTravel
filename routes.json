@@ -5,5 +5,9 @@
 	"/registro": "Controller\\Form\\Register",
 	"/salir": "Controller\\Page\\Logout",
 	"/admin": "Controller\\Page\\Admin",
-	"/editar-usuario": "Controller\\Form\\EditUser"
+	"/admin/editar-usuario": "Controller\\Form\\EditAdmin",
+	"/user/editar-usuario": "Controller\\Form\\EditUser",
+	"/admin/eliminar-usuario": "Controller\\Form\\ElimAdmin",
+	"/admin/ver-archivos": "Controller\\Page\\VerArchivos",
+	"/admin/ver-usuarios": "Controller\\Page\\VerUsuarios"
 }
