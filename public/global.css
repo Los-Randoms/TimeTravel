@@ -226,3 +226,7 @@ nav > .items > a:hover,
 	border-left: 1px solid var(--border);
 }
 
+.icon {
+	width: 1em;
+	height: 1em;
+}
