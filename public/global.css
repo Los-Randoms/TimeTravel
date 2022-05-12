@@ -227,6 +227,9 @@ nav > .items > a:hover,
 }
 
 .icon {
-	width: 1em;
-	height: 1em;
+	width: 22px;
+	height: 22px;
+	vertical-align: cente;
+	display: inline-block;
+	pointer-events: none;
 }
