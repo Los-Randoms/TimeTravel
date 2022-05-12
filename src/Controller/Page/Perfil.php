@@ -10,9 +10,9 @@ class Perfil extends Page {
 
     function __construct() {
 		parent::__construct('perfildeusuario.phtml');       //Parte visual
-        $this->style('css\perfil.css');                     //Parte CSS   
+        $this->style('css\perfil.css');
+  
         $this->user = User::load(1);
-
         $this->imagen=null;
 
         if(!is_null($this->user->avatar)) {
