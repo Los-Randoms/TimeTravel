@@ -1,4 +1,7 @@
 @import url(/public/icons/menu.css);
+@import url(/public/icons/danger.css);
+@import url(/public/icons/info.css);
+@import url(/public/icons/close.css);
 
 #main-nav {
 	position: sticky;
@@ -22,3 +25,45 @@
 	color: black;
 }
 
+#site-alerts {
+	position: fixed;
+	top: 1em;
+	left: 50%;
+	max-width: 500px;
+	transform: translateX(-50%);
+	z-index: 1;
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 5px;
+}
+
+.alert {
+	background-color: dimgrey;
+	border-radius: 10px;
+	color: lightgray;
+	display: flex;
+	padding: 4px;
+	gap: 4px;
+	align-items: center;
+	box-shadow: 0px 0px 10px var(--shadow-color);
+	box-sizing: border-box;
+	margin: auto;
+}
+
+.alert > p {
+	color: white;
+	margin: 4px;
+	margin-left: 4px;
+}
+
+.alert > button {
+	margin: 0;
+	padding: 0;
+	background-color: transparent;
+	border: 0;
+}
+
+.alert i {
+	color: lightgray;
+	margin: 5px;
+}
