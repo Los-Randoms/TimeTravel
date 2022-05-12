@@ -48,10 +48,8 @@ class File extends Entity {
 	function moveTo(string $dir): bool {
 		$old_path = $this->path;
 		$new_path = UPLOAD_DIR . "/$dir";
-		if(!file_exists($new_path)) {
-			if(!mkdir($new_path, 0o755, true));
-				return false;
-		}
+		if(!file_exists($new_path))
+			mkdir($new_path, 0o755, true);
 		$ufilename = "$_SERVER[REQUEST_TIME_FLOAT]|{$this->filename}";
 		$ufilename = md5($ufilename);
 		$new_path = "$new_path/$ufilename";
