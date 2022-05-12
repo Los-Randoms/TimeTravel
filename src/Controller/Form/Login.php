@@ -1,5 +1,6 @@
 <?php namespace Controller\Form;
 
+use Controller\Component\Navbar;
 use Modules\Account\Session;
 use Modules\Account\User;
 use Modules\Kernel\Form;
@@ -11,6 +12,7 @@ class Login extends Form {
 		parent::__construct('login.phtml');
 		$this->title('Iniciar sesión');
 		$this->style('css/login.css');
+		$this->header[] = new Navbar;
 	}
 
 	function _submit(): ?string {

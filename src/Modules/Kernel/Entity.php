@@ -11,7 +11,8 @@ class Entity {
 		unset($this->id);
 		foreach($this as $k => &$v)
 			$insert->set($k, $v);
-		$this->id = $insert->execute();
+		$insert->execute();
+		$this->id = $insert->insertId();
 	}
 
 	function update() {
