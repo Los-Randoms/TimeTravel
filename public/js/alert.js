@@ -5,7 +5,7 @@ export default {
 		this.icon = document.createElement('i');
 		this.message = document.createElement('p');
 		this.btn = document.createElement('button');
-		this.btn.innerHTML = '<i class="gg-close"></i>';
+		this.btn.innerHTML = '<object data="/public/icons/x.svg" class="icon"></object>';
 		this.btn.onclick = _ => this.delete();
 		this.icon.classList.add(`gg-${this.dataset.type}`);
 		this.message.innerText = this.dataset.message;
