@@ -38,7 +38,7 @@ class Changep extends Form {
        $incrip = password_hash( $this->user->password, PASSWORD_DEFAULT); //encriptado de contraseña
        $this->user->password=$incrip;
        $this->user->update();
-       //$this->error("Se ha enviado a su correo una nueva contraseña temporal");
+       $this->error("Se ha enviado a su correo una nueva contraseña temporal");
        
        //mail($correo, 
        //'Cambio de contraseña',  
