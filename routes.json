@@ -7,6 +7,7 @@
 	"/admin": "Controller\\Page\\Admin",
 	"/admin/editar-usuario": "Controller\\Form\\EditAdmin",
 	"/user/editar-usuario": "Controller\\Form\\EditUser",
+	"/admin/publicacion/nueva": "Controller\\Form\\CreatePublication",
 	"/admin/eliminar-usuario": "Controller\\Form\\ElimAdmin",
 	"/admin/ver-archivos": "Controller\\Page\\VerArchivos",
 	"/admin/ver-usuarios": "Controller\\Page\\VerUsuarios"

@@ -26,5 +26,4 @@ try {
 }
 
 Session::stop();
-if(Storage::connected())
-	Storage::driver()->close();
+Storage::stop();
