@@ -1,9 +1,8 @@
 <?php namespace Controller\Form;
 
 use Modules\Account\User;
-use Modules\Kernel\File;
+use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
-
 
 class Register extends Form {
     function __construct() {
@@ -22,8 +21,8 @@ class Register extends Form {
 		if ($_POST['password']!=$_POST['password2']) {
 			$this->error("Las contraseñas ingresadas no son iguales");
 		}
-		$this->file=File::getUploadedFile('avatar');
-		$this->file->moveTo('avatars');
+		$this->file = FileManager::get('avatar');
+		FileManager::move($this->file, 'avatars');
 		$this->file->save();
 	}
 	

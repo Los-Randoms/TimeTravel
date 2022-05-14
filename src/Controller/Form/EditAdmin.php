@@ -10,12 +10,7 @@ class EditAdmin extends Form {
         //$this->style('css/changep.css');
         $this->title('Editar información');
     }
-    public function verify(): bool
-    {
-        if(!isset($_POST['email']) || empty($_POST['email']))
-        return false;
-        if(!isset($_POST['password']) || empty($_POST['password']))
-        return false;
+    public function verify() {
     }
 
     
