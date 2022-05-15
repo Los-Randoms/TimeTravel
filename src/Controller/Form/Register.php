@@ -1,5 +1,6 @@
 <?php namespace Controller\Form;
 
+use Controller\Component\Navbar;
 use Modules\Account\User;
 use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
@@ -8,7 +9,8 @@ class Register extends Form {
     function __construct() {
         parent::__construct('register.phtml');
         $this->style('css/register.css');
-        $this->title('Registro');
+		$this->title('Registro');
+		$this->header[] = new Navbar;
 	}
 
     public function verify() {

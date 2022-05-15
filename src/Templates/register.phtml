@@ -1,18 +1,24 @@
 <div class="container">
-	<h1>Registro</h1>
-
-	<form enctype="application/x-www-form-urlencoded"  action="/" manager="form">
-		<label>Ingrese una imagen de usuario</label>
-		<input type="file" name="avatar">
-		<label>Correo electronico: </label>
-		<input required type="mail" name="email">
-		<label>Nombre de usuario: </label>
-		<input required type="text" name="username">
-		<label>Contraseña: </label>
-		<input required type="password" name="password">
-		<label>Confirmar contraseña: </label>
-		<input required type="password" name="password2">
-		<button type="submit">Registrarse</button>
-	</form>
-	<p><b>¿Ya estas registrado?</b> <a href="/iniciar-sesion">Inicia sesion</a></p>
+	<div class="register-info">
+		<h1>¡Forme parte de nuestra comunidad!</h1>
+		<p>Cree una cuenta para ser parte de la comunidad mas grande de viajes en ¡Mexico!</p>
+		<p>Al crearse una cuenta usted acepta los <a href="/terminos">terminos de privacidad</a> de nuestra pagina web</p>
+	</div>
+	<div class="card register-form">
+		<h2>Registro</h2>
+		<form enctype="application/x-www-form-urlencoded"  action="/" manager="form">
+			<label>Ingrese una imagen de usuario</label>
+			<input type="file" name="avatar">
+			<label>Correo electronico: </label>
+			<input required type="mail" name="email">
+			<label>Nombre de usuario: </label>
+			<input required type="text" name="username">
+			<label>Contraseña: </label>
+			<input required type="password" name="password">
+			<label>Confirmar contraseña: </label>
+			<input required type="password" name="password2">
+			<button type="submit">Registrarse</button>
+		</form>
+		<p><b>¿Ya estas registrado?</b> <a href="/iniciar-sesion">Inicia sesion</a></p>
+	</div>
 <div>

@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 50px;
+}
+
+.register-info {
+  flex: 1;
+}
+
+.register-form {
+  flex: 1;
+  box-shadow: 0 0 20px var(--shadow-color);
+}
+

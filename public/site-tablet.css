@@ -1,10 +1,9 @@
 #main-nav {
-	z-index: 3;
+	z-index: 2;
 }
 
 #main-nav > .toggle {
 	display: block;
-	padding: 1em;
 	border: 0;
 	background: 0;
 }
