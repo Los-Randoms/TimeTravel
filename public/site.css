@@ -1,8 +1,3 @@
-@import url(/public/icons/menu.css);
-@import url(/public/icons/danger.css);
-@import url(/public/icons/info.css);
-@import url(/public/icons/close.css);
-
 #main-nav {
 	position: sticky;
 	top: 0;
