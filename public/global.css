@@ -226,3 +226,10 @@ nav > .items > a:hover,
 	border-left: 1px solid var(--border);
 }
 
+.icon {
+	width: 22px;
+	height: 22px;
+	vertical-align: cente;
+	display: inline-block;
+	pointer-events: none;
+}

@@ -12,17 +12,12 @@ class Roles extends Page {
         parent::__construct('roles.phtml');
         $this->style('css\roles.css');
 
-        $this->user = User::load(1);        //Solo el usuario con ese ID puede verlo
+        $this->user = User::load(1);            //Solo el usuario con ese ID puede verlo
 
         /** @var \Modules\Mysql\Driver */
-		$driver = Storage::driver();
-		$select = $driver->read(User::TABLE);
-		$select->condition('rol', $this->user->rol);
-		$select->execute();
-        $this->user=$select->fetch(User::class);
-
-
-
-
+		$driver = Storage::driver();            //Trae la base de datos
+		$select = $driver->read('roles');       //Lee la base de datos
+		$select->execute();                     //ejecuta
+        $this->role= $select->results();        //trae los resultados
     }
 }

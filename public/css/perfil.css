@@ -9,8 +9,11 @@
 
 .titulo {
     text-align: center;
+    
 }
-
 .avatar {
-    float: left;
+    padding-left: 70%;
+    max-width: 300px;
+    max-height: 300px;
+    margin-top: -350px;
 }

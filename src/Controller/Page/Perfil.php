@@ -12,7 +12,7 @@ class Perfil extends Page {
 		parent::__construct('perfildeusuario.phtml');       //Parte visual
         $this->style('css\perfil.css');
   
-        $this->user = User::load(1);
+        $this->user = User::load(2);
         $this->imagen=null;
 
         if(!is_null($this->user->avatar)) {

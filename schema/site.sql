@@ -19,7 +19,7 @@ create table users(
 	username varchar(40) not null,
 	email varchar(255) not null unique,
 	password varchar(60) not null,
-	rol varchar(30) default null references roles(name)
+	rol varchar(30) default 'user' references roles(name)
 		on update cascade 
 		on delete set null,
 	avatar int unsigned references files(id) 
@@ -29,10 +29,10 @@ create table users(
 );
 
 
-insert into roles(name) values ('admin');
+insert into roles(name) values ('admin'), ('user');
 insert into users set
 	username = 'admin',
 	email = 'admin@test.xyz',
-	password = '$2y$10$.gS76CywJEtagdz8HGzqKeUsLWfmS/RUmhThFqXZlb4kJAkN0cUF6',
+	password = '$2y$10$ropvn0auBvhxos460xrm5OC8hC9cdhSUePL6fokUCStlz1DNakjZm',
 	rol = 'admin';
 

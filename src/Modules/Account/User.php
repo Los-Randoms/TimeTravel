@@ -7,7 +7,7 @@ class User extends Entity {
 	public string $username;
 	public string $email;
 	public string $password;
-	public ?string $rol;
+	public string $rol = 'user';
 	public ?int $avatar;
 	public bool $banned;
 	public string $creation;

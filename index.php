@@ -10,6 +10,7 @@ use Modules\Kernel\ErrorPage;
 
 Session::start();
 Router::file('routes.json');
+header('Content-Type: text/html; charset=utf-8');
 
 try {
 	$page = Router::current();
@@ -25,4 +26,5 @@ try {
 }
 
 Session::stop();
-Storage::driver()->close();
+if(Storage::connected())
+	Storage::driver()->close();
