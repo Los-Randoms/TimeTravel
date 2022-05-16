@@ -1,4 +1,4 @@
-#main-nav {
+#nav-container {
 	position: sticky;
 	top: 0;
 	background: white;
@@ -7,16 +7,15 @@
 	background-color: var(--primary);
 }
 
-#main-nav > .toggle {
+#nav-container > .toggle {
 	display: none;
-	margin: 0;
 }
 
-#main-nav > nav > .center {
+#nav-container > #main-nav > .center {
 	margin: auto;
 }
 
-#main-nav > nav > .logo {
+#nav-container > #main-nav > .logo {
 	font-weight: bold;
 	text-decoration: none;
 	font-size: 1.6em;

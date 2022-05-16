@@ -10,7 +10,6 @@ class Register extends Form {
         parent::__construct('register.phtml');
         $this->style('css/register.css');
 		$this->title('Registro');
-		$this->header[] = new Navbar;
 	}
 
     public function verify() {
@@ -23,21 +22,16 @@ class Register extends Form {
 		if ($_POST['password']!=$_POST['password2']) {
 			$this->error("Las contraseñas ingresadas no son iguales");
 		}
-		$this->file = FileManager::get('avatar');
-		FileManager::move($this->file, 'avatars');
-		$this->file->save();
 	}
 	
 	function _submit(): ?string {
 		$mail=$_POST['email'];
 		$name=$_POST['username'];
 		$user = new User();
-		$incrip = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		$user->email=$mail;
 		$user->username=$name;
-		$user->password=$incrip;
+		$user->password=password_hash($_POST['password'], PASSWORD_DEFAULT);;
 		$user->rol="user";
-		$user->avatar=$this->file->id;
 		$user->save();
 		return 'Se ha registrado exitosamente!';
 	}

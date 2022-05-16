@@ -1,9 +1,13 @@
 <?php use Modules\Account\Session; ?>
-<div id="main-nav" class="">
-	<button class="toggle">
-		<object class="icon" data="/public/icons/menu.svg"></object>
-	</button>
-	<nav>
+<div id="nav-container">
+	<nav class="toggle">
+		<div class="items">
+			<button>
+				<object class="icon" data="/public/icons/menu.svg"></object>
+			</button>
+		</div>
+	</nav>
+	<nav id="main-nav">
 		<a href="/" class="logo"><?= SITE_NAME ?></a>
 		<div class="items center">
 			<form action="search" method="GET">
