@@ -111,6 +111,7 @@ select:focus,
 textarea {
 	min-height: calc(14px + 1em);
 	resize: vertical;
+	width: 100%;
 }
 
 button, .button, 

@@ -42,7 +42,7 @@ abstract class Page extends View {
 				throw new Exception('Permiso denegado', 403);
 			/** @var \Modules\Account\User */
 			$user = $_SESSION['user'];
-			if(!in_array($user->role, $this->permissions))
+			if(!in_array($user->rol, $this->permissions))
 				throw new Exception('Permiso denegado', 403);
 		}
 		

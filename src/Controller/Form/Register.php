@@ -10,6 +10,7 @@ class Register extends Form {
         parent::__construct('register.phtml');
         $this->style('css/register.css');
 		$this->title('Registro');
+		$this->header[] = new Navbar;
 	}
 
     public function verify() {
