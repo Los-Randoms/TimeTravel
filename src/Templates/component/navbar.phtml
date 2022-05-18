@@ -1,6 +1,13 @@
-<div id="main-nav" class="">
-	<button class="toggle"><i class="gg-menu"></i></button>
-	<nav>
+<?php use Modules\Account\Session; ?>
+<div id="nav-container">
+	<nav class="toggle">
+		<div class="items">
+			<button>
+				<object class="icon" data="/public/icons/menu.svg"></object>
+			</button>
+		</div>
+	</nav>
+	<nav id="main-nav">
 		<a href="/" class="logo"><?= SITE_NAME ?></a>
 		<div class="items center">
 			<form action="search" method="GET">
@@ -13,8 +20,16 @@
 			</form>
 		</div>
 		<div class="items">
-			<a class="btn" href="/iniciar-sesion">Iniciar sesion</a>
-			<a class="btn" href="/registro">Registrarse</a>
+		<?php if(Session::started()): ?>
+		<a class="btn" href="/mi-cuenta">Mi cuenta</a>
+		<?php if($_SESSION['user']->rol == 'admin'): ?>
+		<a class="btn" href="/admin">Administracion</a>
+		<?php endif ?>
+		<a class="btn" href="/salir">Salir</a>
+		<?php else: ?>
+		<a class="btn" href="/iniciar-sesion">Iniciar sesion</a>
+		<a class="btn" href="/registro">Registrarse</a>
+		<?php endif ?>
 		</div>
 	</nav>
 </div>

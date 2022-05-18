@@ -2,16 +2,24 @@
     
 <h1>Listado de usuarios</h1>
 <table>
-                <?php for($i = 0; $i < count($this->username); $i++) { ?>  
-                <tr>                                            
-                    <td>                                        
-                        <?= $this->username[$i]['id'] ?>         
-                    </td>  
-                    <td> 
-                        <?= $this->username[$i]['name'] ?>        
-                    </td> 
-                </tr>
-                <?php } ?>
-            </table>  
+<tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Rol</th>
+    </tr>
+<?php for($i = 0; $i < count($this->usuarios); $i++) { ?>  
+<tr>                                            
+    <td>                                        
+        <?= $this->usuarios[$i]['id'] ?>         
+    </td>  
+    <td> 
+        <?= $this->usuarios[$i]['username'] ?>        
+    </td> 
+    <td> 
+        <?= $this->usuarios[$i]['rol'] ?>        
+    </td> 
+</tr>
+<?php } ?>
+</table>  
 </div>
 

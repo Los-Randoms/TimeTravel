@@ -16,23 +16,20 @@ abstract class Session {
 	}
 
 	static function started(): bool {
-		if(session_status() == PHP_SESSION_ACTIVE)
-			return true;
-		return false;
+		return (session_status() == PHP_SESSION_ACTIVE);
 	}
 
 	static function start(): bool {
+		if(Session::started())
+			return true;
 		if(Session::exists())
 			return session_start();
 		return false;
 	}
 
 	static function create(User $account): bool {
-		if(self::started()) {
-			session_unset();
-			session_destroy();
-			session_commit();
-		}
+		if(self::started())
+			self::close();
 		session_start();
 		$_SESSION['user'] = $account;
 		$_SESSION['date'] = new DateTime();

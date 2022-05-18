@@ -19,9 +19,9 @@ create table users(
 	username varchar(40) not null,
 	email varchar(255) not null unique,
 	password varchar(60) not null,
-	rol varchar(30) default 'user' references roles(name)
+	rol varchar(30) not null default 'user' references roles(name)
 		on update cascade 
-		on delete set null,
+		on delete set default,
 	avatar int unsigned references files(id) 
 		on delete set null,
 	banned boolean not null default false,

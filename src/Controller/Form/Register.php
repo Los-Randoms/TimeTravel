@@ -1,15 +1,16 @@
 <?php namespace Controller\Form;
 
+use Controller\Component\Navbar;
 use Modules\Account\User;
-use Modules\Kernel\File;
+use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
-
 
 class Register extends Form {
     function __construct() {
         parent::__construct('register.phtml');
         $this->style('css/register.css');
-        $this->title('Registro');
+		$this->title('Registro');
+		$this->header[] = new Navbar;
 	}
 
     public function verify() {
@@ -22,21 +23,16 @@ class Register extends Form {
 		if ($_POST['password']!=$_POST['password2']) {
 			$this->error("Las contraseñas ingresadas no son iguales");
 		}
-		$this->file=File::getUploadedFile('avatar');
-		$this->file->moveTo('avatars');
-		$this->file->save();
 	}
 	
 	function _submit(): ?string {
 		$mail=$_POST['email'];
 		$name=$_POST['username'];
 		$user = new User();
-		$incrip = password_hash($_POST['password'], PASSWORD_DEFAULT);
 		$user->email=$mail;
 		$user->username=$name;
-		$user->password=$incrip;
+		$user->password=password_hash($_POST['password'], PASSWORD_DEFAULT);;
 		$user->rol="user";
-		$user->avatar=$this->file->id;
 		$user->save();
 		return 'Se ha registrado exitosamente!';
 	}
