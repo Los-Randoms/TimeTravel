@@ -2,7 +2,7 @@
     <div class="titulo">
         <h1>Eliminar roles de usuario</h1>
 
-        <h2>Selecciona el rol que quieres cambiar</h2><br>
+        <h2>Selecciona el rol que quieres eliminar</h2><br>
     </div>
     <form action="/admin" manager="form" class="selector" method="POST" enctype="application/x-www-form-urlencode">
         <select class="cuadro" name="id" id="rol">
@@ -11,7 +11,6 @@
                 <option value="<?= $rol['id'] ?>"><?= $rol['name'] ?></option> <!--  -->
             <?php endforeach ?>
         </select>
-        <input class="cuadro" type="text" placeholder="Cambiar nombre" name="nombre">
         <button>
             Enviar
         </button>
