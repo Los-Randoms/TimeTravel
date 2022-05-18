@@ -1,0 +1,15 @@
+.container {
+    background-color: rgb(250, 226, 118);
+    margin-top: 20px;
+    padding-bottom: 100px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50px;
+}
+.titulo {
+    text-align: center;
+}
+
+.tabla {
+    text-align: center;
+}me

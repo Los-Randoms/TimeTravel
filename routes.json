@@ -5,6 +5,8 @@
 	"/registro": "Controller\\Form\\Register",
 	"/salir": "Controller\\Page\\Logout",
 	"/admin": "Controller\\Page\\Admin",
+	"/perfil": "Controller\\Page\\Perfil",
+	"/roles": "Controller\\Page\\Roles",
 	"/admin/editar-usuario": "Controller\\Form\\EditAdmin",
 	"/user/editar-usuario": "Controller\\Form\\EditUser",
 	"/admin/publicacion/nueva": "Controller\\Form\\CreatePublication",
