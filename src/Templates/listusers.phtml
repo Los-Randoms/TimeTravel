@@ -1,0 +1,17 @@
+<div class="container">
+    
+<h1>Listado de usuarios</h1>
+<table>
+                <?php for($i = 0; $i < count($this->username); $i++) { ?>  
+                <tr>                                            
+                    <td>                                        
+                        <?= $this->username[$i]['id'] ?>         
+                    </td>  
+                    <td> 
+                        <?= $this->username[$i]['name'] ?>        
+                    </td> 
+                </tr>
+                <?php } ?>
+            </table>  
+</div>
+

@@ -30,7 +30,7 @@ class Login extends Form {
 		$driver = Storage::driver();
 		$select = $driver->read(User::TABLE);
 		$select->condition('email', $_POST['email']);
-		$select->execute();
+		$select->execute(); 
 		$this->user = $select->fetch(User::class);
 		if(empty($this->user))
 			$this->error('Verifique los datos');
