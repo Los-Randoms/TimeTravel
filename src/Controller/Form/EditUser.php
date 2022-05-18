@@ -9,7 +9,7 @@ class EditUser extends Form {
         //$this->style('css/changep.css');
         $this->title('Editar información');
     }
-    public function verify()
+    public function verify() 
     {
         if(!Form::check($_POST, [
 			'email' => '[!?#]string|',
