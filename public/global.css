@@ -1,244 +1,130 @@
-/** Global and default properties */
+/**
+ * Define variables
+ * */
 :root {
-	--background: white;
-	--foreground: #16161d;
-	--outline-width: 1px;
-	--outline-style: solid;
-	--outline-color: skyblue;
-	--border-width: 1px;
-	--border-style: solid;
-	--border-color: lightgray;
-	--shadow-color: #00000033;
-	--shadow-blur: 10px;
-
-	/** Colors */
-	--primary: #FCEEA3;
-	--secondary: #AEC4FB;
-
-	/** Calc variables */
-	--rotation: 30deg;
-	--dim: -10%;
-	--border-radius: 4px;
-	--threshold: 35%;
-
- 	/** Default properties */
-	--default-font: 'Roboto', sans-serif;
-	--default-outline: var(--outline-width) var(--outline-style) var(--outline-color);
-	--default-shadow: 0px 0px var(--shadow-blur) var(--shadow-color);
+	--foreground-color: #16161d;
+	--background-color: #FFFFFF;
+	--primary-color: #FDEFA4;
+	--secondary-color: #FFC4AA;
+	--accent-color: #AEC4FB;
+	--font-family: Roboto, 'sans-serif';
+	--shadow-color: #69696944;
+	--border-color: #A9A9A9;
+	/** Button properties */
+	/* --button-background: var(--secondary-color); */
+	/* --button-border: #B36B4D; */
+	--button-background: #B36B4D;
+	--button-color: #F5F5F5;
+	--button-border: var(--border-color);
+	--button-border-emphasis: #CFCFCF;
+	--button-outline-color: #EFEFEF;
+	/** Input style */
+	--input-border: var(--border-color);
+	--input-border-emphasis: #5A5A5A;
+	--input-outline-color: #EFEFEF;
 }
 
-body {
+/**
+ * Set the page body apperance and global
+ * styling for default elements
+ * */
+*, ::after, ::before {
 	box-sizing: border-box;
+}
+
+:root, body {
 	margin: 0;
-	background: var(--background);
-	color: var(--foreground);
-	font-family: var(--default-font);
-	box-sizing: border-box;
-	min-height: 100vh;
-	max-width: 100vw;
-}
-
-body > header,
-body > main,
-body > footer {
-	display: contents;
-}
-
-.container {
-	margin: auto;
-	max-width: 1000px;
-}
-
-main > .container {
-	padding: 1em;
-}
-
-/** Media tags html */
-img, .img {
-	display: inline-block;
-	max-width: 100%;
-}
-
-/** Input elements and buttons */
-input, textarea, select, .input {
-	--background: #F8F8F8;
-	--border: #A0A0A0;
-	--outline: #A0A0A0;
-	transition: 0.1s outline ease-in-out, 0.2s background-color ease-in-out;
+	font-family: var(--font-family);
+	font-size: 16px;
+	font-weight: 300;
 	display: block;
-	flex: 1 1 auto;
-	box-sizing: border-box;
-	font-family: var(--default-font);
-	font-weight: normal;
-	background-color: var(--background);
-	padding: 6px 12px;
-	border: 0px solid var(--border);
-	outline: 1px solid var(--outline);
-	margin: 4px;
-	color: black;
-	font-size: 1em;
-	text-decoration: none;
-	border-radius: 4px;
-	max-width: 100%;
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+	scrollbar-color: var(--background-color) var(--foreground-color);
 }
 
-input[type=radio],
-input[type=checkbox] {
-	outline: 0;
-	width: 1em;
-	height: 1em;
+/** 
+ * Remove the margin in elements
+ * */
+h1, h2, h3, h4, h4, h6, p, dd, dl, figure, blockquote, ol, ul {
+	margin: 0;
 }
 
-input:hover, 
-textarea:hover, 
-.input:hover, 
-select:hover,
-.search:hover {
-	--outline: #696969;
-	--background: #FFFFFF;
-}
-
-input:focus, 
-textarea:focus,
-select:focus,
-.input:focus, 
-.search:focus-within {
-	--background: #FFFFFF;
-	--outline: skyblue;
-	outline-width: 4px;
-}
-
-textarea {
-	min-height: calc(14px + 1em);
-	resize: vertical;
-	width: 100%;
-}
-
-button, .button, 
+button, a[role=button],
 input[type=button],
 input[type=submit] {
-	--background: #F8F8F8;
-	--border: #A0A0A0;
-	--outline: #A0A0A0;
-	transition: 0.1s outline ease-in-out, 0.2s background-color ease-in-out;
 	display: inline-block;
-	box-sizing: border-box;
-	font-weight: normal;
-	background-color: var(--background);
-	padding: 6px 12px;
-	border: 1px solid var(--border);
-	outline: 0px solid var(--outline);
-	margin: 4px;
-	color: black;
+	padding: 8px 12px;
+	color: var(--button-color);
+	font-weight: 450;
 	font-size: 1em;
+	font-family: inherit;
 	text-decoration: none;
 	border-radius: 4px;
-	cursor: pointer;
-}
-
-button:hover, .button:hover,
-input[type=button]:hover, 
-input[type=submit]:hover {
-	--background: #E8E8E8;
-	--border: #696969;
-}
-
-button:focus, .button:focus,
-input[type=button]:focus, 
-input[type=submit]:focus {
-	outline-width: 4px;
-}
-
-/** Form element */
-form, .form {
-	box-sizing: border-box;
-	display: block;
-	flex-flow: column nowrap;
-	margin: 0;
-}
-
-/** Navigation elements */
-nav, .nav {
-	--text-color: #505050;
-	display: flex;
-	flex-flow: row wrap;
-	align-items: center;
-	padding: 6px;
-}
-
-nav > .items,
-.nav > .items {
-	display: inherit;
-	flex-flow: row wrap;
-	align-items: center;
-	gap: 6px;
-}
-
-nav > .items > a,
-nav > .items > button,
-.nav > .items > button,
-.nav > .items > a {
-	transition: 0.1s background-color ease-in-out;
-	--background: #90909000;
-	--border: #696969;
-	border-radius: 5px;
-	border: 0px solid var(--border);
-	background-color: var(--background);
-	padding: 8px 14px;
-	/* margin: 4px; */
-	margin: 0px;
-	text-decoration: none;
-	color: var(--text-color);
-	cursor: pointer;
-}
-
-nav > .items > a:hover,
-nav > .items > button:hover,
-.nav > .items > button:hover,
-.nav > .items > a:hover {
-	--background: #90909055;
-}
-
-/** Search input element */
-.search {
-	--background: #F8F8F8;
-	--border: #A0A0A0;
-	--outline: #A0A0A0;
-	transition: 0.1s outline ease-in-out, 0.2s background-color ease-in-out;
-	display: flex;
-	flex-flow: row nowrap;
-	flex: 1 1 auto;
-	box-sizing: border-box;
-	background-color: var(--background);
-	border: 0px solid var(--border);
-	outline: 1px solid var(--outline);
-	margin: 4px;
-	border-radius: 4px;
-}
-
-.search > input, 
-.search > .btn, 
-.search > input[type=button], 
-.search > input[type=submit], 
-.search > button {
-	background-color: transparent;;
+	/* border: 1px solid var(--button-border); */
 	border: none;
+	margin-bottom: 0.5em;
 	outline: none;
-	margin: 0;
-	border-radius: 0;
+	cursor: pointer;
+	background-color: var(--button-background);
 }
 
-.search > .btn, 
-.search > input[type=button], 
-.search > input[type=submit], 
-.search > button {
-	border-left: 1px solid var(--border);
+input, textarea {
+	transition: 0.1s border ease-out, 0.1s outline ease-in-out;
+	display: block;
+	margin-bottom: 0.5em;
+	max-width: 100%;
+	outline: 0px transparent;
 }
 
-.icon {
-	width: 22px;
-	height: 22px;
-	vertical-align: middle;
-	display: inline-block;
-	pointer-events: none;
+input[type=date],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week],
+textarea {
+	padding: 5px;
+	font-family: inherit;
+	font-weight: inherit;
+	font-size: 0.9em;
+	border: 1px solid var(--input-border)
+}
+
+input[type=date]:hover,
+input[type=datetime-local]:hover,
+input[type=email]:hover,
+input[type=month]:hover,
+input[type=number]:hover,
+input[type=password]:hover,
+input[type=search]:hover,
+input[type=tel]:hover,
+input[type=text]:hover,
+input[type=time]:hover,
+input[type=url]:hover,
+input[type=week]:hover,
+textarea:hover {
+	border: 1px solid var(--input-border-emphasis);
+}
+
+input[type=date]:focus,
+input[type=datetime-local]:focus,
+input[type=email]:focus,
+input[type=month]:focus,
+input[type=number]:focus,
+input[type=password]:focus,
+input[type=search]:focus,
+input[type=tel]:focus,
+input[type=text]:focus,
+input[type=time]:focus,
+input[type=url]:focus,
+input[type=week]:focus,
+textarea:focus {
+	outline: 2px solid var(--border-color);
 }

@@ -10,7 +10,7 @@
 	<!-- Site stylesheets -->
 	<link href="/public/global.css" rel="stylesheet">
 	<link href="/public/site.css" rel="stylesheet">
-	<link href="/public/site-tablet.css" rel="stylesheet" media="(max-width: 800px)">
+	<link href="/public/site-tablet.css" rel="stylesheet" media="(max-width: 800px) and (min-width: 500px)">
 	<link href="/public/site-mobile.css" rel="stylesheet" media="(max-width: 500px)">
 	<?php if(isset($this->styleSheet)): ?>
 	<link href="/public/<?= $this->styleSheet ?>" rel="stylesheet">
@@ -23,17 +23,6 @@
 	<?php endif ?>
 </head>
 <body>
-	<div id="site-alerts" manager="alerts"></div>
-	<header>
-	<?php foreach($this->header as $block): ?>
-	<?php $block->render() ?>
-	<?php endforeach ?>
-	</header>
-	<main><?php parent::render() ?></main>
-	<footer>
-	<?php foreach($this->footer as $block): ?>
-	<?php $block->render() ?>
-	<?php endforeach ?>
-	</footer>
+	<?php parent::render() ?>
 </body>
 </html>

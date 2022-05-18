@@ -1,74 +1,42 @@
-#nav-container {
-	position: sticky;
-	top: 0;
-	background: white;
-	padding: 0 1em;
-	box-shadow: 0 0 10px var(--shadow-color);
-	background-color: var(--primary);
+/*
+:root {
+	--btn-border-color: dimgray;
 }
 
-#nav-container > .toggle {
-	display: none;
+/** Button and input styling 
+.tt-btn, .tt-inpt {
+	padding: 0.5rem;
+	border-radius: 4px;
+	border: 1px solid var(--btn-border-color);
+	outline: none;
+	background-color: var(--background-color);
+	font-family: inherit;
+	color: inherit;
+	font-size: 0.8rem;
+	margin-bottom: 0.8em;
+	max-width: 100%;
 }
-
-#nav-container > #main-nav > .center {
-	margin: auto;
-}
-
-#nav-container > #main-nav > .logo {
-	font-weight: bold;
+.tt-btn {
+	transition: 0.2s box-shadow ease-out;
+	cursor: pointer;
+	display: inline-block;
 	text-decoration: none;
-	font-size: 1.6em;
-	color: black;
+	width: min-content;
 }
 
-#site-alerts {
-	position: fixed;
-	top: 1em;
-	left: 50%;
-	max-width: 500px;
-	transform: translateX(-50%);
-	z-index: 3;
-	display: flex;
-	flex-flow: column nowrap;
-	gap: 5px;
+.tt-btn:hover {
+	box-shadow: 0 0 10px var(--shadow-color);
+	background-color: rgba(var(--background-color) / 10%);
 }
 
-.alert {
-	background-color: var(--secondary);
-	border-radius: 10px;
-	color: lightgray;
-	display: flex;
-	padding: 4px;
-	gap: 4px;
-	align-items: center;
-	box-shadow: 0px 0px 10px var(--shadow-color);
-	box-sizing: border-box;
-	margin: auto;
+.tt-inpt {
+	display: block;
 }
 
-.alert > p {
-	color: black;
-	margin: 4px;
-	margin-left: 4px;
+.tt-inpt[type=radio],
+.tt-inpt[type=checkbox] {
+	min-width: 1em;
+	min-height: 1em;
+	display: inline-block;
 }
-
-.alert > button {
-	margin: 0;
-	padding: 0;
-	background-color: transparent;
-	border: 0;
-}
-
-.alert object {
-	color: lightgray;
-	margin: 5px;
-	vertical-align: middle;
-}
-
-.card {
-  background-color: var(--background);
-  border-radius: 5px;
-  padding: 2em;
-  border: 1px solid lightgray;
-}
+*/
