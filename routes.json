@@ -7,6 +7,7 @@
 	"/admin": "Controller\\Page\\Admin",
 	"/perfil": "Controller\\Page\\Perfil",
 	"/roles": "Controller\\Page\\Roles",
+	"/eliminar-roles": "Controller\\Form\\EliminarRol",
 	"/crear-roles" : "Controller\\Form\\CrearRoles",
 	"/admin/editar-usuario": "Controller\\Form\\EditAdmin",
 	"/user/editar-usuario": "Controller\\Form\\EditUser",
