@@ -8,10 +8,12 @@
 	"/perfil": "Controller\\Page\\Perfil",
 	"/roles": "Controller\\Page\\Roles",
 	"/eliminar-roles": "Controller\\Form\\EliminarRol",
+	"/crear-roles" : "Controller\\Form\\CrearRoles",
 	"/admin/editar-usuario": "Controller\\Form\\EditAdmin",
 	"/user/editar-usuario": "Controller\\Form\\EditUser",
 	"/admin/publicacion/nueva": "Controller\\Form\\CreatePublication",
 	"/admin/eliminar-usuario": "Controller\\Form\\ElimAdmin",
 	"/admin/ver-archivos": "Controller\\Page\\VerArchivos",
-	"/admin/ver-usuarios": "Controller\\Page\\VerUsuarios"
+	"/admin/ver-usuarios": "Controller\\Page\\VerUsuarios",
+	"/admin/eliminar_rol": "Controller\\Page\\EliminarRol"
 }
