@@ -1,0 +1,31 @@
+<div class="container">
+    
+<h1>Listado de usuarios</h1>
+<table>
+<tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Rol</th>
+        <th>Editar</th>
+    </tr>
+<?php for($i = 0; $i < count($this->usuarios); $i++) { ?>  
+<tr>                                            
+    <td>                                        
+        <?= $this->usuarios[$i]['id'] ?>         
+    </td>  
+    <td> 
+        <?= $this->usuarios[$i]['username'] ?>        
+    </td> 
+    <td> 
+        <?= $this->usuarios[$i]['rol'] ?>     
+    </td> 
+    <td> 
+        <a href="/admin/editar-usuario?id=<?= $this->usuarios[$i]['id'] ?>" class="button">
+            <object data="/public/icons/edit.svg" class="icon"></object>
+        </a>  
+    </td> 
+</tr>
+<?php } ?>
+</table>  
+</div>
+
