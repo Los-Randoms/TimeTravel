@@ -1,6 +1,5 @@
 <?php namespace Controller\Page;
 
-
 use Modules\Kernel\File;
 use Modules\Kernel\Page;
 use Modules\Kernel\Storage;
