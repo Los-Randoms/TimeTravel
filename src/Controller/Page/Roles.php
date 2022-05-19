@@ -18,6 +18,7 @@ class Roles extends Page {
 		$driver = Storage::driver();            //Trae la base de datos
 		$select = $driver->read('roles');
         $select->orderBy('id');       //Lee la base de datos
+
 		$select->execute();                     //ejecuta
         $this->role= $select->results();        //trae los resultados
     }
