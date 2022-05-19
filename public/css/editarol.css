@@ -1,0 +1,22 @@
+.container {
+    background-color: rgb(250, 226, 118);
+    margin-top: 20px;
+    padding-bottom: 80px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50px;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.selector {
+margin: auto;
+display: block;
+max-width: max-content;
+}
+
+.cuadro {
+    display: inline;
+}
