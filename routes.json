@@ -11,5 +11,6 @@
 	"/admin/eliminar-usuario": "Controller\\Form\\ElimAdmin",
 	"/admin/ver-archivos": "Controller\\Page\\VerArchivos",
 	"/admin/ver-usuarios": "Controller\\Page\\VerUsuarios",
-	"/admin/eliminar_rol": "Controller\\Page\\EliminarRol"
+	"/admin/eliminar_rol": "Controller\\Page\\EliminarRol",
+	"/admin/contacto": "Controller\\Page\\Contacto"
 }
