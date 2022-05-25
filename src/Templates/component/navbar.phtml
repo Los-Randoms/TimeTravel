@@ -1,35 +1,6 @@
-<?php use Modules\Account\Session; ?>
-<div id="nav-container">
-	<nav class="toggle">
-		<div class="items">
-			<button>
-				<object class="icon" data="/public/icons/menu.svg"></object>
-			</button>
-		</div>
-	</nav>
-	<nav id="main-nav">
-		<a href="/" class="logo"><?= SITE_NAME ?></a>
-		<div class="items center">
-			<form action="search" method="GET">
-				<div class="search">
-					<input required name="q" type="text" placeholder="Buscar...">
-					<button type="submit">
-						<object class="icon" data="/public/icons/search.svg"></object>
-					</button>
-				</div>
-			</form>
-		</div>
-		<div class="items">
-		<?php if(Session::started()): ?>
-		<a class="btn" href="/mi-cuenta">Mi cuenta</a>
-		<?php if($_SESSION['user']->rol == 'admin'): ?>
-		<a class="btn" href="/admin">Administracion</a>
-		<?php endif ?>
-		<a class="btn" href="/salir">Salir</a>
-		<?php else: ?>
-		<a class="btn" href="/iniciar-sesion">Iniciar sesion</a>
-		<a class="btn" href="/registro">Registrarse</a>
-		<?php endif ?>
-		</div>
-	</nav>
-</div>
+<nav id="main-navigation">
+	<form action="/buscar"></form>
+	<h1><?= SITE_NAME ?></h1>
+	<div class="items">
+	</div>
+</nav>

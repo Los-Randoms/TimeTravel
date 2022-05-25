@@ -11,7 +11,7 @@
 	--shadow-color: #69696944;
 	--border-color: #A9A9A9;
 	/** Button properties */
-	--button-background: #FFA500;
+	--button-background: #F5F5F5;
 	--button-background-emphasis: #D8D8D8;
 	--button-border: var(--border-color);
 	--button-border-emphasis: #CFCFCF;
@@ -77,6 +77,10 @@ input, textarea {
 	outline: 0px transparent;
 }
 
+input::placeholder, textarea::placeholder {
+	color: inherit;
+}
+
 input[type=checkbox], input[type=radio] {
 	font-size: 1em;
 	width: 1em;
@@ -110,3 +114,4 @@ img, input[type=image] {
 	border: none;
 	background-color: transparent;
 }
+
