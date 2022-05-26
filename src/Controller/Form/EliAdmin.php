@@ -4,9 +4,7 @@ namespace Controller\Form;
 
 use Modules\Account\User;
 use Modules\Kernel\File;
-use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
-use Modules\Kernel\Response;
 use Modules\Kernel\Storage;
 
 class EliAdmin extends Form
@@ -14,10 +12,9 @@ class EliAdmin extends Form
 
     function __construct()
     {
-        parent::__construct('editadmin.phtml');
+        parent::__construct('eliuser.phtml');
 
         $this->title('Editar información');
-        $this->style('css/editadmin.css');
         /** @var \Modules\Mysql\Driver */
         $driver = Storage::driver();
         $select = $driver->read(User::TABLE);
@@ -25,34 +22,26 @@ class EliAdmin extends Form
         $select->execute();
         /** @var User */
         $this->user = $select->fetch(User::class);
-        $this->image = null;
-        if (!is_null($this->user->avatar)) {
-            $this->image = File::load($this->user->avatar);
-        }
-
     }
 
     public function verify(): bool
     {
-        if (!Form::check($_POST, [
-            'email' => '[!?#]string|',
-            'name' => '[!?#]string|',
-            'rol' => '[!?#]string|'
-        ])) $this->error('Formulario invalido');
-        if (is_null($this->user))
-            return false;
+        if (!isset($_GET['id']))                      
+            $this->error('No hay ningun usuario con ese id');         
+        $_GET['id'] = trim($_GET['id']);              
+        if (empty($_GET['id']))                        
+            $this->error("No hay ningun usuario con ese id");
         return true;
     }
 
     function _submit(): ?string
     {
-        $this->user->username = $_POST['name'];
-        $this->user->email = $_POST['email'];
-        $this->user->rol = $_POST['rol'];
-        if(!is_null($this->file)){
-            $this->user->avatar = $this->file->id;
-        }
-        $this->user->update();
-        return ("Se ha actualizado su información");
+        $db = Storage::driver();
+        /** @var \Modules\Mysql\Query\Delete */ 
+        $consulta = $db->delete('users');               
+        $consulta->condition('id', $_GET['id']);        
+        $consulta->execute();                           
+        return ("Se ha eliminado el usuario");
     }
 }
+

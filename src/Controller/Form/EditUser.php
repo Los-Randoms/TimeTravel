@@ -6,7 +6,6 @@ use Modules\Account\User;
 use Modules\Kernel\File;
 use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
-use Modules\Kernel\Session;
 use Modules\Kernel\Storage;
 
 class EditUser extends Form
@@ -16,7 +15,7 @@ class EditUser extends Form
     {
         parent::__construct('edituser.phtml');
         $this->title('Editar información');
-        //$this->style('css/editadmin.css');
+        $this->style('css/edituser.css');
         /** @var \Modules\Mysql\Driver */
         $driver = Storage::driver();
         $select = $driver->read(User::TABLE);

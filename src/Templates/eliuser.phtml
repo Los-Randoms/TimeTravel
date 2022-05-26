@@ -1,9 +1,11 @@
 <div class="container">
     <h1> Eliminar cuenta </h1>
-    <form manager="form" method="POST" enctype="multipart/form-data">
+    <form manager="form" method="POST" enctype="multipart/form-data" action="/admin/ver-usuarios">
 
-        <label for="name">Una vez elimines tu cuenta</label>
-
-        <button type="submit">Actualizar informacion</button>
+        <label for="name">Una vez elimines este usuario, no podra volver a iniciar sesion</label>
+        <div>
+            <button ><a href="/admin/ver-usuarios">Regresar a "Ver usuarios"</button><br>
+            <button type="submit">Eliminar usuario</button>
+        </div>
     </form>
 </div>
