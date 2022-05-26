@@ -1,24 +1,30 @@
-<?php namespace Controller\Form;
+<?php
+
+namespace Controller\Form;
 
 use Modules\Kernel\Form;
 use Modules\Kernel\Storage;
 
-class CrearRoles extends Form {
+class CreateRol extends Form
+{
 
-    function __construct () {
-        parent::__construct('crear-roles.phtml'); 
-        $this->style('css/crear-roles.css');
+    function __construct()
+    {
+        parent::__construct('create-rol.phtml');
+        $this->style('css/create-rol.css');
     }
 
-    public function verify() {                          //parte de veficacion
-        if(!isset($_POST['nombre']))                    //no existe
+    public function verify()
+    {                          //parte de veficacion
+        if (!isset($_POST['nombre']))                    //no existe
             $this->error('Agrega un nombre');          //error
         $_POST['nombre'] = trim($_POST['nombre']);              //no dejar espacios
-        if(empty($_POST['nombre']))                         //no este vacio
+        if (empty($_POST['nombre']))                         //no este vacio
             $this->error("Agrega un nombre");          //error
     }
 
-    function _submit(): ?string {                       //parte de realización
+    function _submit(): ?string
+    {                       //parte de realización
         $db = Storage::driver();
         /** @var \Modules\Mysql\Query\Create */
         $consulta = $db->create('roles');               //seleciona la tabla de roles
@@ -27,5 +33,3 @@ class CrearRoles extends Form {
         return 'Se creo el rol correctamente';   //manda el mensaje
     }
 }
-
-

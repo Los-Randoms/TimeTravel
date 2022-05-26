@@ -1,13 +1,17 @@
-<?php namespace Controller\Form;
+<?php
+
+namespace Controller\Form;
 
 use Modules\Kernel\Form;
 use Modules\Kernel\Storage;
 
-class EliminarRol extends Form {
+class DeleteRol extends Form
+{
 
-    function __construct () {
-        parent::__construct('eliminar_roles.phtml'); 
-        $this->style('css\eliminarroles.css');
+    function __construct()
+    {
+        parent::__construct('delete_rol.phtml');
+        $this->style('css\delete_rol.css');
         $db = Storage::driver();
         /** @var \Modules\Mysql\Query\Select */
         $consulta = $db->read('roles');                 // se lee la tabla de roles
@@ -16,15 +20,17 @@ class EliminarRol extends Form {
         $this->roles = $consulta->results();            //la tabla de guarda en una variable
     }
 
-    public function verify() {                          //parte de veficacion
-        if(!isset($_POST['id']))                        //no existe
+    public function verify()
+    {                          //parte de veficacion
+        if (!isset($_POST['id']))                        //no existe
             $this->error('Selecciona un rol');          //error
         $_POST['id'] = trim($_POST['id']);              //no dejar espacios
-        if(empty($_POST['id']))                         //no este vacio
+        if (empty($_POST['id']))                         //no este vacio
             $this->error("Selecciona un rol");          //error
     }
 
-    function _submit(): ?string {                       //parte de realización
+    function _submit(): ?string
+    {                       //parte de realización
         $db = Storage::driver();
         /** @var \Modules\Mysql\Query\Delete */
         $consulta = $db->delete('roles');               //seleciona la tabla de roles

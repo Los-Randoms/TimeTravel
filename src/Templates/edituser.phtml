@@ -1,9 +1,22 @@
 <div class="container">
-<h1> Cambio de informacion de usuario </h1>
-<form enctype="application/x-www-form-urlencoded"  action="/" manager="form">
-		<label for="input-correo">Ingresa tu correo</label>
-		<input required class="inpt" type="text" id="input-correo" name="email" ><br>
+	<h1> Cambiar informacion de los usuarios </h1>
+	<form manager="form" method="POST" enctype="multipart/form-data">
 
-	<button type="submit" class="btn primary">Actualizar información</button>
+		<label for="name">Editar nombre</label>
+		<div class="edit">
+			<input type="text" id="input-nombre" name="name" value=" <?= $this->user->username ?>">
+		</div>
+
+		<div class="avatar">
+			<br>
+			<label for="avatar">Imagen anterior</label>
+			<?php if (!is_null($this->image)): ?>
+				<img src="<?= $this->image->url() ?>" >
+			<?php endif ?>
+		</div>
+		<br><br>
+		<label for="Cambiar-Foto">Cambiar foto</label>
+		<input type="file" name="avatar">
+		<button type="submit">Actualizar informacion</button>
 	</form>
 </div>

@@ -2,15 +2,13 @@
 
 use Modules\Account\User;
 use Modules\Kernel\Page;
-use Modules\Kernel\Query;
 use Modules\Kernel\Storage;
-use mysqli;
 
-class Roles extends Page {
+class Rol extends Page {
 
     function __construct() {
-        parent::__construct('roles.phtml');
-        $this->style('css\roles.css');
+        parent::__construct('rol.phtml');
+        $this->style('css\rol.css');
 
         $this->user = User::load(1);            //Solo el usuario con ese ID puede verlo
 
