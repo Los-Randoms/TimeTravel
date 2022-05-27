@@ -1,6 +1,15 @@
 <nav id="main-navigation">
-	<form action="/buscar"></form>
-	<h1><?= SITE_NAME ?></h1>
-	<div class="items">
+	<div class="navigation--search">
+		<form action="/buscar" method="GET">
+			<input name="q" type="search" placeholder="Buscar...">
+		</form>
+	</div>
+	<div class="navigation--title">
+		<h1><?= SITE_NAME ?></h1>
+	</div>
+	<div class="navigation--items">
+		<a href="">123</a>
+		<a href="">123</a>
+		<a href="">123</a>
 	</div>
 </nav>
