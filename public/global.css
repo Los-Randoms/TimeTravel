@@ -94,7 +94,7 @@ input[type=color] {
 }
 
 input[type=date], input[type=datetime-local], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], textarea {
-	padding: 5px;
+	padding: 8px 10px;
 	font-family: inherit;
 	font-weight: inherit;
 	font-size: 0.9em;
@@ -115,3 +115,56 @@ img, input[type=image] {
 	background-color: transparent;
 }
 
+.icon {
+	vertical-align: middle;
+	display: inline-block;
+	color: gray;
+	stroke-width: 3px;
+	width: 1em;
+	height: 1em;
+	pointer-events: all;
+}
+
+.input-container {
+	display: flex;
+	position: relative;
+}
+
+.input-container .icon {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 0;
+	margin-right: 10px;
+}
+
+.navigation {
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+.navigation button, .navigation a[role=button], .navigation input[type=button], .navigation input[type=submit], .navigation input[type=reset], .navigation input[type=color], .navigation input[type=image] {
+	--button-border: none;
+	--button-background: transparent;
+	--button-background-emphasis: rgba(0, 0, 0, 10%);
+	font-weight: 300;
+	margin: 0;
+	padding: 8px 12px;
+	outline: none;
+	cursor: pointer;
+}
+
+.navigation--left {
+	flex: 0 1 auto;
+	margin-left: 2em;
+}
+
+.navigation--center {
+	font-size: 20px;
+	flex: 1 1 auto;
+	text-align: center;
+}
+
+.navigation--right {
+	flex: 0 1 auto;
+}

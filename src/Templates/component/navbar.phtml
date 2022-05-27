@@ -1,15 +1,23 @@
-<nav id="main-navigation">
-	<div class="navigation--search">
-		<form action="/buscar" method="GET">
-			<input name="q" type="search" placeholder="Buscar...">
+<nav id="main-navigation" manager="navbar" class="navigation">
+	<div class="navigation--left">
+		<form action="/buscar" method="GET" id="search-form">
+			<div class="input-container">
+				<input name="q" type="search" placeholder="Buscar...">
+				<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+			</div>
 		</form>
+		<div class="toggle-button">
+			<button>
+				<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+			</button>
+		</div>
 	</div>
-	<div class="navigation--title">
+	<div class="navigation--center">
 		<h1><?= SITE_NAME ?></h1>
 	</div>
 	<div class="navigation--items">
-		<a href="">123</a>
-		<a href="">123</a>
-		<a href="">123</a>
+		<a href="" role="button">Iniciar sesión</a>
+		<a href="" role="button">Registro</a>
+		<a href="" role="button"></a>
 	</div>
 </nav>

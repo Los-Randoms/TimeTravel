@@ -1,0 +1,7 @@
+#main-navigation .navigation--left > .toggle-button {
+	display: block;
+}
+
+#main-navigation #search-form {
+	display: none;
+} 

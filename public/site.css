@@ -1,11 +1,18 @@
 #main-navigation {
-	display: flex;
-	flex-flow: row nowrap;
 	background-color: var(--primary-color);
 	position: sticky;
 	top: 0;
 	left: 0;
+	height: 50px;
+	align-items: center;
+	/* border-bottom: 1px solid var(--border-color); */
+	box-shadow: 0 0 10px var(--shadow-color);
 }
 
-#main-navigation > .navigation--search {
+#search-form input[type=search] {
+	margin: 0;
+}
+
+#main-navigation .navigation--left > .toggle-button {
+	display: none;
 }
