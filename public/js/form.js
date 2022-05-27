@@ -9,7 +9,7 @@ export default {
 		ev.preventDefault();
 		ev.stopPropagation();
 		let data = new FormData(this);
-		fetch('?e=submit', {
+		fetch(location.href + '&e=submit', {
 			method: 'POST',
 			body: data,
 		})

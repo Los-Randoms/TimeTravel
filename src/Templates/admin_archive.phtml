@@ -1,71 +1,13 @@
 
-
-<html>
-	<head>
-		<title>Menu Desplegable</title>
-		<style type="text/css">
-			
-			* {
-				margin:0px;
-				padding:0px;
-			}
-			
-			#header {
-				margin:auto;
-				width:500px;
-				font-family:Arial, Helvetica, sans-serif;
-			}
-			
-			ul, ol {
-				list-style:none;
-			}
-			
-			.nav > li {
-				float:left;
-			}
-			
-			.nav li a {
-				background-color:white;
-				color:black;
-				text-decoration:none;
-				padding:10px 12px;
-				display:block;
-			}
-			
-			.nav li a:hover {
-				background-color:#434343;
-			}
-			
-			.nav li ul {
-				display:none;
-				position:absolute;
-				min-width:140px;
-			}
-			
-			.nav li:hover > ul {
-				display:block;
-			}
-			
-			.nav li ul li {
-				position:relative;
-			}
-			
-			.nav li ul li ul {
-				right:-140px;
-				top:0px;
-			}
-			
-		</style>
-	</head>
-	<body>
 		<div id="header">
 			<ul class="nav">
 				<li><a href="">Inicio</a></li>
 				<li><a href="">Roles</a>
 					<ul>
-						<li><A HREF="servicios_archive.phtml"> Soporte </A></li>    <!--Ejemplo: <A HREF="otra_pagina.html"> Este es un link </A> !-->
-						<li><A HREF="otra_pagina.html"> Verde </A></li>
-
+						<li><A HREF=""> Webmaster </A></li>    <!--Ejemplo: <A HREF="otra_pagina.html"> Este es un link </A> !-->
+						<li><A HREF=""> Moderador </A></li>
+						<li><A HREF=""> Diseñador </A></li>
+						<li><A HREF=""> Editor de texto </A></li>
 							<ul>
 								<li><a href="">Submenu1</a></li>
 								<li><a href="">Submenu2</a></li>
@@ -75,8 +17,8 @@
 				</li>
 				<li><a href="">Usuarios</a>
 					<ul>
-						<li><A HREF="Poner archivophtml para la pagina"> Nosotros </A></li>
-						<li><a href="">Foros</a></li>
+						<li><A HREF="/admin/ver-usuarios"> Ver usuarios </A></li>
+						<li><a href="/admin/eliminar-usuario">Eliminar un usario</a></li>
 					</ul>
 				</li>
         <li><a href="">Otros</a>
@@ -84,12 +26,9 @@
 						<li><A HREF="Link_reacciones">Reacciones</A></li>
 					</ul>
 				</li>
-				<li><A HREF="Información de contacto">Contacto</a></li>
+				<li><A HREF="/admin/contacto">Contacto</a></li>
 			</ul>
 		</div>
-	</body>
-</html>
-
  
 <div class="margin-auto">
   <span class="margin-auto__content">

@@ -1,9 +1,9 @@
 
-
 .login-container {
   display: flex;
   gap: 2em;
   flex-flow: row wrap;
+  
 }
 
 .login-card {
