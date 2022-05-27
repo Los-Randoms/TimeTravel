@@ -2,10 +2,12 @@
 
 use Controller\Component\Navbar;
 use Modules\Kernel\File;
+use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
 
 class CreatePublication extends Form {
 	protected File $file;
+
 	protected array $accepted_mimes = [
 		'image/png',
 		'image/jpeg',
@@ -28,7 +30,9 @@ class CreatePublication extends Form {
 			'title' => '[!?#]string|10',
 			'body' => '[!?#]string|1',
 		])) $this->error('Verifique la informacion enviada');
-		$this->file = File::getUploadedFile('image');
+		$this->file = FileManager::get('image');
+		print_r($this->file);
+		die;
 		if(!in_array($this->file->mime, $this->accepted_mimes))
 			$this->error('La imagen enviada es incorrecta');
 	}

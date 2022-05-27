@@ -8,8 +8,7 @@ class Response {
 			ob_end_clean();
 		echo $response;
 		Session::stop();
-		if(Storage::connected())
-			Storage::driver()->close();
+		Storage::stop();
 		die;
 	}
 

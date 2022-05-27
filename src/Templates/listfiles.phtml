@@ -1,0 +1,30 @@
+<div class="container">
+    
+<h1>Archivos</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nombre del archivo</th>
+        <th>Tipo</th>
+        <th>Tamaño</th>
+    </tr>
+<?php for($i = 0; $i < count($this->files); $i++) { ?>  
+        <tr>                                            
+        <td>                         
+            <?= $this->files[$i]->id ?>         
+        </a>               
+    </td>  
+    <td> 
+            <a href="<?=$this->files[$i]->url() ?>">
+            <?= $this->files[$i]->filename ?>        
+        </td> 
+        <td> 
+            <?= $this->files[$i]->mime ?>        
+        </td> 
+        <td> 
+            <?= $this->files[$i]->size ?> bytes        
+        </td> 
+    </tr>
+    <?php } ?>
+</table>  
+</div>

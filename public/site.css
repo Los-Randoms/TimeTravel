@@ -1,19 +1,21 @@
-#main-nav {
+#nav-container {
 	position: sticky;
 	top: 0;
 	background: white;
 	padding: 0 1em;
+	box-shadow: 0 0 10px var(--shadow-color);
+	background-color: var(--primary);
 }
 
-#main-nav > .toggle {
+#nav-container > .toggle {
 	display: none;
 }
 
-#main-nav > nav > .center {
+#nav-container > #main-nav > .center {
 	margin: auto;
 }
 
-#main-nav > nav > .logo {
+#nav-container > #main-nav > .logo {
 	font-weight: bold;
 	text-decoration: none;
 	font-size: 1.6em;
@@ -26,14 +28,14 @@
 	left: 50%;
 	max-width: 500px;
 	transform: translateX(-50%);
-	z-index: 1;
+	z-index: 3;
 	display: flex;
 	flex-flow: column nowrap;
 	gap: 5px;
 }
 
 .alert {
-	background-color: dimgrey;
+	background-color: var(--secondary);
 	border-radius: 10px;
 	color: lightgray;
 	display: flex;
@@ -46,7 +48,7 @@
 }
 
 .alert > p {
-	color: white;
+	color: black;
 	margin: 4px;
 	margin-left: 4px;
 }
@@ -58,7 +60,15 @@
 	border: 0;
 }
 
-.alert i {
+.alert object {
 	color: lightgray;
 	margin: 5px;
+	vertical-align: middle;
+}
+
+.card {
+  background-color: var(--background);
+  border-radius: 5px;
+  padding: 2em;
+  border: 1px solid lightgray;
 }

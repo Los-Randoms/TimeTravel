@@ -1,7 +1,6 @@
 <?php namespace Controller\Page;
 
 use Controller\Component\Navbar;
-use Modules\Account\Session;
 use Modules\Kernel\Page;
 use Modules\Kernel\View;
 
