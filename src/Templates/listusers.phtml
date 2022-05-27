@@ -7,6 +7,7 @@
         <th>Nombre</th>
         <th>Rol</th>
         <th>Editar</th>
+        <th>Eliminar</th>
     </tr>
 <?php for($i = 0; $i < count($this->usuarios); $i++) { ?>  
 <tr>                                            
@@ -22,6 +23,11 @@
     <td> 
         <a href="/admin/editar-usuario?id=<?= $this->usuarios[$i]['id'] ?>" class="button">
             <object data="/public/icons/edit.svg" class="icon"></object>
+        </a>  
+    </td> 
+    <td> 
+        <a href="/admin/eliminar-usuario?id=<?= $this->usuarios[$i]['id'] ?>" class="button">
+            <object data="/public/icons/trash-2.svg" class="icon"></object>
         </a>  
     </td> 
 </tr>

@@ -1,14 +1,13 @@
 <?php namespace Controller\Form;
 
 use Modules\Kernel\Form;
-use Modules\Kernel\Page;
 use Modules\Kernel\Storage;
 
-class EditaRol extends Form {
+class EditRol extends Form {
 
     function __construct () {
-        parent::__construct('editarol.phtml'); 
-        $this->style('css\editarol.css');
+        parent::__construct('editrol.phtml'); 
+        $this->style('css\editrol.css');
         $db = Storage::driver();
         /** @var \Modules\Mysql\Query\Select */
         $consulta = $db->read('roles');                  // se lee la tabla de roles

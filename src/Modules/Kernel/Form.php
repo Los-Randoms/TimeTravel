@@ -8,12 +8,15 @@ abstract class Form extends Page {
 		if(empty($event))
 			return null;
 		if($event->getName() === '_submit') {
-			$this->verify();
-			$message = $this->_submit();
-			Response::json([
-				'type' => 'success',
-				'message' => $message,
-			]);
+			if($this->verify()) {
+				$message = $this->_submit();
+				Response::json([
+					'type' => 'success',
+					'message' => $message,
+				]);
+			} else {
+				Response::json([ 'type' => 'error' ]);
+			}
 		}
 		return $event;
 	}
