@@ -1,7 +1,12 @@
-#main-navigation .navigation--left > .toggle-button {
-	display: block;
+.desktop-display {
+	display: none;
 }
 
-#main-navigation #search-form {
+.mobile-display {
 	display: none;
-} 
+}
+
+.tablet-display {
+	display: initial;
+}
+

@@ -1,0 +1,12 @@
+.desktop-display {
+	display: none;
+}
+
+.mobile-display {
+	display: initial;
+}
+
+.tablet-display {
+	display: none;
+}
+
