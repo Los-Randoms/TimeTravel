@@ -1,32 +1,16 @@
-<nav id="main-navigation" manager="navbar" class="navigation">
-	<div id="main-navigation--desktop">
-		<div class="navigation--left">
-			<h1><?= SITE_NAME ?></h1>
+<nav id="main-navigation" class="navigation">
+	<a href="/" class="title">
+		<h1><?= SITE_NAME ?></h1>
+	</a>
+	<form action="/post/buscar" method="get">
+		<div class="input-container">
+			<input type="search" placeholder="Buscar...">
+			<i class="floating icon mu mu-search"></i>
 		</div>
-		<div class="navigation--center">
-			<form action="/buscar" method="GET" id="main-navigation--search-form">
-				<div class="input-container">
-					<input name="q" type="search" placeholder="Buscar...">
-					<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-				</div>
-			</form>
-		</div>
-	</div>
-	<div class="navigation--right">
-		<a href="/iniciar-sesion" role="button">Iniciar sesión</a>
+	</form>
+	<div class="items">
+		<a href="/iniciar-sesion" role="button">Inicar sesion</a>
 		<a href="/registro" role="button">Registro</a>
-		<div>
-			<a role="button">
-				<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-			</a>
-		</div>
 	</div>
-		<div>
-			<a href="/" role="button">
-				<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-			</a>
-			<button>
-				<svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-			</button>
-		</div>
 </nav>
+

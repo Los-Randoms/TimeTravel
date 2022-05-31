@@ -9,6 +9,6 @@ class Main extends Page {
 
 	function __construct() {
 		parent::__construct('index.phtml');
-		$this->style('css/index.css');
+		# $this->style('css/index.css');
 	}
 }
