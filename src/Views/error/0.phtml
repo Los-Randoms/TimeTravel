@@ -3,10 +3,10 @@
 	<p>Ha sucedido algo inesperado</p>
 	<?php if(DEVEL): ?>
 	<h3>Mensaje: </h3>
-	<pre><?= $this->message() ?></pre>
+	<pre><?= $error->getMessage() ?></pre>
 	<h4>Archivo: </h4>
-	<pre><?= $this->file() ?></pre>
+	<pre><?= $error->getFile() ?></pre>
 	<h3>Rastro: </h3>
-	<pre><?= $this->trace() ?></pre>
+	<pre><?= $error->getTraceAsString() ?></pre>
 	<?php endif ?>
 </div>

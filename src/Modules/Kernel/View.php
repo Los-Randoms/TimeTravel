@@ -3,15 +3,26 @@
 
 class View {
 	private string $file;
+	private array $data;
 
-	function __construct(string $file) {
-		$this->file = "./src/Templates/$file";
+	function __construct(string $file, array $data = []) {
+		$this->file = "./src/Views/$file";
+		$this->data = $data;
 	}
 
-	function __toString() {
+	function set(string $key, mixed $value) {
+		$this->data[$key] = $value;
+	}
+
+	function path(): string {
+		return $this->file;
+	}
+
+	function __toString(): string {
+		extract($this->data);
 		ob_start();
 		include $this->file;
-		return ob_get_flush();
+		return ob_get_clean();
 	}
 }
 

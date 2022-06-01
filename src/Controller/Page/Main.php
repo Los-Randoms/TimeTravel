@@ -1,14 +1,10 @@
 <?php namespace Controller\Page;
 
-use Controller\Component\Navbar;
-use Modules\Kernel\Page;
+use Modules\Kernel\Controller;
 use Modules\Kernel\View;
 
-class Main extends Page {
-	public array $publications;
-
-	function __construct() {
-		parent::__construct('index.phtml');
-		# $this->style('css/index.css');
+class Main extends Controller {
+	function content() {
+		return new View('page/index.phtml');
 	}
 }

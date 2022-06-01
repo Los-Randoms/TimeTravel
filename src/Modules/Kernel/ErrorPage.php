@@ -3,24 +3,22 @@
 use Exception;
 use Error;
 
-class ErrorPage extends Page {
+class ErrorPage extends Controller {
 	private Error|Exception $error;
 
 	function __construct(Error|Exception $error) {
-		parent::__construct($file);
-		http_response_code($code);
+		if($error->getCode() !== 0)
+			http_response_code($error->getCode());
+		else
+			http_response_code(500);
 		$this->error = $error;
 	}
 
-	function message(): string {
-		return $this->error->getMessage();
-	}
-
-	function trace(): string {
-		return $this->error->getTraceAsString();
-	}
-
-	function file(): string {
-		return $this->error->getFile() . ':' . $this->error->getLine();
+	function content() {
+		$view = new View("error/{$this->error->getCode()}.phtml");
+		if(!file_exists($view->path()))
+			$view = new View("error/0.phtml");
+		$view->set('error', $this->error);
+		return $view;
 	}
 }

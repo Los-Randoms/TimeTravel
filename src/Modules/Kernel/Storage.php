@@ -14,11 +14,6 @@ abstract class Storage {
 	static function connected(): bool {
 		return isset(self::$driver);
 	}
-
-	static function stop() {
-		if(self::connected())
-			self::$driver->close();
-	}
 }
 
 interface Query {
@@ -38,7 +33,6 @@ interface Driver {
 	function read(string $table): Select;
 	function update(string $table): Update;
 	function delete(string $table): Delete;
-	function close();
 }
 
 interface Select {
