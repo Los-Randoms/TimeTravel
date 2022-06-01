@@ -1,5 +1,4 @@
 {
-	"/demo": "Controller\\Page\\Demo",
 	"/": "Controller\\Page\\Main",
 	"/cambiar-contraseña": "Controller\\Form\\Changep",
 	"/iniciar-sesion": "Controller\\Form\\Login",

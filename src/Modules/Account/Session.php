@@ -50,6 +50,7 @@ abstract class Session
 	static function login(User $user) {
 		$_SESSION['account'] = [
 			'user' => $user,
+			'admin' => $user->rol === 'admin',
 			'logged' => true,
 		];
 	}

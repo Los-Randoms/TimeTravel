@@ -1,21 +1,22 @@
 <nav id="main-navigation" class="navbar">
+    <button class="back-button">
+        <i class="mu mu-arrow-left"></i>
+    </button>
+    <a href="/" class="brand">
+        <h1 class="title"><?= SITE_NAME ?></h1>
+    </a>
+    <div class="items">
+<?php if ($_SESSION['account']['logged']): ?>
+    <?php if ($_SESSION['account']['admin']): ?>
+        <a href="/admin" role="button">Panel</a>
+    <?php endif ?>
+        <a href="/perfil" role="button">
+            <?= $_SESSION['account']['user']->username ?>
+        </a>
+<?php else: ?>
+        <a href="/iniciar-sesion" role="button">Inicar sesion</a>
+        <a href="/registro" role="button">Registro</a>
+<?php endif ?>
+    </div>
 </nav>
 
-<!--	<div class="navbar-container">
-<!--		<a href="/" class="navbar-title navbar-left">
-<!--			<h1><?= SITE_NAME ?></h1>
-<!--		</a>
-<!--		<form class="center" action="/post/buscar" method="get">
-<!--			<div class="input-container">
-<!--				<input type="search" placeholder="Buscar...">
-<!--				<i class="floating mu mu-search"></i>
-<!--			</div>
-<!--		</form>
-<!--	</div>
-<!--	<div class="items">
-<!--		<a href="/iniciar-sesion" role="button">Inicar sesion</a>
-<!--		<a href="/registro" role="button">Registro</a>
-<!--		<button class="menu-toggle">
-<!--			<i class="mu mu-menu"></i>
-<!--		</button>
-<!--	</div>
