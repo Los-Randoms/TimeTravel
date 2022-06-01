@@ -50,6 +50,7 @@
  }
 
 #site-alerts .alert.message {
+	transition: opacity 0.2s ease-out, transform 0.2s linear;
 	color: whitesmoke;
 	vertical-align: middle;
 	flex: 0 1 auto;
@@ -62,6 +63,11 @@
 	background-color: dimgray;
 	align-items: center;
 	gap: 10px;
+}
+
+#site-alerts .alert.message.closing {
+	opacity: 0;
+	transform: translateY(-100%);
 }
 
 #site-alerts .alert.message .close-alert {
