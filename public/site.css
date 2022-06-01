@@ -3,10 +3,26 @@
 	position: sticky;
 	top: 0;
 	left: 0;
-	height: 70px;
+	height: 60px;
 	align-items: center;
 	/* border-bottom: 1px solid var(--border-color); */
 	box-shadow: 0 0 10px var(--shadow-color);
+	gap: 5px;
 }
 
+#main-navigation > .title {
+	flex: 0 1 auto;
+}
 
+.{
+	flex: 1 1 auto;
+}
+
+.search--form input[type=search] {
+	flex: 0 1 auto;
+	width: 300px;
+}
+
+#main-navigation > .items {
+	margin-left: auto;
+}

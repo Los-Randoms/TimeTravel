@@ -41,7 +41,7 @@ input:focus, textarea:focus {
 	margin-bottom: 0.5em;
 }
 
-.input-container .icon.floating::before {
+.input-container .mu.floating::before {
 	position: absolute;
 	top: 50%;
 	right: 0;

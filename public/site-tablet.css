@@ -1,12 +1,10 @@
-.desktop-display {
+#main-navigation .items {
+}
+
+#main-navigation .title {
 	display: none;
 }
 
-.mobile-display {
+#main-navigation .search--form {
 	display: none;
 }
-
-.tablet-display {
-	display: initial;
-}
-

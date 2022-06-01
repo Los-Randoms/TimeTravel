@@ -11,12 +11,13 @@
 }
 
 .mu:before {
+  font-size: 1.5em;
+	pointer-events: none;
   font-family: microns;
   font-style: normal;
   font-weight: normal;
   speak: none;
   text-decoration: none;
-  font-size: 1em;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;

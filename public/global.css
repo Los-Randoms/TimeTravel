@@ -7,7 +7,7 @@
  * Define variables
  * */
 :root {
-	--foreground-color: #16161d;
+	--foreground-color: #16161D;
 	--background-color: #FFFFFF;
 	--primary-color: #FDEFA4;
 	--secondary-color: #FFC4AA;
@@ -24,9 +24,9 @@
 	/** Input style */
 	--input-border: var(--border-color);
 	--input-border-emphasis: #5A5A5A;
-	--input-outline-color: var(--primary-color);
+	--input-outline-color: #F7976E;
 	--input-color: var(--foreground-color);
-	--input-color-placeholder: #94989e;
+	--input-color-placeholder: #94989E;
 }
 
 /**
@@ -62,9 +62,4 @@ img, input[type=image] {
 	max-width: 100%;
 	border: none;
 	background-color: transparent;
-}
-
-.icon {
-  font-size: 1.5em;
-	pointer-events: none;
 }
