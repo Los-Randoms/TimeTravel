@@ -9,6 +9,6 @@ class User extends Entity {
 	public string $password;
 	public string $rol = 'user';
 	public ?int $avatar;
-	public bool $banned;
+	public int $banned = 0;
 	public string $creation;
 }

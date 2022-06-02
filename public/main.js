@@ -1,17 +1,12 @@
-"use strict"
+import alerts from './js/alerts.js';
+import navbar from './js/navbar.js';
 
-async function main() {
-	let components = document.querySelectorAll("[manager]");
-	for(let comp of components) {
-		let name = comp.getAttribute('manager');
-		await addManager(name, comp);
-	}
-}
+const site_alerts = document.getElementById('site-alerts');
+const main_navbar = document.getElementById('main-navigation');
 
-export async function addManager(name, element) {
-	let manager = await import(`/public/js/${name}.js`);
-	Object.assign(element, manager.default);
-	element.init();
+function main() {
+	Object.assign(site_alerts, alerts).init();
+	Object.assign(main_navbar, navbar).init();
 }
 
 document.addEventListener('DOMContentLoaded', main);

@@ -1,0 +1,36 @@
+<main class="container">
+    <h1>Listado de roles</h1>
+    <div class="overflow-x">
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Nombre</th>
+                <!-- <th>Opciones</th> -->
+            </thead>
+            <tbody>
+                <?php foreach($roles as $rol): ?>
+                <tr>
+                    <td>
+                        <?= $rol['id'] ?>
+                    </td>
+                    <td>
+                        <?= strip_tags($rol['name']) ?>
+                    </td>
+                    <!--
+                    <td>
+                        <a href="/admin/rol/editar?id=<?= $rol['id'] ?>" role="button">
+                            <i class="mu mu-edit"></i>
+                            <span>Editar</span>
+                        </a>
+                        <a href="/admin/rol/eliminar?id=<?= $rol['id'] ?>" role="button">
+                            <i class="mu mu-delete"></i>
+                            <span>Eliminar</span>
+                        </a>
+                    </td>
+                    -->
+                </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    </div>
+</main>

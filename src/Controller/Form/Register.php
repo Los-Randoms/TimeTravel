@@ -1,39 +1,39 @@
-<?php namespace Controller\Form;
+<?php
 
-use Controller\Component\Navbar;
+namespace Controller\Form;
+
 use Modules\Account\User;
-use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
+use Modules\Kernel\Message;
+use Modules\Kernel\View;
 
-class Register extends Form {
-    function __construct() {
-        parent::__construct('register.phtml');
-        $this->style('css/register.css');
-		$this->title('Registro');
-		$this->header[] = new Navbar;
+class Register extends Form
+{
+	function __construct()
+	{
+		$this->styles[] = 'register.css';
 	}
 
-    public function verify() {
-		if(!Form::check($_POST, [
-			'email' => '[!?#]string|',
-			'username' => '[!?#]string|',
-			'password' => '[!?#]string|8',
-			'password2' => '[!?#]string|8',
-		])) $this->error('Formulario invalido');
-		if ($_POST['password']!=$_POST['password2']) {
-			$this->error("Las contraseñas ingresadas no son iguales");
-		}
+	function title(): string {
+		return 'Registro';
 	}
-	
-	function _submit(): ?string {
-		$mail=$_POST['email'];
-		$name=$_POST['username'];
+
+	function content() {
+		return new View('page/register.phtml');
+	}
+
+	function verify(): bool
+	{
+		return true;
+	}
+
+	function submit()
+	{
 		$user = new User();
-		$user->email=$mail;
-		$user->username=$name;
-		$user->password=password_hash($_POST['password'], PASSWORD_DEFAULT);;
-		$user->rol="user";
+		$user->email = $_POST['email'];
+		$user->username = $_POST['username'];
+		$user->password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 		$user->save();
-		return 'Se ha registrado exitosamente!';
+		Message::add('¡Se ha registrado correctamente!');
 	}
 }

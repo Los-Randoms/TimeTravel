@@ -1,4 +1,6 @@
-<?php namespace Modules\Mysql;
+<?php
+
+namespace Modules\Mysql;
 
 use Modules\Kernel\Driver as KernelDriver;
 use Modules\Mysql\Query\Delete;
@@ -8,22 +10,25 @@ use Modules\Mysql\Query\Update;
 use mysqli;
 
 mysqli_report(MYSQLI_REPORT_STRICT | MYSQLI_REPORT_ERROR);
-class Driver extends mysqli implements KernelDriver {
-
-	function create(string $table): Insert {
+class Driver extends mysqli implements KernelDriver
+{
+	function create(string $table): Insert
+	{
 		return new Insert($this, $table);
 	}
 
-	function read(string $table): Select {
+	function read(string $table): Select
+	{
 		return new Select($this, $table);
 	}
 
-	function update(string $table): Update {
+	function update(string $table): Update
+	{
 		return new Update($this, $table);
 	}
-	
-	function delete(string $table): Delete {
+
+	function delete(string $table): Delete
+	{
 		return new Delete($this, $table);
 	}
 }
-

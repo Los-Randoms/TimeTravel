@@ -1,49 +1,79 @@
-<?php namespace Modules\Account;
+<?php
+
+namespace Modules\Account;
 
 use DateTime;
+use Modules\Kernel\File;
 
-abstract class Session {
-	static function exists(): bool {
+abstract class Session
+{
+	/**
+	 * Check if the session file exists
+	 * @return bool true if the session file exists
+	 * */
+	static function exists(): bool
+	{
 		$path = session_save_path();
 		$name = session_name();
 
-		if($ssid = $_COOKIE[$name] ?? false) {
-			if(file_exists("$path/sess_$ssid"))
+		if ($ssid = $_COOKIE[$name] ?? false) {
+			if (file_exists("$path/sess_$ssid"))
 				return true;
 		}
-		
+
 		return false;
 	}
 
-	static function started(): bool {
-		return (session_status() == PHP_SESSION_ACTIVE);
-	}
-
-	static function start(): bool {
-		if(Session::started())
-			return true;
-		if(Session::exists())
-			return session_start();
-		return false;
-	}
-
-	static function create(User $account): bool {
-		if(self::started())
-			self::close();
+	/**
+	 * Init sessions
+	 * */
+	static function init()
+	{
 		session_start();
-		$_SESSION['user'] = $account;
-		$_SESSION['date'] = new DateTime();
-		return true;
+		if (!self::exists()) {
+			$_SESSION['account'] = [
+				'user' => null,
+				'logged' => false,
+			];
+			$_SESSION['messages'] = [];
+		}
+
+		// Check if the user exists
+		if ($_SESSION['account']['logged']) {
+			if($_SESSION['__last_access'] < SESSION_LIFE)
+				return self::logout();
+			/** @var User */
+			$user = $_SESSION['account']['user'];
+			$user = User::load($user->id);
+			if (empty($user))
+				return self::logout();
+			$_SESSION['account']['user'] = $user;
+			$_SESSION['__last_access'] = new DateTime();
+		}
+	}
+	static function login(User $user)
+	{
+		$picture = null;
+		if (!empty($user->avatar))
+			$picture = File::load($user->avatar);
+		$_SESSION['account'] = [
+			'user' => $user,
+			'pfp' => $picture,
+			'admin' => $user->rol === 'admin',
+			'logged' => true,
+		];
 	}
 
-	static function close() {
-		session_unset();
-		session_destroy();
+	static function logout()
+	{
+		$_SESSION['account'] = [
+			'user' => null,
+			'logged' => false,
+		];
+	}
+
+	static function stop()
+	{
 		session_commit();
-	}
-
-	static function stop() {
-		if(Session::started())
-			session_commit();
 	}
 }

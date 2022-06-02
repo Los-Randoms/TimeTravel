@@ -1,24 +1,25 @@
-"use strict"
-import { addManager } from '../main.js';
-
-export default {
-	alerts: [],
-
-	init() {
-		let alerts = sessionStorage.getItem('alerts');
-		if(alerts)
-			this.alerts = JSON.parse(alerts) || [];
-		for(let alert of this.alerts)
-			this.createAlert(alert.type, alert.message);
-		sessionStorage.setItem('alerts', '[]');
+const alert = {
+	close(event) {
+		event.stopPropagation();
+		event.preventDefault();
+		this.classList.add('closing');
+		setTimeout(_ => {
+			this.container.removeChild(this);
+		}, 500);
 	},
 
-	createAlert(type, message) {
-		let div = document.createElement('div');
-		div.classList.add('alert');
-		div.dataset.type = type;
-		div.dataset.message = message;
-		addManager('alert', div);
-		this.appendChild(div);
+	init(container) {
+		this.container = container;
+		this.closeBtn = this.querySelector('[element=close]');
+		this.closeBtn.addEventListener('click', e => this.close(e));
 	},
 }
+
+export default {
+	init() {
+		this.messages = this.querySelectorAll("[handler=alert]");
+		for (let element of this.messages)
+			Object.assign(element, alert).init(this);
+	}
+}
+

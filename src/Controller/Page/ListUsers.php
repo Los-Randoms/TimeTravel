@@ -1,19 +1,34 @@
-<?php namespace Controller\Page;
+<?php
 
-use Modules\Kernel\Page;
+namespace Controller\Page;
+
+use Modules\Account\User;
+use Modules\Kernel\Controller;
 use Modules\Kernel\Storage;
+use Modules\Kernel\View;
 
+class ListUsers extends Controller
+{
+    function __construct()
+    {
+        $this->access('admin');
+    }
 
-class ListUsers extends Page {
+    function title(): string
+    {
+        return 'Usuarios';
+    }
 
-    function __construct() {
-        parent::__construct('listusers.phtml');
-        $this->style('css/changep.css');
-        $this->title('Ver usuarios');
+    function content()
+    {
         /** @var \Modules\Mysql\Driver */
-		$driver = Storage::driver();            
-		$select = $driver->read('users');       
-		$select->execute();                     
-        $this->usuarios= $select->results();        
+        $driver = Storage::driver();
+        $select = $driver->read(User::TABLE);
+        $select->execute();
+        $usuarios = $select->results(User::class);
+        return new View('page/users_list.phtml', [
+            'users' => $usuarios,
+        ]);
     }
 }
+

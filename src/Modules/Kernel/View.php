@@ -2,23 +2,27 @@
 
 
 class View {
-	const DIR = './src/Templates/';
 	private string $file;
+	private array $data;
 
-	function __construct(string $file, bool $absolute = false) {
-		if(!$absolute)
-			$file = self::DIR . $file;
-		$this->file = $file;
+	function __construct(string $file, array $data = []) {
+		$this->file = "./src/Views/$file";
+		$this->data = $data;
 	}
 
-	function __toString() {
+	function set(string $key, mixed $value) {
+		$this->data[$key] = $value;
+	}
+
+	function path(): string {
 		return $this->file;
 	}
 
-	function render(): bool {
+	function __toString(): string {
+		extract($this->data);
 		ob_start();
 		include $this->file;
-		return ob_end_flush();
+		return ob_get_clean();
 	}
 }
 
