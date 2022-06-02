@@ -40,8 +40,6 @@ abstract class Session
 
 		// Check if the user exists
 		if ($_SESSION['account']['logged']) {
-			if($_SESSION['__last_access'] < SESSION_LIFE)
-				return self::logout();
 			/** @var User */
 			$user = $_SESSION['account']['user'];
 			$user = User::load($user->id);

@@ -1,6 +1,5 @@
 <?php
 
-const SESSION_LIFE = new DateTime('-1 hour');
 const SECRET = '#F&55reeTh#4T2$2';
 const DEVEL = true;
 const SITE_NAME = 'Travel Time';
