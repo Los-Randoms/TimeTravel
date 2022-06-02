@@ -14,5 +14,6 @@
 	"/admin/editar-usuario": "Controller\\Form\\EditAdmin",
 	"/admin/eliminar-usuario": "Controller\\Form\\EliAdmin",
 	"/admin/ver-archivos": "Controller\\Page\\ListFiles",
-	"/admin/ver-usuarios": "Controller\\Page\\ListUsers"
+	"/admin/ver-usuarios": "Controller\\Page\\ListUsers",
+	"/terminos": "Controller\\Page\\Terminos"
 }
