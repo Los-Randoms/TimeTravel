@@ -1,12 +1,13 @@
 {
 	"/": "Controller\\Page\\Main",
-	"/cambiar-contraseña": "Controller\\Form\\Changep",
+	"/cambiar-contraseña": "Controller\\Form\\ChangePass",
 	"/iniciar-sesion": "Controller\\Form\\Login",
 	"/registro": "Controller\\Form\\Register",
 	"/salir": "Controller\\Page\\Logout",
-	"/perfil": "Controller\\Page\\Perfil",
-	"/user/editar-usuario": "Controller\\Form\\EditUser",
+	"/perfil": "Controller\\Page\\Profile",
+	"/perfil/editar": "Controller\\Form\\EditProfile",
 	"/admin": "Controller\\Page\\Admin",
+<<<<<<< HEAD
 	"/admin/roles": "Controller\\Page\\Rol",
 	"/admin/editar-rol": "Controller\\Form\\EditRol",
 	"/admin/eliminar-roles": "Controller\\Form\\DeleteRol",
@@ -16,4 +17,11 @@
 	"/admin/ver-archivos": "Controller\\Page\\ListFiles",
 	"/admin/ver-usuarios": "Controller\\Page\\ListUsers",
 	"/terminos": "Controller\\Page\\Terminos"
+=======
+	"/admin/roles": "Controller\\Page\\Roles",
+	"/admin/usuarios": "Controller\\Page\\ListUsers",
+	"/admin/usuario/editar": "Controller\\Form\\EditUser",
+	"/admin/usuario/eliminar": "Controller\\Form\\DeleteUser",
+	"/admin/archivos": "Controller\\Page\\ListFiles"
+>>>>>>> abbe47f60bbf6ccb2fa3937430f4c405b03ca877
 }

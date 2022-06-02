@@ -1,0 +1,15 @@
+<div class="banner">
+	<img src="/public/logo.svg" alt="Logo del sitio">
+</div>
+<main class="container">
+	<h1>Ultimas publicaciones: </h1>
+	<?php if(empty($publications)): ?>
+	<p>No hay publicaciones</p>
+	<?php else: ?>
+		<?php foreach($publications as $entry): ?>
+	<div class="publication">
+		<?= print_r($entry, true) ?>
+	</div>
+		<?php endforeach ?>
+	<?php endif ?>
+</main>

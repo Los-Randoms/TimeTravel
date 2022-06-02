@@ -1,0 +1,23 @@
+<main class="container">
+	<h1>Cambiar info del usuario</h1>
+	<form method="post" enctype="multipart/form-data">
+		<label for="cambiar-correo">Editar correo</label>
+		<div class="edit">
+			<input type="text" id="input-correo" name="email" value="<?= htmlspecialchars($user->email) ?>">
+		</div>
+
+		<label for="name">Editar nombre</label>
+		<div class="edit">
+			<input type="text" id="input-nombre" name="name" value="<?= htmlspecialchars($user->username) ?>">
+		</div>
+
+		<label for="name">Editar rol</label>
+		<div class="edit">
+			<input type="text" id="input-nombre" name="rol" value="<?= htmlspecialchars($user->rol) ?>">
+		</div>
+
+		<label for="Cambiar-Foto">Cambiar foto</label>
+		<input type="file" name="avatar">
+		<button type="submit">Actualizar informacion</button>
+	</form>
+</main>
