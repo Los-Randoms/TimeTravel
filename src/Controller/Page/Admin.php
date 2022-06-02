@@ -9,8 +9,8 @@ class Admin extends Controller
 {
 	function __construct()
 	{
-		$this->styles[] = 'admin.css';
 		$this->access('admin');
+		$this->styles[] = 'admin.css';
 	}
 
 	function title(): string {

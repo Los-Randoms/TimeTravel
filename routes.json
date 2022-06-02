@@ -5,14 +5,11 @@
 	"/registro": "Controller\\Form\\Register",
 	"/salir": "Controller\\Page\\Logout",
 	"/perfil": "Controller\\Page\\Profile",
-	"/perfil/editar": "Controller\\Form\\EditUser",
+	"/perfil/editar": "Controller\\Form\\EditProfile",
 	"/admin": "Controller\\Page\\Admin",
-	"/admin/roles": "Controller\\Page\\Rol",
-	"/admin/rol/editar": "Controller\\Form\\EditRol",
-	"/admin/rol/eliminar": "Controller\\Form\\DeleteRol",
-	"/admin/rol/crear" : "Controller\\Form\\CreateRol",
+	"/admin/roles": "Controller\\Page\\Roles",
 	"/admin/usuarios": "Controller\\Page\\ListUsers",
-	"/admin/usuario/editar": "Controller\\Form\\EditAdmin",
-	"/admin/usuario/eliminar": "Controller\\Form\\EliAdmin",
+	"/admin/usuario/editar": "Controller\\Form\\EditUser",
+	"/admin/usuario/eliminar": "Controller\\Form\\DeleteUser",
 	"/admin/archivos": "Controller\\Page\\ListFiles"
 }

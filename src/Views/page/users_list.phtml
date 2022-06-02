@@ -1,37 +1,43 @@
-<div class="container">
-    
-<h1>Listado de usuarios</h1>
-<table>
-<tr>
-        <th>Id</th>
-        <th>Nombre</th>
-        <th>Rol</th>
-        <th>Editar</th>
-        <th>Eliminar</th>
-    </tr>
-<?php for($i = 0; $i < count($this->usuarios); $i++) { ?>  
-<tr>                                            
-    <td>                                        
-        <?= $this->usuarios[$i]['id'] ?>         
-    </td>  
-    <td> 
-        <?= $this->usuarios[$i]['username'] ?>        
-    </td> 
-    <td> 
-        <?= $this->usuarios[$i]['rol'] ?>     
-    </td> 
-    <td> 
-        <a href="/admin/editar-usuario?id=<?= $this->usuarios[$i]['id'] ?>" class="button">
-            <object data="/public/icons/edit.svg" class="icon"></object>
-        </a>  
-    </td> 
-    <td> 
-        <a href="/admin/eliminar-usuario?id=<?= $this->usuarios[$i]['id'] ?>" class="button">
-            <object data="/public/icons/trash-2.svg" class="icon"></object>
-        </a>  
-    </td> 
-</tr>
-<?php } ?>
-</table>  
-</div>
+<?php
 
+use Modules\Utils;
+
+?>
+<main class="container">
+    <h1>Listado de usuarios</h1>
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Rol</th>
+            <th>Fecha de creacion</th>
+            <th>Opciones</th>
+        </thead>
+        <?php foreach ($users as $user): ?>
+        <tr>
+            <td>
+                <?= $user->id ?>
+            </td>
+            <td>
+                <?= strip_tags($user->username) ?>
+            </td>
+            <td>
+                <?= strip_tags($user->rol) ?>
+            </td>
+            <td>
+                <?= Utils::date($user->creation) ?>
+            </td>
+            <td>
+                <a role="button" href="/admin/usuario/editar?id=<?= $user->id ?>">
+                    <i class="mu mu-edit"></i>
+                    <span>Editar</span>
+                </a>
+                <a role="button" href="/admin/usuario/eliminar?id=<?= $user->id ?>">
+                    <i class="mu mu-delete"></i>
+                    <span>Eliminar</span>
+                </a>
+            </td>
+        </tr>
+        <?php endforeach ?>
+    </table>
+</main>

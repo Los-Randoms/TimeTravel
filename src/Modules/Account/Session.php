@@ -30,7 +30,6 @@ abstract class Session
 	static function init()
 	{
 		session_start();
-		$_SESSION['__last_access'] = new DateTime();
 		if (!self::exists()) {
 			$_SESSION['account'] = [
 				'user' => null,
@@ -41,11 +40,15 @@ abstract class Session
 
 		// Check if the user exists
 		if ($_SESSION['account']['logged']) {
+			if($_SESSION['__last_access'] < SESSION_LIFE)
+				return self::logout();
 			/** @var User */
 			$user = $_SESSION['account']['user'];
 			$user = User::load($user->id);
 			if (empty($user))
-				self::logout();
+				return self::logout();
+			$_SESSION['account']['user'] = $user;
+			$_SESSION['__last_access'] = new DateTime();
 		}
 	}
 	static function login(User $user)

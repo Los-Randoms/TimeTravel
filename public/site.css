@@ -116,3 +116,39 @@ main.container {
   height: 100%;
 }
 
+table {
+	max-width: 100%;
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 400px;
+	overflow: hidden;
+	border-radius: 5px;
+	table-layout: auto;
+}
+
+.overflow-x {
+	overflow-x: auto;
+}
+
+table thead {
+  background-color: var(--table-header-background);
+  color: var(--foreground);
+  text-align: left;
+}
+
+table th, table td {
+    padding: 12px 15px;
+}
+
+table tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: whitesmoke;
+}
+
+table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+

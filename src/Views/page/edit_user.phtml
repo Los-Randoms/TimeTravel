@@ -1,33 +1,23 @@
-<div class="container">
-	<h1> Cambiar informacion de los usuarios </h1>
-	<form manager="form" method="POST" enctype="multipart/form-data" action="/admin/ver-usuarios">
-
+<main class="container">
+	<h1>Cambiar info del usuario</h1>
+	<form method="post" enctype="multipart/form-data">
 		<label for="cambiar-correo">Editar correo</label>
 		<div class="edit">
-			<input type="text" id="input-correo" name="email" value=" <?= $this->user->email ?>">
+			<input type="text" id="input-correo" name="email" value="<?= htmlspecialchars($user->email) ?>">
 		</div>
 
 		<label for="name">Editar nombre</label>
 		<div class="edit">
-			<input type="text" id="input-nombre" name="name" value=" <?= $this->user->username ?>">
+			<input type="text" id="input-nombre" name="name" value="<?= htmlspecialchars($user->username) ?>">
 		</div>
 
 		<label for="name">Editar rol</label>
 		<div class="edit">
-			<input type="text" id="input-nombre" name="rol" value=" <?= $this->user->rol ?>">
+			<input type="text" id="input-nombre" name="rol" value="<?= htmlspecialchars($user->rol) ?>">
 		</div>
 
-		<div class="avatar">
-			<br>
-			<label for="avatar">Imagen anterior</label>
-			<?php if (!is_null($this->image)): ?>
-				<img src="<?= $this->image->url() ?>" >
-			<?php endif ?>
-		</div>
-		<br><br>
 		<label for="Cambiar-Foto">Cambiar foto</label>
 		<input type="file" name="avatar">
-		<a href="/admin/ver-usuarios"><input type="button" value="Regresar a lista de usuarios"></a><br>
 		<button type="submit">Actualizar informacion</button>
 	</form>
-</div>
+</main>

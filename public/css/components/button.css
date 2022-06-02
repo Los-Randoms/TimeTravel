@@ -13,7 +13,6 @@ button, a[role=button], input[type=button], input[type=submit], input[type=reset
 	outline: none;
 	cursor: pointer;
 	background-color: var(--button-background);
-	vertical-align: middle;
 }
 
 button:focus, a[role=button]:focus, input[type=button]:focus, input[type=submit]:focus, input[type=reset]:focus, input[type=color]:focus {

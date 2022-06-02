@@ -1,4 +1,4 @@
-input, textarea {
+input, textarea, select {
 	transition: 0.1s border ease-out, 0.1s outline ease-in-out;
 	display: block;
 	margin-bottom: 0.5em;
@@ -9,6 +9,10 @@ input, textarea {
 	font-weight: inherit;
 	font-size: 0.9em;
 	border: 1px solid var(--input-border);
+}
+
+select {
+	background-color: var(--input--color);
 }
 
 input::placeholder, textarea::placeholder {

@@ -1,5 +1,7 @@
 <?php namespace Modules\Kernel;
 
+use Modules\Mysql\Utils;
+
 class Entity {
 	const TABLE = self::TABLE;
 	public int $id;
@@ -9,8 +11,8 @@ class Entity {
 		$driver = Storage::driver();
 		$insert = $driver->create(static::TABLE);
 		unset($this->id);
-		foreach($this as $k => &$v)
-			$insert->set($k, $v);
+		foreach($this as $key => &$value)
+			$insert->set($key, $value, Utils::valueType($value));
 		$insert->execute();
 		$this->id = $insert->insertId();
 	}
@@ -19,8 +21,8 @@ class Entity {
 		/** @var \Modules\Mysql\Driver */
 		$driver = Storage::driver();
 		$update = $driver->update(static::TABLE);
-		foreach($this as $k => &$v)
-			$update->set($k, $v);
+		foreach($this as $key => &$value)
+			$update->set($key, $value, Utils::valueType($value));
 		$update->condition('id', $this->id);
 		$update->execute();
 	}

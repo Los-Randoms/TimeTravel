@@ -20,12 +20,15 @@
 	--button-border: var(--border-color);
 	--button-border-emphasis: #CFCFCF;
 	--button-outline-color: #EFEFEF;
-	/** Input style */
+	/** Input properties */
 	--input-border: var(--border-color);
 	--input-border-emphasis: #5A5A5A;
 	--input-outline-color: #F7976E;
 	--input-color: var(--foreground-color);
 	--input-color-placeholder: #94989E;
+	/** Table properties */
+	--table-border: var(--border-color);
+	--table-header-background: var(--secondary-color);
 }
 
 /**

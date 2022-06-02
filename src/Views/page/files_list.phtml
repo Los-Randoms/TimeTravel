@@ -1,30 +1,31 @@
-<div class="container">
-    
-<h1>Archivos</h1>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Nombre del archivo</th>
-        <th>Tipo</th>
-        <th>Tamaño</th>
-    </tr>
-<?php for($i = 0; $i < count($this->files); $i++) { ?>  
-        <tr>                                            
-        <td>                         
-            <?= $this->files[$i]->id ?>         
-        </a>               
-    </td>  
-    <td> 
-            <a href="<?=$this->files[$i]->url() ?>">
-            <?= $this->files[$i]->filename ?>        
-        </td> 
-        <td> 
-            <?= $this->files[$i]->mime ?>        
-        </td> 
-        <td> 
-            <?= $this->files[$i]->size ?> bytes        
-        </td> 
-    </tr>
-    <?php } ?>
-</table>  
-</div>
+<main class="container">
+    <h1>Archivos<hr></h1>
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>Nombre del archivo</th>
+            <th>Tipo</th>
+            <th>Tamaño</th>
+        </thead>
+        <tbody>
+            <?php foreach($files as $file): ?>
+            <tr>
+                <td>
+                    <?= $file->id ?>
+                </td>
+                <td>
+                    <a href="<?= $file->url() ?>">
+                        <?= strip_tags($file->filename) ?>
+                    </a>
+                </td>
+                <td>
+                    <?= strip_tags($file->mime) ?>
+                </td>
+                <td>
+                    <?= $file->size ?> bytes
+                </td>
+            </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
+</main>
