@@ -1,0 +1,27 @@
+
+.user-info span.key {
+    background-color: var(--secondary-color);
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 1em;
+}
+
+.pfp {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    display: block;
+    overflow: hidden;
+    margin: auto;
+}
+
+.banned {
+    background-color: tomato;
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 1em;
+    font-size: 1rem;
+    vertical-align: middle;
+    color: whitesmoke;
+}
+
