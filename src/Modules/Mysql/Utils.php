@@ -6,7 +6,7 @@ use Error;
 
 final class Utils
 {
-	static function valueType(mixed $value): string {
+	static function valueType($value): string {
 		$type = gettype($value);
 		switch($type) {
 			case 'boolean':

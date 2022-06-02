@@ -10,7 +10,7 @@ class View {
 		$this->data = $data;
 	}
 
-	function set(string $key, mixed $value) {
+	function set(string $key, $value) {
 		$this->data[$key] = $value;
 	}
 
