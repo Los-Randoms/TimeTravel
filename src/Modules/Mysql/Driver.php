@@ -31,9 +31,4 @@ class Driver extends mysqli implements KernelDriver
 	{
 		return new Delete($this, $table);
 	}
-
-	function __destruct() 
-	{
-		$this->close();
-	}
 }

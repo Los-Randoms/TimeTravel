@@ -8,14 +8,15 @@ use Modules\Kernel\Form;
 use Modules\Kernel\Message;
 use Modules\Kernel\Storage;
 use Modules\Kernel\View;
+use Modules\Router\Router;
 
 class Login extends Form
 {
+	protected User $user;
 
 	function __construct()
 	{
-		// $this->style('css/login.css');
-		// $this->header[] = new Navbar;
+		$this->styles[] = 'login.css';
 	}
 
 	function title(): string
@@ -25,17 +26,13 @@ class Login extends Form
 
 	function verify(): bool
 	{
-		# if (!Form::check($_POST, [
-		# 	'email' => '[!?#]string|',
-		# 	'password' => '[!?#]string|',
-		# ])) $this->error('Formulario invalido');
-
 		/** @var \Modules\Mysql\Driver */
 		$driver = Storage::driver();
-		$select = $driver->read(User::TABLE);
-		$select->condition('email', $_POST['email']);
-		$select->execute();
-		$this->user = $select->fetch(User::class);
+		$query = $driver->read(User::TABLE);
+		$query->condition('email', $_POST['email']);
+		$query->execute();
+		$this->user = $query->fetch(User::class);
+
 		if (empty($this->user))
 			return $this->error('Verifique los datos');
 		if (!password_verify($_POST['password'], $this->user->password))
@@ -47,6 +44,7 @@ class Login extends Form
 	{
 		Session::login($this->user);
 		Message::add('Sesion iniciada');
+		return Router::get('/');
 	}
 
 	function content()

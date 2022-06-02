@@ -13,12 +13,13 @@
     </form>
     <div class="items" element="items">
 <?php if ($_SESSION['account']['logged']): ?>
-    <?php if ($_SESSION['account']['admin']): ?>
-        <a href="/admin" role="button">Panel</a>
-    <?php endif ?>
         <a href="/perfil" role="button">
             <?= $_SESSION['account']['user']->username ?>
         </a>
+    <?php if ($_SESSION['account']['admin']): ?>
+        <a href="/admin" role="button">Panel</a>
+    <?php endif ?>
+        <a href="/salir" role="button">Cerrar sesion</a>
 <?php else: ?>
         <a href="/iniciar-sesion" role="button">Inicar sesion</a>
         <a href="/registro" role="button">Registro</a>

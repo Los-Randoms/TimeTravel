@@ -7,10 +7,6 @@ class ErrorPage extends Controller {
 	private Error|Exception $error;
 
 	function __construct(Error|Exception $error) {
-		if($error->getCode() !== 0)
-			http_response_code($error->getCode());
-		else
-			http_response_code(500);
 		$this->error = $error;
 	}
 

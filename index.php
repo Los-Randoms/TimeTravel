@@ -35,6 +35,7 @@ try {
 		echo $response;
 	}
 } catch (Error | Exception $error) {
+	header('Content-Type: text/html; charset=utf-8');
 	$controller = new ErrorPage($error);
 	$page->set('title', $controller->title());
 	$page->set('content', $controller->content());
@@ -42,4 +43,4 @@ try {
 }
 
 Session::stop();
-
+die;
