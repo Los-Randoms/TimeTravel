@@ -1,15 +1,17 @@
 .login-container {
-  margin-top: auto;  
+  margin-top: auto;
   display: flex;
   gap: 2em;
   flex-flow: row wrap;
   margin-top: 50px;
 }
-h1{
-  text-align: center;
-  margin-top: 100px;
-  font-family: Staatliches;
+body{
+  background-image: url(/public/p.jpg);
 }
+.title {
+  text-align: center;
+}
+
 .login-card {
   max-width: min-content;
   height: min-content;
@@ -23,7 +25,8 @@ h1{
 .login-info {
   flex: 1 1 300px;
 }
-.body-style{
+
+/*.body-style {
   height: 100%;
   background-repeat: no-repeat;
   background-size: 100% 100%;

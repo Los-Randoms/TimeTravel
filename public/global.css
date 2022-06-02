@@ -1,6 +1,7 @@
 @import url(/public/css/components/button.css);
 @import url(/public/css/components/input.css);
 @import url(/public/css/components/microns.css);
+@import url('https://fonts.googleapis.com/css2?family=Crete+Round&display=swap');
 
 /**
  * Define variables
@@ -8,10 +9,10 @@
 :root {
 	--foreground-color: #16161D;
 	--background-color: #FFFFFF;
-	--primary-color: #FDEFA4;
+	--primary-color: #FFF74B;
 	--secondary-color: #FFC4AA;
 	--accent-color: #AEC4FB;
-	--font-family: sans-serif;
+	--font-family: "Crete Round", sans-serif;
 	--shadow-color: #69696944;
 	--border-color: #A9A9A9;
 	/** Button properties */
@@ -35,11 +36,14 @@
  * Set the page body apperance and global
  * styling for default elements
  * */
-*, ::after, ::before {
+*,
+::after,
+::before {
 	box-sizing: border-box;
 }
 
-:root, body {
+:root,
+body {
 	margin: 0;
 	font-family: var(--font-family);
 	font-size: 16px;
@@ -49,12 +53,18 @@
 	scrollbar-color: var(--background-color) var(--foreground-color);
 }
 
-pre, code {
-	white-space: pre-wrap;       /* css-3 */
-	white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-	white-space: -pre-wrap;      /* Opera 4-6 */
-	white-space: -o-pre-wrap;    /* Opera 7 */
-	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+pre,
+code {
+	white-space: pre-wrap;
+	/* css-3 */
+	white-space: -moz-pre-wrap;
+	/* Mozilla, since 1999 */
+	white-space: -pre-wrap;
+	/* Opera 4-6 */
+	white-space: -o-pre-wrap;
+	/* Opera 7 */
+	word-wrap: break-word;
+	/* Internet Explorer 5.5+ */
 	padding: 5px;
 	border: 1px solid lightgray;
 }
@@ -70,7 +80,8 @@ h1, h2, h3, h4, h4, h6, p, dd, dl, figure, blockquote, ol, ul {
 /**
  * Images styles
  * */
-img, input[type=image] {
+img,
+input[type=image] {
 	max-width: 100%;
 	border: none;
 	background-color: transparent;

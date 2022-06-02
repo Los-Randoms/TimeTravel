@@ -1,32 +1,32 @@
-<div class="body-style">
-
-	<body style="background-image: url('/public/fondito.png');"> 
-<div class="container login-container">
+<main class="container">
 	<div class="info-left">
 		<div class="register-info">
 			<h1>¡Forme parte de nuestra comunidad!</h1>
 			<p>Cree una cuenta para ser parte de la comunidad mas grande de viajes en ¡Mexico!</p>
 			<p>Al crearse una cuenta usted acepta los <a href="/terminos">terminos de privacidad</a> de nuestra pagina web</p>
 		</div>
-		<div class="card register-form">
-			<h2>Registro</h2>
-			<form enctype="application/x-www-form-urlencoded"  action="/" manager="form">
-				<label>Correo electronico: </label>
+		<h2>Registro</h2>
+		<form enctype="application/x-www-form-urlencoded" action="/" manager="form">
+			<label>Correo electrónico: </label>
+			<div class="input-group">
 				<input required type="mail" name="email" size="30">
-				<label>Nombre de usuario: </label>
+				<i class="mu mu-mail floating"></i>
+			</div>
+			<label>Nombre completo: </label>
+			<div class="input-group">
 				<input required type="text" name="username" size="30">
-				<label>Contraseña: </label>
-				<input required type="password" name="password" size="30">
-				<label>Confirmar contraseña: </label>
-				<input required type="password" name="password2" size="30">
-				<button type="submit">Registrarse</button>
-			</form>
-			<p><b>¿Ya estas registrado?</b> <a href="/iniciar-sesion">Inicia sesion</a></p>
-		</div>
+				<i class="mu mu-mail floating"></i>
+			</div>
+			<label>Cree una contraseña: </label>
+			<input required type="password" name="password" size="30">
+			<label>Confirmar contraseña: </label>
+			<input required type="password" name="password2" size="30">
+			<button type="submit">Registrarse</button>
+		</form>
+		<p><b>¿Ya estas registrado?</b> <a href="/iniciar-sesion">Inicia sesion</a></p>
+	</div>
 	</div>
 	<div class="info-right">
 		<img src="/public/logo.png" class="logo-img">
 	</div>
-<div>
-</body>
-</div>
+</main>

@@ -1,10 +1,12 @@
-.body{
+.body {
     text-align: justify;
 }
-h1{
+
+h1 {
     text-align: center;
 }
-.img{
+
+.img {
     display: flex;
     justify-content: center;
     margin-top: -80px;

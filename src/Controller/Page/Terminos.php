@@ -1,14 +1,23 @@
 <?php
+
 namespace Controller\Page;
 
 use Controller\Component\Navbar;
-use Modules\Kernel\Page;
+use Modules\Kernel\Controller;
 use Modules\Kernel\View;
 
-class Terminos extends Page {
-    function __construct(){
-        parent::__construct('terminos.phtml');
-		$this->style('css/terminos.css');
-        $this->header[] = new Navbar();
+class Terminos extends Controller
+{
+    function __construct()
+    {
+        $this->styles[] = 'terminos.css';
+    }
+    function content()
+    {
+        return new View('page/terminos.phtml');
+    }
+    function title(): string
+    {
+        return "Terminos y condiciones";
     }
 }
