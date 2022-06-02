@@ -21,6 +21,8 @@ try {
 	if (is_object($response) && $response instanceof View) { # The response is a view
 		header('Content-Type: text/html; charset=utf-8');
 		$page->set('title', $controller->title());
+		$page->set('styles', $controller->styles ?? []);
+		$page->set('scripts', $controller->scripts ?? []);
 		$page->set('content', $response);
 		echo $page;
 	} else if (is_object($response) && $response instanceof Route) { # The response is a redirect

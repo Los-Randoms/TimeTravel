@@ -1,7 +1,13 @@
-import alert from './js/alerts.js';
+import alerts from './js/alerts.js';
+import navbar from './js/navbar.js';
 
-// Get all the alerts
-const alerts = document.querySelectorAll("[handler=alert]");
-for(let element of alerts)
-	element.handler = alert(element); 
+const site_alerts = document.getElementById('site-alerts');
+const main_navbar = document.getElementById('main-navigation');
+
+function main() {
+	Object.assign(site_alerts, alerts).init();
+	Object.assign(main_navbar, navbar).init();
+}
+
+document.addEventListener('DOMContentLoaded', main);
 

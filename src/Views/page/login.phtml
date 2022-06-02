@@ -1,6 +1,12 @@
-<main>
+<?php
+
+use Modules\Kernel\View;
+
+?>
+<?= new View('navbar.phtml') ?>
+<main class="container">
 	<h1>Iniciar sesión</h1>
-	<form manager="form" enctype="multipart/form-data" action="/">
+	<form enctype="application/x-www-form-urlencoded" method="post">
 		<label>Ingresa tu correo: </label>
 		<input required type="email" name="email" size="30">
 		<label>Ingresa tu contraseña: </label>

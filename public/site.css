@@ -1,3 +1,9 @@
+main.container {
+	max-width: 1000px;
+	padding: 1em;
+	margin: auto;
+}
+
 #main-navigation {
 	background-color: var(--primary-color);
 	display: flex;
@@ -8,17 +14,24 @@
 	align-items: center;
 	box-shadow: 0 0 10px var(--shadow-color);
 	padding: 0 5%;
+	gap: 10px;
 }
 
-#main-navigation .back-button {
-	margin-right: 1em;
+#main-navigation .search {
+	flex: 1 1 auto;
+}
+
+#main-navigation .search .input-group {
+	max-width: 250px;
+	margin: auto;
+}
+
+#main-navigation .mobile-items {
+	display: none;
 }
 
 #main-navigation .items {
 	display: flex;
-	flex-flow: row nowrap;
-	gap: 5px;
-	margin-left: auto;
 }
 
 #main-navigation .brand {

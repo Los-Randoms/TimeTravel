@@ -14,6 +14,9 @@ use Modules\Kernel\Message;
 	<link href="/public/global.css" rel="stylesheet" />
 	<link href="/public/site.css" rel="stylesheet" />
 	<link href="/public/site-small.css" rel="stylesheet" media="(max-width: 800px)" />
+	<?php foreach($styles ?? [] as $href): ?>
+	<link href="/public/css/<?= $href?>" rel="stylesheet" />
+	<?php endforeach ?>
 	<script src="/public/main.js" type="module"></script>
 </head>
 <body>
@@ -23,5 +26,8 @@ use Modules\Kernel\Message;
 		<?php endwhile ?>
 	</div>
 	<?= $content ?>
+	<?php foreach($scripts ?? [] as $src): ?>
+	<script src="/public/js/<?= $src ?>" type="module"></script>
+	<?php endforeach ?>
 </body>
 </html>
