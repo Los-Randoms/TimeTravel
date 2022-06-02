@@ -2,15 +2,13 @@
 
 namespace Modules\Kernel;
 
-use Exception;
-use Error;
 use Throwable;
 
 class ErrorPage extends Controller
 {
 	private Throwable $error;
 
-	function __construct(Error|Exception $error)
+	function __construct(Throwable $error)
 	{
 		$this->error = $error;
 	}
