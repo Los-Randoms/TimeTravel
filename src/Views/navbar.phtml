@@ -3,7 +3,9 @@
         <i class="mu mu-arrow-left"></i>
     </button>
     <a href="/" class="brand">
-        <h1 class="title"><?= SITE_NAME ?></h1>
+        <h1 class="title">
+            <?= SITE_NAME ?>
+        </h1>
     </a>
     <form action="/buscar" class="search">
         <div class="input-group">
@@ -12,18 +14,23 @@
         </div>
     </form>
     <div class="items" element="items">
-<?php if ($_SESSION['account']['logged']): ?>
-        <a href="/perfil" role="button">
-            <?= $_SESSION['account']['user']->username ?>
+        <?php if ($_SESSION['account']['logged']) : ?>
+        <a href="/perfil" role="button" class="profile">
+            <div class="pfp">
+                <img src="<?= $pfp ? $pfp->url() : '/public/user.png' ?>" class="contains" loading="lazy" alt="Imagen de perfil">
+            </div>
+            <span>
+                <?= $_SESSION['account']['user']->username ?>
+            </span>
         </a>
-    <?php if ($_SESSION['account']['admin']): ?>
+        <?php if ($_SESSION['account']['admin']) : ?>
         <a href="/admin" role="button">Panel</a>
-    <?php endif ?>
+        <?php endif ?>
         <a href="/salir" role="button">Cerrar sesion</a>
-<?php else: ?>
+        <?php else : ?>
         <a href="/iniciar-sesion" role="button">Inicar sesion</a>
         <a href="/registro" role="button">Registro</a>
-<?php endif ?>
+        <?php endif ?>
     </div>
     <div class="mobile-items">
         <button element="items-toggle">
@@ -31,4 +38,3 @@
         </button>
     </div>
 </nav>
-

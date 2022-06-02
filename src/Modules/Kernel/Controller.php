@@ -7,17 +7,19 @@ use Modules\Account\User;
 
 abstract class Controller
 {
-	private array $access = [];
+	private array $access;
 
 	function init() {
 		# Check if the user has permissions
-		if(!empty($this->access)) {
+		if(isset($this->access)) {
 			if(!$_SESSION['account']['logged'])
 				throw new Exception('', 403);
-			/** @var User */
-			$user = $_SESSION['account']['user'];
-			if(!in_array($user->rol, $this->access))
-				throw new Exception('', 403);
+			if(!empty($this->access)) {
+				/** @var User */
+				$user = $_SESSION['account']['user'];
+				if(!in_array($user->rol, $this->access))
+					throw new Exception('', 403);
+			}
 		}
 	}
 
@@ -28,5 +30,6 @@ abstract class Controller
 	function title(): string {
 		return SITE_NAME;
 	}
+
 	abstract function content();
 }

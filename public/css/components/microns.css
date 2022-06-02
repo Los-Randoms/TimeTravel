@@ -23,6 +23,7 @@
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   user-select: none;
+  vertical-align: sub;
 }
 
 

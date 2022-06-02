@@ -40,7 +40,6 @@
 	margin: 0;
 	font-family: var(--font-family);
 	font-size: 16px;
-	font-weight: 300;
 	display: block;
 	background-color: var(--background-color);
 	color: var(--foreground-color);
@@ -60,10 +59,11 @@ pre, code {
 /** 
  * Remove the margin in elements
  * */
+/* 
 h1, h2, h3, h4, h4, h6, p, dd, dl, figure, blockquote, ol, ul {
 	margin: 0;
 }
-
+*/
 /**
  * Images styles
  * */

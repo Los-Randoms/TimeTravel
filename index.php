@@ -35,6 +35,8 @@ try {
 		echo $response;
 	}
 } catch (Error | Exception $error) {
+	while(ob_get_level() > 0)
+		ob_end_clean();
 	header('Content-Type: text/html; charset=utf-8');
 	$controller = new ErrorPage($error);
 	$page->set('title', $controller->title());
@@ -43,4 +45,3 @@ try {
 }
 
 Session::stop();
-die;

@@ -7,6 +7,8 @@ const SITE_NAME = 'Travel Time';
 const UPLOAD_DIR = './public/files';
 const TMP_DIR = __DIR__ . '/tmp';
 
+setlocale(LC_TIME, 'es_MX');
+
 # Development config
 if(DEVEL) {
 	# Upload directories config
