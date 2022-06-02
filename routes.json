@@ -1,5 +1,6 @@
 {
 	"/": "Controller\\Page\\Main",
+	"/publicacion": "Controller\\Page\\Publication",
 	"/cambiar-contraseña": "Controller\\Form\\ChangePass",
 	"/iniciar-sesion": "Controller\\Form\\Login",
 	"/registro": "Controller\\Form\\Register",
@@ -7,6 +8,11 @@
 	"/perfil": "Controller\\Page\\Profile",
 	"/perfil/editar": "Controller\\Form\\EditProfile",
 	"/admin": "Controller\\Page\\Admin",
+	"/admin/comentarios": "Controller\\Page\\ListComments",
+	"/admin/publicaciones": "Controller\\Page\\ListPublications",
+	"/admin/publicacion/nueva": "Controller\\Form\\CreatePublication",
+	"/admin/publicacion/editar": "Controller\\Form\\EditPublication",
+	"/admin/publicacion/eliminar": "Controller\\Form\\DeletePublication",
 	"/admin/roles": "Controller\\Page\\Roles",
 	"/admin/usuarios": "Controller\\Page\\ListUsers",
 	"/admin/usuario/editar": "Controller\\Form\\EditUser",
