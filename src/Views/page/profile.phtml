@@ -5,15 +5,15 @@ use Modules\Utils;
 ?>
 <main class="container">
     <div class="pfp">
-        <?php if(!empty($pfp)): ?>
+        <?php if (!empty($pfp)) : ?>
         <img src="<?= $pfp->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
-        <?php else: ?>
+        <?php else : ?>
         <img src="/public/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
         <?php endif ?>
     </div>
     <h1>
         <i class="mu mu-user"></i>
-        <?= strip_tags($user->username) ?>
+        <?= htmlspecialchars($user->username) ?>
         <!--       
         <span class="banned">
             <i class="mu mu-fail"></i>
