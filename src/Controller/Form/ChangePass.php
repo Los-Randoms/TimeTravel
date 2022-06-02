@@ -53,10 +53,11 @@ class ChangePass extends Form
         $this->user->update();
         Message::add("Se ha enviado a su correo una nueva contraseña temporal {$newp}");
 
-        //mail($correo, 
-        //'Cambio de contraseña',  
-        //"Hemos recibido su solicitud de cambio de contraseña y su nueva contraseña es: $newp");
-
+        // mail(
+        //   $correo, 
+        //   'Cambio de contraseña',  
+        //   "Hemos recibido su solicitud de cambio de contraseña y su nueva contraseña es: $newp"
+        // );
     }
 }
 
