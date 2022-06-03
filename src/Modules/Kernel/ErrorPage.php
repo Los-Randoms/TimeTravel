@@ -11,7 +11,13 @@ class ErrorPage extends Controller
 	function __construct(Throwable $error)
 	{
 		$this->error = $error;
+		$this->styles[] = 'error.css';
 	}
+	function title(): string
+	{
+		return 'ERROR';
+	}
+
 
 	function content()
 	{

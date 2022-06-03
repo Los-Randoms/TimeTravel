@@ -1,0 +1,80 @@
+.t {
+  text-align: left;
+  color: #ffcf73;
+}
+
+.login__header {
+  background-color: #CF7500;
+  border-top-left-radius: 1.25em;
+  border-top-right-radius: 1.25em;
+  color: #fff;
+  padding: 1.25em 1.625em;
+  text-align: center;
+}
+
+.login__header :first-child {
+  margin-top: 0;
+}
+
+.login__header :last-child {
+  margin-bottom: 0;
+}
+
+.login__form {
+  border-bottom-left-radius: 1.25em;
+  border-bottom-right-radius: 1.25em;
+  background: linear-gradient(to bottom right, #E8D4B4, #ffb14c);
+  color: #000;
+  display: grid;
+  gap: 0.875em;
+  padding: 1.25em 1.625em;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-image: url(/public/p.jpg);
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.login {
+  width: 400px;
+  margin: auto;
+  max-width: 100%;
+}
+
+.btnlog {
+  background-color: #ff9000;
+  color: #fff;
+  padding: 0.25em 1.5em;
+  align-items: center;
+}
+
+.btnlog:focus,
+.btnlog:hover {
+  background-color: #B5592A;
+}
+
+.login input[type="email"],
+.login input[type="password"] {
+  background-color: #eee;
+  color: #777;
+  padding: 0.25em 0.625em;
+  width: 100%;
+}
+
+.login input {
+  border-radius: 0.1875em;
+}
+
+.login input[type="submit"] {
+  display: block;
+  margin: 0 auto;
+}

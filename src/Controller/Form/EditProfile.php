@@ -3,6 +3,7 @@
 namespace Controller\Form;
 
 use Modules\Account\User;
+use Modules\Kernel\File;
 use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
 use Modules\Kernel\Message;
@@ -16,16 +17,18 @@ class EditProfile extends Form
     {
         $this->access();
         $this->styles[] = 'editprofile.css';
+        
     }
-
+    
     function title(): string
     {
         return 'Editar información';
     }
-
+    
     function init()
     {
         $this->currentUser = $_SESSION['account']['user'];
+        $this->archivo = File::load($this->currentUser->avatar);
         return parent::init();
     }
 
@@ -54,6 +57,9 @@ class EditProfile extends Form
 
         if (!is_null($this->file)) {
             $this->currentUser->avatar = $this->file->id;
+            if(!empty($this->archivo)){
+                FileManager::delete($this->archivo);
+            }
         }
         $this->currentUser->update();
         Message::add('Se ha actualizado su información');

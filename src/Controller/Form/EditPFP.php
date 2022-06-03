@@ -22,23 +22,21 @@ class EditPFP extends Form
         $this->access('admin');
         $this->styles[] = 'editadmin.css';
 
-        /** @var \Modules\Mysql\Driver */
-        $driver = Storage::driver();
-        $select = $driver->read(User::TABLE);
-        $select->condition('id', $_POST['id']);
-        $select->execute();
-        $this->user = $select->fetch(User::class);
+        $this->user=User::load($_POST['id']);
+        if(!is_null(File::load($this->user->avatar))){
+            $this->archivo = File::load($this->user->avatar);
+        }
     }
 
     function init()
     {
         if (empty($this->user))
             return Router::get('/admin/usuarios');
-        if ($this->user->id == $_SESSION['account']['user']->id)
+            if ($this->user->id == $_SESSION['account']['user']->id)
             return Router::get('/perfil/editar');
-        return parent::init();
-    }
-
+            return parent::init();
+        }
+        
     function content()
     {
         return Router::get("/admin/usuario/editar");
@@ -53,11 +51,15 @@ class EditPFP extends Form
         }
         return true;
     }
-
+    
     function submit()
     {
+
         if (!is_null($this->file)) {
             $this->user->avatar = $this->file->id;
+            if(!empty($this->archivo)){
+                FileManager::delete($this->archivo);
+            }
         }
         $this->user->update();
         Message::add('Se ha actualizado su información');
