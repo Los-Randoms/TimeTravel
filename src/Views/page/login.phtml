@@ -1,12 +1,24 @@
 <main class="container">
-	<h1>Iniciar sesión</h1>
-	<form enctype="application/x-www-form-urlencoded" method="post">
-		<label>Ingresa tu correo: </label>
-		<input required type="email" name="email" size="30">
-		<label>Ingresa tu contraseña: </label>
-		<input required type="password" name="password" size="30">
-		<button type="submit">Entrar</button>
-	</form>
-	<h4>¿No tienes cuenta? <a href="/registro">Registrate</a></h4>
-	<a href="/cambiar-contraseña">¿Olvido su contraseña?</a>
+	<h1 class="t"> ¡¡BIENVENIDO DE NUEVO!!</h1>
+	<h2>Inicie su sesión para seguir descubriendo el mundo</h2>
+	<div class="login">
+		<header class="login__header">
+			<h2>Inicio de Sesión <i class="mu mu-group"></i></h2>
+		</header>
+		<form enctype="application/x-www-form-urlencoded" class="login__form" method="post">
+			<div>
+				<label>Ingresa tu correo: </label>
+				<input required type="email" name="email" size="30" placeholder="mail@address.com">
+			</div>
+			<div>
+				<label>Ingresa tu contraseña: </label>
+				<input required type="password" name="password" size="30" placeholder="password">
+			</div>
+			<div>
+				<button type="submit" class="btnlog">Entrar</button>
+			</div>
+			<h4>¿No tienes cuenta? <a href="/registro">Registrate</a></h4>
+			<a href="/cambiar-contraseña">¿Olvidó su contraseña?</a>
+		</form>
+	</div>
 </main>

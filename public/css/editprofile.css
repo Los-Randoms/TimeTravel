@@ -1,8 +1,62 @@
 .avatar {
-    border-radius: 50%;
-    width: 300px;
-    height: 300px;
-    display: block;
-    overflow: hidden;
-    
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  display: block;
+  overflow: hidden;
+  margin: auto;
+}
+
+.edit__form {
+  border-bottom-left-radius: 1.25em;
+  border-bottom-right-radius: 1.25em;
+  background: linear-gradient(to bottom right, #FF9F45, #FFBC80);
+  color: #000;
+  display: grid;
+  gap: 0.875em;
+  padding: 1.25em 1.625em;
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+.login__header {
+  background-color: #FF7700;
+  border-top-left-radius: 1.25em;
+  border-top-right-radius: 1.25em;
+  color: #fff;
+  padding: 1.25em 1.625em;
+  text-align: center;
+}
+
+.login__header :first-child {
+  margin-top: 0;
+}
+
+.login__header :last-child {
+  margin-bottom: 0;
+}
+
+.login {
+  width: 750px;
+  margin: auto;
+  max-width: 100%;
+}
+
+.btn_act {
+  background-color: #FB8D62;
+  color: #fff;
+}
+
+.btn_act:focus,
+.btn_act:hover {
+  background-color: #FF7800;
+}
+
+.back {
+  text-align: center;
 }

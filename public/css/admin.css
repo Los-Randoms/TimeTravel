@@ -49,6 +49,25 @@ ul, ol {
   margin: center;
   font-size: 50px;
 }
+  
+  /* Contenedor centrado de bienvenida  */
+
+  .margin-auto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 560px;
+    width: 1300px;
+ 
+  
+    background: rgb(213, 90, 90);
+    color: black;
+  }
+  
+  .margin-auto__content {
+    margin: center;
+    font-size: 50px;
+  }
 
 .text {
   text-align: center;

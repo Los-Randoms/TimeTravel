@@ -13,7 +13,7 @@ class ChangePass extends Form
 {
     function __construct()
     {
-        $this->style[] = 'change-password.css';
+        $this->styles[] = 'change-password.css';
     }
 
     function title(): string
