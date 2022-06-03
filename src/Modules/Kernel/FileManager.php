@@ -45,16 +45,16 @@ abstract class FileManager {
 	static function move(File $file, string $to) {
 		$old_path = $file->path;
 		$new_path = UPLOAD_DIR . "/$to";
+		$extension = pathinfo($file->filename, PATHINFO_EXTENSION);
 		if(!file_exists($new_path))
 			mkdir($new_path, 0755, true);
-		$ufilename = "$_SERVER[REQUEST_TIME_FLOAT]|{$file->filename}";
-		$ufilename = md5($ufilename);
-		$new_path = "$new_path/$ufilename";
+		$ufilename = uniqid('file_', true);
+		$new_path = "$new_path/$ufilename.$extension";
 		if(is_uploaded_file($file->path))
 			move_uploaded_file($old_path, $new_path);
 		else
 			rename($old_path, $new_path);
-		$file->path = "$to/$ufilename";
+		$file->path = "$to/$ufilename.$extension";
 	}
 
 	function delete(File $file) {
