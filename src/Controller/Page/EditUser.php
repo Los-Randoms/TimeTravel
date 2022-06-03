@@ -16,7 +16,7 @@ class EditUser extends Controller
 
     function __construct()
     {
-        $this->access('admin');
+        $this->access('admin', 'moderator');
         $this->styles[] = 'editadmin.css';
 
         /** @var \Modules\Mysql\Driver */

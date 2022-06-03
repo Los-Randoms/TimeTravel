@@ -21,6 +21,4 @@
 	"/admin/archivos": "Controller\\Page\\ListFiles",
 	"/admin/usuario/editar/nombre": "Controller\\Form\\EditName",
 	"/admin/usuario/editar/foto": "Controller\\Form\\EditPFP"
-	
-
 }
