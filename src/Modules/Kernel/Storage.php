@@ -47,7 +47,7 @@ interface Select
 {
 	function condition(
 		string $field,
-		&$ref,
+		$ref,
 		string $type = 's',
 		string $condition = '=',
 		string $operator = 'AND',
@@ -62,7 +62,7 @@ interface Delete
 {
 	function condition(
 		string $field,
-		&$ref,
+		$ref,
 		string $type = 's',
 		string $condition = '=',
 		string $operator = 'AND',
@@ -72,17 +72,17 @@ interface Delete
 
 interface Insert
 {
-	function set(string $field, &$ref, string $type = 's');
+	function set(string $field, $ref, string $type = 's');
 }
 
 interface Update
 {
 	function orderBy(string $field, string $order = 'ASC');
 	function limit(int $count, int $offset);
-	function set(string $field, &$ref, string $type = 's');
+	function set(string $field, $ref, string $type = 's');
 	function condition(
 		string $field,
-		&$ref,
+		$ref,
 		string $type = 's',
 		string $condition = '=',
 		string $operator = 'AND',
