@@ -31,7 +31,10 @@ class BanUser extends Form
 
     function content()
     {
-        return new View('page/ban-user.phtml');
+
+        return new View('page/ban-user.phtml', [
+            "user"=> $this->user
+        ]);
     }
 
     public function verify(): bool
@@ -44,8 +47,12 @@ class BanUser extends Form
     function submit()
     {
         $this->user->banned=!$this->user->banned;
-        User::remove($this->user->id);
-        Message::add('Se ha eliminado el usuario');
+        $this->user->update();
+        if($this->user->banned){
+            Message::add('Se ha baneado al usuario');
+        } else{
+            Message::add('Se ha desbaneado al usuario');
+        }
         return Router::get('/admin/usuarios');
     }
 }

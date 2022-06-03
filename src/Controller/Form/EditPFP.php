@@ -25,7 +25,7 @@ class EditPFP extends Form
         /** @var \Modules\Mysql\Driver */
         $driver = Storage::driver();
         $select = $driver->read(User::TABLE);
-        $select->condition('id', $_GET['id']);
+        $select->condition('id', $_POST['id']);
         $select->execute();
         $this->user = $select->fetch(User::class);
     }
@@ -41,14 +41,7 @@ class EditPFP extends Form
 
     function content()
     {
-        $image = null;
-        if (!empty($this->user->avatar))
-            $image = File::load($this->user->avatar);
-        return new View('page/edit_user.phtml', [
-            'user' => $this->user,
-            'image' => $image
-
-        ]);
+        return Router::get("/admin/usuario/editar");
     }
 
     public function verify(): bool

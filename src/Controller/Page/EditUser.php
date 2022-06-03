@@ -1,17 +1,15 @@
 <?php
 
-namespace Controller\Form;
+namespace Controller\Page;
 
 use Modules\Account\User;
+use Modules\Kernel\Controller;
 use Modules\Kernel\File;
-use Modules\Kernel\FileManager;
-use Modules\Kernel\Form;
-use Modules\Kernel\Message;
 use Modules\Kernel\Storage;
 use Modules\Kernel\View;
 use Modules\Router\Router;
 
-class EditUser extends Form
+class EditUser extends Controller
 {
     protected User $currentUser;
     protected ?User $user;
@@ -63,28 +61,4 @@ class EditUser extends Form
 
     }
 
-    public function verify(): bool
-    {
-        $this->file = FileManager::get('avatar');
-        if (!is_null($this->file)) {
-            FileManager::move($this->file, 'avatars');
-            $this->file->save();
-        }
-        return true;
-    }
-
-    function submit()
-    {
-        $this->user->username = $_POST['name'];
-        $this->user->email = $_POST['email'];
-        $this->user->rol = $_POST['rol'];
-
-        if (!is_null($this->file)) {
-            $this->user->avatar = $this->file->id;
-        }
-
-        $this->user->update();
-        Message::add('Se ha actualizado su información');
-        return Router::get('/admin/usuarios');
-    }
 }

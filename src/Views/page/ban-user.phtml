@@ -1,8 +1,13 @@
 <main class="container">
     <h1>Banear cuenta</h1>
     <form method="post" enctype="application/x-www-form-urlencoded">
-        <p>Una vez banees a este usuario, no podra volver a iniciar sesion</p>
-        <button type="submit">Banear Usuario</button>
+        <?php if($user->banned):?>
+            <p>Una vez desbanees a este usuario, podra volver a iniciar sesion</p>
+            <button type="submit">Desbanear Usuario</button>            
+        <?php else: ?>
+            <p>Una vez banees a este usuario, no podra volver a iniciar sesion</p>
+            <button type="submit">Banear Usuario</button>  
+        <?php endif ?>
         <a href="/admin/usuarios" role="button">Regresar</a>
     </form>
 </main>

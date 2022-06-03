@@ -49,11 +49,13 @@ class EditName extends Form
 
     public function verify(): bool
     {
+
         return true;
     }
 
     function submit()
     {
+        
         $this->user->rol =  $this->rol['name'];
         $this->user->username = $_POST['name'];
         $this->user->update();
