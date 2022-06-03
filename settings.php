@@ -3,10 +3,10 @@
 const SECRET = '#F&55reeTh#4T2$2';
 const DEVEL = true;
 const SITE_NAME = 'Travel Time';
-const UPLOAD_DIR = './public/files';
+const UPLOAD_DIR = __DIR__ . '/public/files';
 const TMP_DIR = __DIR__ . '/tmp';
 
-setlocale(LC_TIME, 'es_MX');
+setlocale(LC_TIME, 'es_ES');
 
 # Development config
 if(DEVEL) {

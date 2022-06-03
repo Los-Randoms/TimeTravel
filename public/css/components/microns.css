@@ -10,11 +10,8 @@
        url("/public/fonts/microns.svg") format("svg");
 }
 
-.mu {
-}
-
 .mu::before {
-  font-size: 20px;
+  font-size: 1em;
 	pointer-events: none;
   font-family: microns;
   font-style: normal;
@@ -27,7 +24,6 @@
   text-rendering: optimizeLegibility;
   user-select: none;
 }
-
 
 .mu-arrow-left::before {
   content: "\e700";

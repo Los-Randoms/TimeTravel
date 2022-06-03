@@ -7,6 +7,6 @@
 	<h4>Archivo: </h4>
 	<pre><?= $error->getFile() ?></pre>
 	<h3>Rastro: </h3>
-	<pre><?= $error->getTraceAsString() ?></pre>
+	<pre><?= htmlspecialchars($error->getTraceAsString()) ?></pre>
 	<?php endif ?>
 </main>

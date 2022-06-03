@@ -1,6 +1,6 @@
-drop database if exists TimeTravel;
-create database TimeTravel;
-use TimeTravel;
+drop database if exists `Travel-Time`;
+create database `Travel-Time`;
+use `Travel-Time`;
 
 create table roles(
 	id int unsigned not null auto_increment primary key,
@@ -34,7 +34,7 @@ insert into roles(name) values ('admin'), ('user'), ('editor'), ('moderator');
 insert into users set
 	username = 'admin',
 	email = 'admin@test.xyz',
-	password = '$2y$10$ropvn0auBvhxos460xrm5OC8hC9cdhSUePL6fokUCStlz1DNakjZm',
+	password = '$2y$10$KtGDLcebrR5bv/BoeNHSc.K/gOhFrxZhHKos9c9cXkqFe5.rSdeG2',
 	rol = 'admin';
 
 create table publications(

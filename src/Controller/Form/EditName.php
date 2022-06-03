@@ -2,15 +2,14 @@
 
 namespace Controller\Form;
 
+use Controller\Page\Roles;
 use Modules\Account\User;
-use Modules\Kernel\File;
 use Modules\Kernel\Form;
 use Modules\Kernel\Message;
 use Modules\Kernel\Storage;
-use Modules\Kernel\View;
 use Modules\Router\Router;
 
-class EditUser extends Form
+class EditName extends Form
 {
     protected User $currentUser;
     protected ?User $user;
@@ -18,14 +17,21 @@ class EditUser extends Form
     function __construct()
     {
         $this->access('admin');
-        $this->styles[] = 'css/editadmin.css';
+        $this->styles[] = 'editadmin.css';
 
         /** @var \Modules\Mysql\Driver */
         $driver = Storage::driver();
         $select = $driver->read(User::TABLE);
-        $select->condition('id', $_GET['id']);
+        $select->condition('id', $_POST['id']);
         $select->execute();
         $this->user = $select->fetch(User::class);
+
+        /** @var \Modules\Mysql\Driver */
+        $driver = Storage::driver();
+        $select = $driver->read('roles');
+        $select->condition('id', $_POST['rol']);
+        $select->execute();
+        $this->rol = $select->fetch();
     }
 
     function init()
@@ -36,42 +42,24 @@ class EditUser extends Form
             return Router::get('/perfil/editar');
         return parent::init();
     }
-
-    function title(): string
-    {
-        return 'Editar información';
-    }
-
     function content()
     {
-        $image = null;
-        if (!empty($this->user->avatar))
-            $image = File::load($this->user->avatar);
-        return new View('page/edit_user.phtml', [
-            'pfp' => $image,
-            'user' => $this->user
-        ]);
+        return Router::get("/admin/usuario/editar");
     }
 
     public function verify(): bool
     {
-        # $this->file = FileManager::get('avatar');
-        # if (!is_null($this->file)) {
-        #     FileManager::move($this->file, 'avatars');
-        #     $this->file->save();
-        # }
+
         return true;
     }
 
     function submit()
     {
+        
+        $this->user->rol =  $this->rol['name'];
         $this->user->username = $_POST['name'];
-        $this->user->email = $_POST['email'];
-        $this->user->rol = $_POST['rol'];
-        # if (!is_null($this->file)) {
-        #     $this->user->avatar = $this->file->id;
-        # }
         $this->user->update();
         Message::add('Se ha actualizado su información');
+        return Router::get('/admin/usuarios');
     }
 }
