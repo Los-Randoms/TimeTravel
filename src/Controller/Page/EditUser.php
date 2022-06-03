@@ -17,7 +17,7 @@ class EditUser extends Controller
     function __construct()
     {
         $this->access('admin');
-        $this->styles[] = 'editadmin.css';
+        $this->styles[] = 'edituser.css';
 
         /** @var \Modules\Mysql\Driver */
         $driver = Storage::driver();

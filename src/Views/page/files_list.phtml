@@ -6,6 +6,7 @@
             <th>Nombre del archivo</th>
             <th>Tipo</th>
             <th>Tamaño</th>
+            <th>Opciones</th>
         </thead>
         <tbody>
             <?php foreach($files as $file): ?>
@@ -23,6 +24,12 @@
                 </td>
                 <td>
                     <?= $file->size ?> bytes
+                </td>
+                <td>
+                
+                <a role="button" href="/admin/archivos/eliminar?id=<?= $file->id ?>" type="submit">
+                        <i class="mu mu-delete"></i>
+                        <span>Eliminar</span>
                 </td>
             </tr>
             <?php endforeach ?>

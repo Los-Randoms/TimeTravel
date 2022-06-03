@@ -55,8 +55,9 @@ class EditName extends Form
 
     function submit()
     {
-        
-        $this->user->rol =  $this->rol['name'];
+        if(!empty($this->rol['name'])){
+            $this->user->rol =  $this->rol['name'];
+        }
         $this->user->username = $_POST['name'];
         $this->user->update();
         Message::add('Se ha actualizado su información');
