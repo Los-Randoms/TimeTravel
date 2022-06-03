@@ -9,7 +9,7 @@ use Modules\Kernel\Storage;
 use Modules\Kernel\View;
 use Modules\Router\Router;
 
-class DeleteUser extends Form
+class BanUser extends Form
 {
     protected ?User $user;
 
@@ -26,12 +26,15 @@ class DeleteUser extends Form
 
     function title(): string
     {
-        return 'Eliminar usuario';
+        return 'Banear usuario';
     }
 
     function content()
     {
-        return new View('page/delete_user.phtml');
+
+        return new View('page/ban-user.phtml', [
+            "user"=> $this->user
+        ]);
     }
 
     public function verify(): bool
@@ -43,8 +46,13 @@ class DeleteUser extends Form
 
     function submit()
     {
-        User::remove($this->user->id);
-        Message::add('Se ha eliminado el usuario');
+        $this->user->banned=!$this->user->banned;
+        $this->user->update();
+        if($this->user->banned){
+            Message::add('Se ha baneado al usuario');
+        } else{
+            Message::add('Se ha desbaneado al usuario');
+        }
         return Router::get('/admin/usuarios');
     }
 }

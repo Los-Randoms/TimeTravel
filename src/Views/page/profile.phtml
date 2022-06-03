@@ -15,7 +15,7 @@ use Modules\Utils;
         <i class="mu mu-user"></i>
         <?= htmlspecialchars($user->username) ?>
         <!--       
-        <span class="banned">
+            <span class="banned">
             <i class="mu mu-fail"></i>
             Baneado
         </span>
@@ -50,4 +50,6 @@ use Modules\Utils;
             <?= Utils::date($user->creation) ?>
         </span>
     </p>
+    
+    <a href="/perfil/editar" role="button">Editar usuario</a>
 </main>

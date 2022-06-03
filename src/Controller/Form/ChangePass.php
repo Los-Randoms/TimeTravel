@@ -7,6 +7,7 @@ use Modules\Kernel\Form;
 use Modules\Kernel\Message;
 use Modules\Kernel\Storage;
 use Modules\Kernel\View;
+use Modules\Router\Router;
 
 class ChangePass extends Form
 {
@@ -52,6 +53,7 @@ class ChangePass extends Form
         $this->user->password = $incrip;
         $this->user->update();
         Message::add("Se ha enviado a su correo una nueva contraseña temporal {$newp}");
+        return Router::get('/iniciar-sesion');
 
         // mail(
         //   $correo, 
