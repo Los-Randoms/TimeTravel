@@ -24,7 +24,7 @@
             <?php endif ?>
             </div>
             <span>
-                <?= htmlentities($_SESSION['account']['username']) ?>
+                <?= htmlentities($_SESSION['user']->username) ?>
             </span>
         </a>
         <a href="/salir" role="button">Cerrar sesion</a>

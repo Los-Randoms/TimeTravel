@@ -13,7 +13,7 @@ use Modules\Utils;
     </div>
     <h1>
         <i class="mu mu-user"></i>
-        <?= htmlspecialchars($_SESSION['account']['username']) ?>
+        <?= htmlspecialchars($_SESSION['user']->username) ?>
         <!--       
                     <span class="banned">
                         <i class="mu mu-fail"></i>
@@ -27,8 +27,8 @@ use Modules\Utils;
             <i class="mu mu-mail"></i>
             <b>Correo: </b>
         </span>
-        <a href="mailto:<?= urlencode($_SESSION['account']['email']) ?>">
-            <?= htmlspecialchars($_SESSION['account']['email']) ?>
+        <a href="mailto:<?= urlencode($_SESSION['user']->email) ?>">
+            <?= htmlspecialchars($_SESSION['user']->email) ?>
         </a>
     </p>
     <p class="user-info">
@@ -37,7 +37,7 @@ use Modules\Utils;
             <b>Rol: </b>
         </span>
         <span>
-            <?= htmlspecialchars($_SESSION['account']['email']) ?>
+            <?= htmlspecialchars($_SESSION['user']->email) ?>
         </span>
     </p>
     <p>

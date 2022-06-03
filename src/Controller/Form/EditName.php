@@ -34,7 +34,7 @@ class EditName extends Form
     {
         if (empty($this->user))
             return Router::get('/admin/usuarios');
-        if ($this->user->id == $_SESSION['account']['user']->id)
+        if ($this->user->id == $_SESSION['user']->user->id)
             return Router::get('/perfil/editar');
         return parent::init();
     }

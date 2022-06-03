@@ -17,7 +17,7 @@ class Profile extends Controller
 
     function title(): string
     {
-        return $_SESSION['account']['username'] ?? 'Nadie';
+        return $_SESSION['user']->username ?? 'Nadie';
     }
 
     function content()

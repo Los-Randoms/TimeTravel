@@ -27,7 +27,7 @@ class EditProfile extends Form
     function content()
     {
         return new View('page/edit_account.phtml', [
-            'user' => $_SESSION['account'], 
+            'user' => $_SESSION['user'], 
             'image' => $_SESSION['pfp'],
         ]);
     }

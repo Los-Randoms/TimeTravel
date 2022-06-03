@@ -34,7 +34,7 @@ class EditUser extends Controller
         $user = $query->fetch(User::class);
         if(empty($user))
             return Router::get('/admin/usuarios');
-        if($user->id === $_SESSION['account']['id'])
+        if($user->id === $_SESSION['user']->id)
             return Router::get('/perfil/editar');
         $query = $this->db->read('roles');
         $query->orderBy('id');

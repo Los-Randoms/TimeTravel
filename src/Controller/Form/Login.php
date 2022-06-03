@@ -27,11 +27,10 @@ class Login extends Form
 
 	function verify(): bool
 	{
-		$banned = false;
 		/** @var \Modules\Mysql\Driver */
 		$driver = Storage::driver();
 		$query = $driver->read(User::TABLE);
-		$query->condition('banned', $banned, 'i');
+		$query->condition('banned', false, 'i');
 		$query->condition('email', $_POST['email']);
 		$query->execute();
 		$this->user = $query->fetch(User::class);

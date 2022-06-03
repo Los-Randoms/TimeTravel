@@ -16,7 +16,7 @@ abstract class Controller
 				throw new Exception('', 403);
 			if(!empty($this->access)) {
 				/** @var User */
-				if(!in_array($_SESSION['account']['rol'], $this->access))
+				if(!in_array($_SESSION['user']->rol, $this->access))
 					throw new Exception('', 403);
 			}
 		}

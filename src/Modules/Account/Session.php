@@ -35,10 +35,10 @@ abstract class Session
 
 		// Check if the user exists
 		if ($_SESSION['logged']) {
-			$user = &$_SESSION['account'];
-			$_SESSION['account'] = User::load($user['id']);
-			if (empty($user) || $user['banned']) {
-				if($user['banned'])
+			$user = $_SESSION['user'];
+			$_SESSION['user'] = User::load($user->id);
+			if (empty($user) || $user->banned) {
+				if($user->banned)
 					Message::add('Ha sido baneado');
 				return self::logout();
 			}
@@ -46,7 +46,7 @@ abstract class Session
 	}
 	static function login(User $user)
 	{
-		$_SESSION['account'] = (array) $user;
+		$_SESSION['user'] = $user;
 		$_SESSION['is_admin'] = $user->rol === 'admin';
 		$_SESSION['logged'] = true;
 		if (!empty($user->avatar))
@@ -55,7 +55,7 @@ abstract class Session
 
 	static function logout()
 	{
-		$_SESSION['account'] = null;
+		$_SESSION['user'] = null;
 		$_SESSION['logged'] = false;
 		$_SESSION['messages'] = [];
 		$_SESSION['is_admin'] = false;
