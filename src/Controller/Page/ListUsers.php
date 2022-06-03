@@ -11,7 +11,7 @@ class ListUsers extends Controller
 {
     function __construct()
     {
-        $this->access('admin');
+        $this->access('admin', 'moderator');
     }
 
     function title(): string

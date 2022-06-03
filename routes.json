@@ -15,11 +15,12 @@
 	"/admin/publicacion/eliminar": "Controller\\Form\\DeletePublication",
 	"/admin/roles": "Controller\\Page\\Roles",
 	"/admin/usuarios": "Controller\\Page\\ListUsers",
-	"/admin/usuario/editar": "Controller\\Page\\EditUser",
-	"/admin/usuario/eliminar": "Controller\\Form\\DeleteUser",
-	"/admin/archivos": "Controller\\Page\\ListFiles",
 	"/admin/usuario/banear": "Controller\\Form\\BanUser",
+	"/admin/usuario/editar": "Controller\\Page\\EditUser",
 	"/admin/usuario/editar/nombre": "Controller\\Form\\EditName",
 	"/admin/usuario/editar/foto": "Controller\\Form\\EditPFP",
+	"/admin/usuario/eliminar": "Controller\\Form\\DeleteUser",
+	"/admin/archivos": "Controller\\Page\\ListFiles",
+	"/admin/archivos/eliminar": "Controller\\Form\\DeleteFile",
   "/terminos": "Controller\\Page\\Terminos"
 }
