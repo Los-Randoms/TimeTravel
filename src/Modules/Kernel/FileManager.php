@@ -62,6 +62,8 @@ abstract class FileManager
 
 	static function delete(File $file)
 	{
+		if (empty($file))
+			return;
 		$file_path = UPLOAD_DIR . "/{$file->path}";
 		if (file_exists($file_path))
 			unlink($file_path);
