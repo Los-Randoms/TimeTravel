@@ -2,7 +2,6 @@
 
 namespace Controller\Form;
 
-use Controller\Page\Roles;
 use Modules\Account\User;
 use Modules\Kernel\Form;
 use Modules\Kernel\Message;
@@ -19,12 +18,8 @@ class EditName extends Form
         $this->access('admin');
         $this->styles[] = 'editadmin.css';
 
-        /** @var \Modules\Mysql\Driver */
-        $driver = Storage::driver();
-        $select = $driver->read(User::TABLE);
-        $select->condition('id', $_POST['id']);
-        $select->execute();
-        $this->user = $select->fetch(User::class);
+        $this->user=User::load($_POST['id']);
+
 
         /** @var \Modules\Mysql\Driver */
         $driver = Storage::driver();
@@ -32,6 +27,7 @@ class EditName extends Form
         $select->condition('id', $_POST['rol']);
         $select->execute();
         $this->rol = $select->fetch();
+
     }
 
     function init()

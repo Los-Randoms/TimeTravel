@@ -23,7 +23,9 @@ class EditPFP extends Form
         $this->styles[] = 'editadmin.css';
 
         $this->user=User::load($_POST['id']);
-        $this->archivo = File::load($this->user->avatar);
+        if(!is_null(File::load($this->user->avatar))){
+            $this->archivo = File::load($this->user->avatar);
+        }
     }
 
     function init()

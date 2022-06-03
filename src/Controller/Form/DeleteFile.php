@@ -18,12 +18,9 @@ class DeleteFile extends Form
     function __construct()
     {
         $this->access('admin');
-        /** @var \Modules\Mysql\Driver */
-        $driver = Storage::driver();
-        $select = $driver->read(File::TABLE);
-        $select->condition('id', $_GET['id']);
-        $select->execute();
-        $this->file = $select->fetch(File::class);
+
+        $this->file=File::load($_GET['id']);
+
     }
 
     function title(): string
