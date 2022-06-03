@@ -65,6 +65,6 @@ abstract class FileManager
 		$file_path = UPLOAD_DIR . "/{$file->path}";
 		if (file_exists($file_path))
 			unlink($file_path);
-		File::remove($this->id);
+		File::remove($file->id);
 	}
 }
