@@ -2,14 +2,17 @@
   color: #0069de;
   text-align: right;
 }
-.info{
+
+.info {
   text-align: right;
 }
-.subtitle{
+
+.subtitle {
   text-align: right;
 }
+
 .login__header {
-  background-color: #61d1ed;
+  background-color: #F66B34;
   border-top-left-radius: 1.25em;
   border-top-right-radius: 1.25em;
   color: #fff;
@@ -28,7 +31,7 @@
 .login__form {
   border-bottom-left-radius: 1.25em;
   border-bottom-right-radius: 1.25em;
-  background: #b9dcfc;
+  background: linear-gradient(to bottom right, #F6BF4F, #FF9966);
   color: #000;
   display: grid;
   gap: 0.875em;
@@ -46,19 +49,20 @@ body {
   background-image: url(/public/globi.jpg);
   background-size: cover;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .login {
   width: 400px;
   margin: auto;
+  max-width: 100%;
   margin-right: 10px;
   margin-top: 20px;
 
 }
 
 .btnlog {
-  background-color: #b4bcfd;
+  background-color: #5D697A;
   color: #fff;
   padding: 0.25em 1.5em;
   align-items: center;
@@ -66,7 +70,7 @@ body {
 
 .btnlog:focus,
 .btnlog:hover {
-  background-color: #7682f2;
+  background-color: #393E46;
 }
 
 .login input[type="email"],

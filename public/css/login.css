@@ -4,11 +4,12 @@
 }
 
 .login__header {
-  background-color: #00638f;
+  background-color: #CF7500;
   border-top-left-radius: 1.25em;
   border-top-right-radius: 1.25em;
   color: #fff;
   padding: 1.25em 1.625em;
+  text-align: center;
 }
 
 .login__header :first-child {
@@ -22,7 +23,7 @@
 .login__form {
   border-bottom-left-radius: 1.25em;
   border-bottom-right-radius: 1.25em;
-  background: linear-gradient(to bottom right, #8cc9ff, #ffb14c);
+  background: linear-gradient(to bottom right, #E8D4B4, #ffb14c);
   color: #000;
   display: grid;
   gap: 0.875em;
@@ -58,7 +59,7 @@ body {
 
 .btnlog:focus,
 .btnlog:hover {
-  background-color: #e3081e;
+  background-color: #B5592A;
 }
 
 .login input[type="email"],
