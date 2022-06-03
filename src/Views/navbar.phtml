@@ -17,8 +17,8 @@
         <?php if ($_SESSION['account']['logged']) : ?>
         <a href="/perfil" role="button" class="profile item">
             <div class="pfp">
-            <?php if(!empty($pfp)): ?>
-                <img src="<?= $pfp->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
+            <?php if(!empty($_SESSION['account']['pfp'])): ?>
+                <img src="<?= $_SESSION['account']['pfp']->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
             <?php else: ?>
                 <img src="/public/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
             <?php endif ?>
