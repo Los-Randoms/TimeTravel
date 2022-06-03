@@ -45,7 +45,9 @@ abstract class Session
 			$user = User::load($user->id);
 			if (empty($user))
 				return self::logout();
+			$pfp = File::load($user->avatar);
 			$_SESSION['account']['user'] = $user;
+			$_SESSION['account']['pfp'] = $pfp;
 			$_SESSION['__last_access'] = new DateTime();
 		}
 	}
