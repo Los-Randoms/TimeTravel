@@ -43,9 +43,11 @@ abstract class Session
 			/** @var User */
 			$user = $_SESSION['account']['user'];
 			$user = User::load($user->id);
-			if (empty($user))
+			if (empty($user) || $user->banned)
 				return self::logout();
-			$pfp = File::load($user->avatar);
+			$pfp = null;
+			if(!empty($user->avatar))
+				$pfp = File::load($user->avatar);
 			$_SESSION['account']['user'] = $user;
 			$_SESSION['account']['pfp'] = $pfp;
 			$_SESSION['__last_access'] = new DateTime();
