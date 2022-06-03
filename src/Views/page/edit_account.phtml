@@ -8,15 +8,22 @@
 			<input type="text" name="name" value="<?= htmlspecialchars($user->username) ?>">
 		</div>
 
-		<?php if (!empty($image)): ?>
-		<div class="avatar">
-			<label for="avatar">Imagen anterior</label>
-			<img src="<?= $image->url() ?>" loading="lazy" alt="Imagen de perfil" class="pfp">
-		</div>
+
+		<label for="Cambiar-Foto">Foto actual</label><br>
+		<?php if (!empty($image)) : ?>
+			<div class="avatar">
+				<?php if (!empty($image)) : ?>
+					<img src="<?= $image->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
+				<?php else : ?>
+					<img src="/public/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
+				<?php endif ?>
+			</div>
 		<?php endif ?>
+
 		<label for="Cambiar-Foto">Cambiar foto</label>
 		<input type="file" name="avatar">
 		<button type="submit">Actualizar informacion</button>
+		<a href="/perfil" role="button">Regresar</a>
 	</form>
 </main>
 </main>

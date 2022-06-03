@@ -11,7 +11,8 @@ use Modules\Kernel\Storage;
 use Modules\Kernel\View;
 use Modules\Router\Router;
 
-class EditUser extends Form
+class EditPFP extends Form
+
 {
     protected User $currentUser;
     protected ?User $user;
@@ -27,7 +28,6 @@ class EditUser extends Form
         $select->condition('id', $_GET['id']);
         $select->execute();
         $this->user = $select->fetch(User::class);
-        
     }
 
     function init()
@@ -39,28 +39,16 @@ class EditUser extends Form
         return parent::init();
     }
 
-    function title(): string
-    {
-        return 'Editar información';
-    }
-
     function content()
     {
-        $db = Storage::driver();
-        /** @var \Modules\Mysql\Query\Select */
-        $consulta = $db->read('roles');
-        $consulta->orderBy('id');
-        $consulta->execute();
-        
         $image = null;
         if (!empty($this->user->avatar))
             $image = File::load($this->user->avatar);
         return new View('page/edit_user.phtml', [
             'user' => $this->user,
-            'image' => $image,
-            'roles' => $consulta->results(),
-        ]);
+            'image' => $image
 
+        ]);
     }
 
     public function verify(): bool
@@ -75,14 +63,9 @@ class EditUser extends Form
 
     function submit()
     {
-        $this->user->username = $_POST['name'];
-        $this->user->email = $_POST['email'];
-        $this->user->rol = $_POST['rol'];
-
         if (!is_null($this->file)) {
             $this->user->avatar = $this->file->id;
         }
-
         $this->user->update();
         Message::add('Se ha actualizado su información');
         return Router::get('/admin/usuarios');

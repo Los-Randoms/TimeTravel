@@ -17,5 +17,9 @@
 	"/admin/usuarios": "Controller\\Page\\ListUsers",
 	"/admin/usuario/editar": "Controller\\Form\\EditUser",
 	"/admin/usuario/eliminar": "Controller\\Form\\DeleteUser",
-	"/admin/archivos": "Controller\\Page\\ListFiles"
+	"/admin/usuario/banear": "Controller\\Form\\BanUser",
+	"/admin/archivos": "Controller\\Page\\ListFiles",
+	"/admin/usuario/editar/nombre": "Controller\\Form\\EditName"
+	
+
 }
