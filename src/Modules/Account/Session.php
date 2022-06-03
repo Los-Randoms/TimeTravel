@@ -2,8 +2,8 @@
 
 namespace Modules\Account;
 
-use DateTime;
 use Modules\Kernel\File;
+use Modules\Kernel\Message;
 
 abstract class Session
 {
@@ -30,48 +30,36 @@ abstract class Session
 	static function init()
 	{
 		session_start();
-		if (!self::exists()) {
-			$_SESSION['account'] = [
-				'user' => null,
-				'logged' => false,
-			];
-			$_SESSION['messages'] = [];
-		}
+		if (!self::exists())
+			self::logout();
 
 		// Check if the user exists
-		if ($_SESSION['account']['logged']) {
-			/** @var User */
-			$user = $_SESSION['account']['user'];
-			$user = User::load($user->id);
-			if (empty($user) || $user->banned)
+		if ($_SESSION['logged']) {
+			$user = &$_SESSION['account'];
+			$_SESSION['account'] = User::load($user->id);
+			if (empty($user) || $user->banned) {
+				if($user->banned)
+					Message::add('Ha sido baneado');
 				return self::logout();
-			$pfp = null;
-			if(!empty($user->avatar))
-				$pfp = File::load($user->avatar);
-			$_SESSION['account']['user'] = $user;
-			$_SESSION['account']['pfp'] = $pfp;
-			$_SESSION['__last_access'] = new DateTime();
+			}
 		}
 	}
 	static function login(User $user)
 	{
-		$picture = null;
+		$_SESSION['account'] = (array) $user;
+		$_SESSION['is_admin'] = $user->rol === 'admin';
+		$_SESSION['logged'] = true;
 		if (!empty($user->avatar))
-			$picture = File::load($user->avatar);
-		$_SESSION['account'] = [
-			'user' => $user,
-			'pfp' => $picture,
-			'admin' => $user->rol === 'admin',
-			'logged' => true,
-		];
+			$_SESSION['pfp'] = File::load($user->avatar);
 	}
 
 	static function logout()
 	{
-		$_SESSION['account'] = [
-			'user' => null,
-			'logged' => false,
-		];
+		$_SESSION['account'] = null;
+		$_SESSION['logged'] = false;
+		$_SESSION['messages'] = [];
+		$_SESSION['is_admin'] = false;
+		$_SESSION['pfp'] = null;
 	}
 
 	static function stop()

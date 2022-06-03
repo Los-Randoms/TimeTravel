@@ -7,56 +7,48 @@ use Modules\Kernel\Controller;
 use Modules\Kernel\File;
 use Modules\Kernel\Storage;
 use Modules\Kernel\View;
+use Modules\Mysql\Driver;
 use Modules\Router\Router;
 
 class EditUser extends Controller
 {
-    protected User $currentUser;
-    protected ?User $user;
+    protected Driver $db;
 
     function __construct()
     {
         $this->access('admin', 'moderator');
         $this->styles[] = 'edituser.css';
-
-        /** @var \Modules\Mysql\Driver */
-        $driver = Storage::driver();
-        $select = $driver->read(User::TABLE);
-        $select->condition('id', $_GET['id']);
-        $select->execute();
-        $this->user = $select->fetch(User::class);
-        
-    }
-
-    function init()
-    {
-        if (empty($this->user))
-            return Router::get('/admin/usuarios');
-        if ($this->user->id == $_SESSION['account']['user']->id)
-            return Router::get('/perfil/editar');
-        return parent::init();
+        $this->db = Storage::driver();
     }
 
     function title(): string
     {
-        return 'Editar información';
+        return 'Editar usuario';
     }
 
     function content()
     {
-        $db = Storage::driver();
-        /** @var \Modules\Mysql\Query\Select */
-        $consulta = $db->read('roles');
-        $consulta->orderBy('id');
-        $consulta->execute();
+        $query = $this->db->read(User::TABLE);
+        $query->condition('id', $_GET['id']);
+        $query->execute();
+        $user = $query->fetch(User::class);
+        if(empty($user))
+            return Router::get('/admin/usuarios');
+        if($user->id === $_SESSION['account']['id'])
+            return Router::get('/perfil/editar');
+        $query = $this->db->read('roles');
+        $query->orderBy('id');
+        $query->execute();
+        $roles = $query->results();
         
         $image = null;
-        if (!empty($this->user->avatar))
-            $image = File::load($this->user->avatar);
+        if (!empty($user->avatar))
+            $image = File::load($user->avatar);
+
         return new View('page/edit_user.phtml', [
-            'user' => $this->user,
+            'user' => $user,
             'image' => $image,
-            'roles' => $consulta->results(),
+            'roles' => $roles,
         ]);
 
     }

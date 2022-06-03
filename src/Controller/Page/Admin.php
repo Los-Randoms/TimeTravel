@@ -14,7 +14,7 @@ class Admin extends Controller
 	}
 
 	function title(): string {
-		return 'Página del admin';
+		return 'Administracion';
 	}
 
 	function content() {

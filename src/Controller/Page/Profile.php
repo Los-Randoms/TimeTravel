@@ -9,30 +9,20 @@ use Modules\Kernel\View;
 
 class Profile extends Controller
 {
-    protected User $user;
-    protected ?File $pfp;
-
     function __construct()
     {
         $this->access();
         $this->styles[] = 'profile.css';
-        if($_SESSION['account']['logged']) {
-            $this->user = $_SESSION['account']['user'];
-            $this->pfp = $_SESSION['account']['pfp'];
-        }
     }
 
     function title(): string
     {
-        return $this->user->username ?? 'Nobody';
+        return $_SESSION['account']['username'] ?? 'Nadie';
     }
 
     function content()
     {
-        return new View('page/profile.phtml', [
-            'user' => $this->user,
-            'pfp' => $this->pfp
-        ]);
+        return new View('page/profile.phtml');
     }
 }
 
