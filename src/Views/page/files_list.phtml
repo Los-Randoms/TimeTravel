@@ -1,5 +1,8 @@
 <main class="container">
-    <h1>Archivos<hr></h1>
+    <h1>
+        <span>Archivos</span>
+        <hr>
+    </h1>
     <table>
         <thead>
             <th>Id</th>
@@ -16,18 +19,18 @@
                 </td>
                 <td>
                     <a href="<?= $file->url() ?>">
-                        <?= strip_tags($file->filename) ?>
+                        <?= htmlentities($file->filename) ?>
                     </a>
                 </td>
                 <td>
-                    <?= strip_tags($file->mime) ?>
+                    <?= htmlentities($file->mime) ?>
                 </td>
                 <td>
                     <?= $file->size ?> bytes
                 </td>
                 <td>
-                
-                <a role="button" href="/admin/archivos/eliminar?id=<?= $file->id ?>" type="submit">
+
+                    <a role="button" href="/admin/archivos/eliminar?id=<?= $file->id ?>" type="submit">
                         <i class="mu mu-delete"></i>
                         <span>Eliminar</span>
                 </td>

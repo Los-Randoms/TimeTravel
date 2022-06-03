@@ -6,14 +6,14 @@ use Modules\Utils;
 <main class="container">
     <div class="pfp">
         <?php if (!empty($pfp)) : ?>
-            <img src="<?= $pfp->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
+        <img src="<?= $pfp->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
         <?php else : ?>
-            <img src="/public/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
+        <img src="/public/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
         <?php endif ?>
     </div>
     <h1>
         <i class="mu mu-user"></i>
-        <?= htmlspecialchars($user->username) ?>
+        <?= htmlspecialchars($_SESSION['account']['username']) ?>
         <!--       
                     <span class="banned">
                         <i class="mu mu-fail"></i>
@@ -27,8 +27,8 @@ use Modules\Utils;
             <i class="mu mu-mail"></i>
             <b>Correo: </b>
         </span>
-        <a href="mailto:<?= strip_tags($user->email) ?>">
-            <?= strip_tags($user->email) ?>
+        <a href="mailto:<?= urlencode($_SESSION['account']['email']) ?>">
+            <?= htmlspecialchars($_SESSION['account']['email']) ?>
         </a>
     </p>
     <p class="user-info">
@@ -37,7 +37,7 @@ use Modules\Utils;
             <b>Rol: </b>
         </span>
         <span>
-            <?= strip_tags($user->rol) ?>
+            <?= htmlspecialchars($_SESSION['account']['email']) ?>
         </span>
     </p>
     <p>

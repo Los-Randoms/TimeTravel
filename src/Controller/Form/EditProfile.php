@@ -12,7 +12,6 @@ use Modules\Router\Router;
 
 class EditProfile extends Form
 {
-    protected User $currentUser;
     function __construct()
     {
         $this->access();
@@ -24,20 +23,12 @@ class EditProfile extends Form
     {
         return 'Editar información';
     }
-    
-    function init()
-    {
-        $this->currentUser = $_SESSION['account']['user'];
-        $this->archivo = File::load($this->currentUser->avatar);
-        return parent::init();
-    }
 
     function content()
     {
-        $image = $_SESSION['account']['pfp'];
         return new View('page/edit_account.phtml', [
-            'user' => $this->currentUser,
-            'image' => $image
+            'user' => $_SESSION['account'], 
+            'image' => $_SESSION['pfp'],
         ]);
     }
 

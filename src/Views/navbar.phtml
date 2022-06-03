@@ -4,7 +4,7 @@
     </button>
     <a href="/" class="brand">
         <h1 class="title">
-            <?= SITE_NAME ?>
+            <?= htmlentities(SITE_NAME) ?>
         </h1>
     </a>
     <form action="/buscar" class="search">
@@ -14,22 +14,19 @@
         </div>
     </form>
     <div class="items" element="items">
-        <?php if ($_SESSION['account']['logged']) : ?>
+        <?php if ($_SESSION['logged']) : ?>
         <a href="/perfil" role="button" class="profile item">
             <div class="pfp">
-            <?php if(!empty($_SESSION['account']['pfp'])): ?>
-                <img src="<?= $_SESSION['account']['pfp']->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
+            <?php if(!empty($_SESSION['pfp'])): ?>
+                <img src="<?= $_SESSION['pfp']->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
             <?php else: ?>
                 <img src="/public/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
             <?php endif ?>
             </div>
             <span>
-                <?= $_SESSION['account']['user']->username ?>
+                <?= htmlentities($_SESSION['account']['username']) ?>
             </span>
         </a>
-        <?php if ($_SESSION['account']['admin']) : ?>
-        <a href="/admin" role="button">Panel</a>
-        <?php endif ?>
         <a href="/salir" role="button">Cerrar sesion</a>
         <?php else : ?>
         <a href="/iniciar-sesion" role="button">Inicar sesion</a>

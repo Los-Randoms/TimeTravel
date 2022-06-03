@@ -1,6 +1,6 @@
 <div class="alert message" handler="alert">
     <i class="mu mu-<?= $type ?>"></i>
-    <span><?= $message ?></span>
+    <span><?= htmlentities($message) ?></span>
     <button element="close" class="close-alert">
         <i class="mu mu-cancel"></i>
     </button>

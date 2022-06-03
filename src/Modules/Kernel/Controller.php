@@ -12,12 +12,11 @@ abstract class Controller
 	function init() {
 		# Check if the user has permissions
 		if(isset($this->access)) {
-			if(!$_SESSION['account']['logged'])
+			if(!$_SESSION['logged'])
 				throw new Exception('', 403);
 			if(!empty($this->access)) {
 				/** @var User */
-				$user = $_SESSION['account']['user'];
-				if(!in_array($user->rol, $this->access))
+				if(!in_array($_SESSION['account']['rol'], $this->access))
 					throw new Exception('', 403);
 			}
 		}

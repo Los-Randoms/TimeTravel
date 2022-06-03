@@ -1,10 +1,5 @@
 <main class="container">
 	<h1>Cambiar info del usuario</h1>
-
-
-
-
-
 	<div>
 		<label>Correo</label>
 		<div class="edit">
@@ -18,9 +13,9 @@
 				<select class="cuadro" name="rol" id="rol">
 					<option disabled selected>Selecciona un rol</option>
 					<?php foreach ($roles as $rol) : ?>
-						<option value="<?= $rol['id'] ?>">
-							<?= htmlspecialchars($rol['name']) ?>
-						</option>
+					<option value="<?= $rol['id'] ?>">
+						<?= htmlspecialchars($rol['name']) ?>
+					</option>
 					<?php endforeach ?>
 				</select>
 				<input type="hidden" value="<?= htmlspecialchars($user->id) ?>" name="id">
@@ -32,13 +27,13 @@
 		<form method="post" action="/admin/usuario/editar/foto" enctype="multipart/form-data">
 			<label for="Cambiar-Foto">Foto actual</label><br>
 			<?php if (!empty($image)) : ?>
-				<div class="avatar">
-					<?php if (!empty($image)) : ?>
-						<img src="<?= $image->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
-					<?php else : ?>
-						<img src="/public/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
-					<?php endif ?>
-				</div>
+			<div class="avatar">
+				<?php if (!empty($image)) : ?>
+				<img src="<?= $image->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
+				<?php else : ?>
+				<img src="/public/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
+				<?php endif ?>
+			</div>
 			<?php endif ?>
 			<input type="hidden" value="<?= htmlspecialchars($user->id) ?>" name="id">
 			<label for="Cambiar-Foto">Cambiar foto</label>

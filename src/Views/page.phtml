@@ -12,20 +12,23 @@ use Modules\Kernel\View;
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>
-		<?= $title ?>
+		<?= htmlentities($title) ?>
 	</title>
 	<link href="/public/favicon.ico" rel="icon" />
 	<link href="/public/global.css" rel="stylesheet" />
 	<link href="/public/site.css" rel="stylesheet" />
 	<link href="/public/site-small.css" rel="stylesheet" media="(max-width: 800px)" />
 	<?php foreach($styles ?? [] as $href): ?>
-	<link href="/public/css/<?= $href?>" rel="stylesheet" />
+	<link href="/public/css/<?= urlencode($href) ?>" rel="stylesheet" />
 	<?php endforeach ?>
 	<script src="/public/main.js" type="module"></script>
 </head>
 
 <body>
 	<?= new View('navbar.phtml') ?>
+	<?php if($_SESSION['is_admin']): ?>
+		<?= new View('admin-toolbar.phtml') ?>
+	<?php endif ?>
 	<div id="site-alerts" class="alerts">
 		<?php while($message = Message::get()): ?>
 		<?= $message ?>
@@ -33,7 +36,7 @@ use Modules\Kernel\View;
 	</div>
 	<?= $content ?>
 	<?php foreach($scripts ?? [] as $src): ?>
-	<script src="/public/js/<?= $src ?>" type="module"></script>
+	<script src="/public/js/<?= urlencode($src) ?>" type="module"></script>
 	<?php endforeach ?>
 </body>
 
