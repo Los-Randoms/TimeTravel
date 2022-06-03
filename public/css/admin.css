@@ -33,8 +33,6 @@ ul, ol {
   transition:all .4s;
 }
 
-/* Contenedor centrado de bienvenida  */
-
 .margin-auto {
   display: flex;
   justify-content: center;

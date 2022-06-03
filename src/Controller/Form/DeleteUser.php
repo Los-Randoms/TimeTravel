@@ -17,13 +17,10 @@ class DeleteUser extends Form
 
     function __construct()
     {
-        $this->access('admin', 'moderator');
-        /** @var \Modules\Mysql\Driver */
-        $driver = Storage::driver();
-        $select = $driver->read(User::TABLE);
-        $select->condition('id', $_GET['id']);
-        $select->execute();
-        $this->user = $select->fetch(User::class);
+        $this->access('admin');
+
+        $this->user=User::load($_GET['id']);
+        $this->file = File::load($this->user->avatar);
     }
 
     function title(): string
