@@ -8,11 +8,12 @@ use Modules\Kernel\Form;
 use Modules\Kernel\Message;
 use Modules\Kernel\Storage;
 use Modules\Kernel\View;
+use Modules\Mysql\Utils;
 use Modules\Router\Router;
 
 class Login extends Form
 {
-	protected User $user;
+	protected ?User $user;
 
 	function __construct()
 	{
@@ -26,9 +27,11 @@ class Login extends Form
 
 	function verify(): bool
 	{
+		$banned = false;
 		/** @var \Modules\Mysql\Driver */
 		$driver = Storage::driver();
 		$query = $driver->read(User::TABLE);
+		$query->condition('banned', $banned, 'i');
 		$query->condition('email', $_POST['email']);
 		$query->execute();
 		$this->user = $query->fetch(User::class);
