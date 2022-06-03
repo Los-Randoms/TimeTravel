@@ -6,7 +6,7 @@ trait QueryConditionTrait {
 	protected array $condValues = [];
 	
 	function condition(
-		string $field, &$ref, string $type = 's',
+		string $field, $ref, string $type = 's',
 		string $condition = '=',
 		string $operator = 'AND'
 	) {
