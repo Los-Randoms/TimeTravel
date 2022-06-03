@@ -1,0 +1,20 @@
+<?php
+
+use Modules\Utils;
+
+?>
+<main class="container">
+    <h1>Publicaciones <hr></h1>
+    <table>
+        <thead>
+            <th>Id</th>
+        </thead>
+        <?php foreach ($publications as $pub) : ?>
+            <tr>
+                <td>
+                    <?= $pub->id ?>
+                </td>
+            </tr>
+        <?php endforeach ?>
+    </table>
+</main>

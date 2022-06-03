@@ -1,31 +1,24 @@
-<?php namespace Modules\Kernel;
+<?php
 
-use Exception;
-use Error;
+namespace Modules\Kernel;
 
-class ErrorPage extends Page {
-	private Error|Exception $error;
+use Throwable;
 
-	function __construct(Error|Exception $error) {
-		$dir = __DIR__ . '/Templates';
-		$code = $error->getCode();
-		$file = "$dir/e{$code}.phtml";
-		if(!file_exists($file))
-			$file = "$dir/e0.phtml";
-		parent::__construct($file, true);
-		http_response_code($code);
+class ErrorPage extends Controller
+{
+	private Throwable $error;
+
+	function __construct(Throwable $error)
+	{
 		$this->error = $error;
 	}
 
-	function message(): string {
-		return $this->error->getMessage();
-	}
-
-	function trace(): string {
-		return $this->error->getTraceAsString();
-	}
-
-	function file(): string {
-		return $this->error->getFile() . ':' . $this->error->getLine();
+	function content()
+	{
+		$view = new View("error/{$this->error->getCode()}.phtml");
+		if (!file_exists($view->path()))
+			$view = new View("error/0.phtml");
+		$view->set('error', $this->error);
+		return $view;
 	}
 }

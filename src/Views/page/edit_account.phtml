@@ -1,0 +1,29 @@
+<main class="container">
+	<h1>Actualizar mi perfil
+		<hr>
+	</h1>
+	<form method="post" enctype="multipart/form-data">
+		<label for="name">Nombre: </label>
+		<div class="edit">
+			<input type="text" name="name" value="<?= htmlspecialchars($user->username) ?>">
+		</div>
+
+
+		<label for="Cambiar-Foto">Foto actual</label><br>
+		<?php if (!empty($image)) : ?>
+			<div class="avatar">
+				<?php if (!empty($image)) : ?>
+					<img src="<?= $image->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
+				<?php else : ?>
+					<img src="/public/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
+				<?php endif ?>
+			</div>
+		<?php endif ?>
+
+		<label for="Cambiar-Foto">Cambiar foto</label>
+		<input type="file" name="avatar">
+		<button type="submit">Actualizar informacion</button>
+		<a href="/perfil" role="button">Regresar</a>
+	</form>
+</main>
+</main>

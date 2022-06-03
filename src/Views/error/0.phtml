@@ -1,0 +1,12 @@
+<main class="container">
+	<h1>Error!</h1>
+	<p>Ha sucedido algo inesperado</p>
+	<?php if(DEVEL): ?>
+	<h3>Mensaje: </h3>
+	<pre><?= $error->getMessage() ?></pre>
+	<h4>Archivo: </h4>
+	<pre><?= $error->getFile() ?></pre>
+	<h3>Rastro: </h3>
+	<pre><?= htmlspecialchars($error->getTraceAsString()) ?></pre>
+	<?php endif ?>
+</main>

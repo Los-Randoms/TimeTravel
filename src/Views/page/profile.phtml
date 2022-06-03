@@ -1,0 +1,55 @@
+<?php
+
+use Modules\Utils;
+
+?>
+<main class="container">
+    <div class="pfp">
+        <?php if (!empty($pfp)) : ?>
+        <img src="<?= $pfp->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
+        <?php else : ?>
+        <img src="/public/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
+        <?php endif ?>
+    </div>
+    <h1>
+        <i class="mu mu-user"></i>
+        <?= htmlspecialchars($user->username) ?>
+        <!--       
+            <span class="banned">
+            <i class="mu mu-fail"></i>
+            Baneado
+        </span>
+        -->
+        <hr>
+    </h1>
+    <p class="user-info">
+        <span class="key">
+            <i class="mu mu-mail"></i>
+            <b>Correo: </b>
+        </span>
+        <a href="mailto:<?= strip_tags($user->email) ?>">
+            <?= strip_tags($user->email) ?>
+        </a>
+    </p>
+    <p class="user-info">
+        <span class="key">
+            <i class="mu mu-lock"></i>
+            <b>Rol: </b>
+        </span>
+        <span>
+            <?= strip_tags($user->rol) ?>
+        </span>
+    </p>
+    <p>
+    <p class="user-info">
+        <span class="key">
+            <i class="mu mu-calendar"></i>
+            <b>Se unio el: </b>
+        </span>
+        <span>
+            <?= Utils::date($user->creation) ?>
+        </span>
+    </p>
+    
+    <a href="/perfil/editar" role="button">Editar usuario</a>
+</main>

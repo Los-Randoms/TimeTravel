@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="SVGRoot" width="300px" height="300px" version="1.1" viewBox="0 0 84.603 94.189" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <g transform="matrix(.99341 0 0 .99341 -5.7141 -3.0574)">
+  <g transform="matrix(1.153 0 0 1.153 .72306 -6.6679)">
+   <ellipse id="path2554" transform="matrix(-.99963 .027283 -.027424 -.99962 0 0)" cx="-43.968" cy="-51.262" rx="31.867" ry="31.983" fill="none" stroke="#242424" stroke-dasharray="4.29576" stroke-width=".85916" style="font-variation-settings:'wght' 700"/>
+   <ellipse id="path2554-7" transform="matrix(-.37712 .92616 .92611 .37725 0 0)" cx="35.546" cy="60.702" rx="31.969" ry="32.086" display="none" fill="none" style="font-variation-settings:'wght' 700"/>
+   <g stroke-linecap="round">
+    <path d="m34.95 57.821-7.7736 1.2541-2.1701 2.6424s5.8353 0.74391 6.9268 1.8355c1.0292 1.0292-2.273 3.0007-0.82112 3.839 1.3565 0.78318 2.1308-1.5782 3.1763-1.5017 1.0455 0.07645 3.1047 6.661 3.1047 6.661l2.3793-2.4572 0.41827-7.7481s4.29-4.8798 5.4609-5.5558c0.89124-0.51456 10.48 17.309 11.582 17.309 1.3967 0 1.94-1.4085 2.3963-2.1876 0.4563-0.77916-5.0945-23.481-5.0945-24.641 0-1.1377 14.126-11.833 9.5967-16.362-4.8217-4.8217-13.984 10.287-15.51 10.921-1.5262 0.63435-23.999-2.5356-25.531-2.0651-1.3381 0.41095-1.7656 2.4209-1.7656 2.4209s18.707 8.6731 18.409 9.3321c-0.77214 1.7093-4.7844 6.3031-4.7844 6.3031z" fill="#f39b1f" stroke-dasharray="2.8959 5.79181 2.8959  11.5836" stroke-width="2.8959" style="font-variation-settings:'wght' 700"/>
+    <text fill="#afc6e9" font-family="sans-serif" font-size="9.1789px" letter-spacing=".20653px" stroke-dasharray="0.8673 1.7346 0.8673  3.46919" stroke-width=".8673" style="font-variation-settings:'wght' 700" xml:space="preserve"><textPath xlink:href="#path2554"><tspan dx="0 0 0 0 0 0 0 0 0 0" dy="-2 0 0 0 0 0 0 0 0 0" rotate="0 0 0 0 0 0 0 0 0 0 0 0" fill="#121212" font-family="Comfortaa" font-size="9.1789px" stroke-width=".8673" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variation-settings:'wght' 700">TRAVEL TIME</tspan></textPath></text>
+    <text transform="matrix(1.1275 0 0 1.1275 -3.0716 -8.632)" fill="#121212" font-family="Comfortaa" font-size="4.5895px" stroke-dasharray="0.867299 1.7346 0.867299  3.46919" stroke-width=".8673" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal" xml:space="preserve"><textPath xlink:href="#path2554-7"><tspan font-family="Comfortaa" font-size="4.5895px" stroke-dasharray="0.867299  1.7346  0.867299  3.46919" stroke-width=".8673" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">Know the world</tspan></textPath></text>
+   </g>
+  </g>
+ </g>
+</svg>

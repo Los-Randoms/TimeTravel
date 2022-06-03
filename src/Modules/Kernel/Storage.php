@@ -1,49 +1,54 @@
-<?php namespace Modules\Kernel;
+<?php
 
-abstract class Storage {
+namespace Modules\Kernel;
+
+abstract class Storage
+{
 	static private Driver $driver;
 
-	static function driver(): ?Driver {
+	static function driver(): ?Driver
+	{
 		$class = STORAGE['driver'] ?? null;
 		$credentials = STORAGE['credentials'] ?? [];
-		if(!isset(self::$driver))
+		if (!isset(self::$driver))
 			self::$driver = new $class(...$credentials);
 		return self::$driver;
 	}
 
-	static function connected(): bool {
+	static function connected(): bool
+	{
 		return isset(self::$driver);
-	}
-
-	static function stop() {
-		if(self::connected())
-			self::$driver->close();
 	}
 }
 
-interface Query {
+interface Query
+{
 	function execute(): bool;
 	function results(string $class = null): array;
 	function fetch(string $class = null): object|array|null;
 	function __toString(): string;
 }
 
-interface Results {
+interface Results
+{
 	function row(string $class = null): object|array|null;
 	function all(string $class = null): array;
 }
 
-interface Driver {
+interface Driver
+{
 	function create(string $table): Insert;
 	function read(string $table): Select;
 	function update(string $table): Update;
 	function delete(string $table): Delete;
-	function close();
 }
 
-interface Select {
+interface Select
+{
 	function condition(
-		string $field, &$ref, string $type = 's', 
+		string $field,
+		$ref,
+		string $type = 's',
 		string $condition = '=',
 		string $operator = 'AND',
 	);
@@ -53,27 +58,33 @@ interface Select {
 	function orderBy(string $field, string $order = 'ASC');
 }
 
-interface Delete {
+interface Delete
+{
 	function condition(
-		string $field, &$ref, string $type = 's',
+		string $field,
+		$ref,
+		string $type = 's',
 		string $condition = '=',
 		string $operator = 'AND',
 	);
 	function limit(int $count, int $offset);
 }
 
-interface Insert {
-	function set(string $field, &$ref, string $type = 's');
+interface Insert
+{
+	function set(string $field, $ref, string $type = 's');
 }
 
-interface Update {
+interface Update
+{
 	function orderBy(string $field, string $order = 'ASC');
 	function limit(int $count, int $offset);
-	function set(string $field, &$ref, string $type = 's');
+	function set(string $field, $ref, string $type = 's');
 	function condition(
-		string $field, &$ref, string $type = 's',
+		string $field,
+		$ref,
+		string $type = 's',
 		string $condition = '=',
 		string $operator = 'AND',
 	);
 }
-

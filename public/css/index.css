@@ -1,6 +1,24 @@
-.index--banner {
+.banner {
+	position: relative;
 	height: 400px;
+	background-image: url(/public/sunset.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	backdrop-filter: blur(5px);
 }
 
-.index-banner {
+.banner object {
+	border-radius: 10px;
+	width: 250px;
+	/* background-color: rgba(255, 255, 255, 70%); */
+	/* backdrop-filter: blur(10px); */
+	/* padding: 20px; */
+	position: absolute;
+	top: 50%;
+	left: 20%;
+	transform: translateY(-50%);
+	font-size: 2.6em;
 }
+

@@ -1,12 +1,23 @@
-<?php namespace Controller\Page;
+<?php
 
-use Modules\Kernel\Page;
+namespace Controller\Page;
 
-class Admin extends Page {
-	function __construct() {
-		parent::__construct('admin_archive.phtml');
-		$this->title('Página del admin');
-		$this->style('css/adminstyle.css');
+use Modules\Kernel\Controller;
+use Modules\Kernel\View;
 
+class Admin extends Controller
+{
+	function __construct()
+	{
+		$this->access('admin');
+		$this->styles[] = 'admin.css';
+	}
+
+	function title(): string {
+		return 'Página del admin';
+	}
+
+	function content() {
+		return new View('page/admin.phtml');
 	}
 }
