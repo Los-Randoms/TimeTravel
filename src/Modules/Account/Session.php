@@ -36,9 +36,9 @@ abstract class Session
 		// Check if the user exists
 		if ($_SESSION['logged']) {
 			$user = &$_SESSION['account'];
-			$_SESSION['account'] = User::load($user->id);
-			if (empty($user) || $user->banned) {
-				if($user->banned)
+			$_SESSION['account'] = User::load($user['id']);
+			if (empty($user) || $user['banned']) {
+				if($user['banned'])
 					Message::add('Ha sido baneado');
 				return self::logout();
 			}
