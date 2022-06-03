@@ -18,6 +18,9 @@ use Modules\Kernel\View;
 	<link href="/public/global.css" rel="stylesheet" />
 	<link href="/public/site.css" rel="stylesheet" />
 	<link href="/public/site-small.css" rel="stylesheet" media="(max-width: 800px)" />
+	<?php if($_SESSION['is_admin']): ?>
+	<link href="/public/admin-toolbar.css" rel="stylesheet" />
+	<?php endif ?>
 	<?php foreach($styles ?? [] as $href): ?>
 	<link href="/public/css/<?= urlencode($href) ?>" rel="stylesheet" />
 	<?php endforeach ?>
