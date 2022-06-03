@@ -1,77 +1,61 @@
 * {
-  margin:0px;
-  padding:0px;
-}
-
-#header {
- 
-  font-family:Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  
+  margin: 0px;
+  padding: 0px;
 }
 
 ul, ol {
-  list-style:none;
+  list-style: none;
 }
 
-.nav > li {
-  float:left;
+.nav>li {
+  text-align: center;
+  position: sticky;
+  float: left;
+
 }
+
+
 
 .nav li a {
-  background-color:white;
-  color:black;
-  text-decoration:none;
-  padding:10px 12px;
-  display:block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  background-color: #FDEFA4;
+  color: black;
+  text-decoration: none;
+  padding: 15px 99px;
+  display: block;
+  
 }
+
 
 .nav li a:hover {
-  background-color:whitesmoke;
+  background-color: #ffe866;
+  transition:all .4s;
 }
 
-.nav li ul {
-  display:none;
-  position:absolute;
-  min-width:140px;
+/* Contenedor centrado de bienvenida  */
+
+.margin-auto {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 560px;
+  width: 1300px;
+
+
+  background: white;
+  color: black;
 }
 
-.nav li:hover > ul {
-  display:block;
+.margin-auto__content {
+  margin: center;
+  font-size: 50px;
 }
 
-.nav li ul li {
-  position:relative;
+.text {
+  text-align: center;
+  margin-top: 200px;
 }
-
-.nav li ul li ul {
-  right:-140px;
-  top:0px;
-}
-  
-  
-  /* Contenedor centrado de bienvenida  */
-
-  .margin-auto {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 560px;
-    width: 1300px;
- 
-  
-    background: white;
-    color: black;
-  }
-  
-  .margin-auto__content {
-    margin: center;
-    font-size: 50px;
-  }
-  .text{
-    text-align: center;
-    margin-top: 200px;
-  }
 
 /*#menu ul {
     list-style:none;
@@ -80,14 +64,14 @@ ul, ol {
    }
    
    /* items del menu */
-   
-  /*/ #menu ul li {
+
+/*/ #menu ul li {
     background-color:skyblue; 
    }
    
    /* enlaces del menu */
-   
-  /* #menu ul a {
+
+/* #menu ul a {
     display:block;
     color:#fff;
     text-decoration:none;
@@ -100,8 +84,8 @@ ul, ol {
    }
    
    /* items del menu */
-   
-  /* #menu ul li {
+
+/* #menu ul li {
     position:relative;
     float:left;
     margin:0;
@@ -109,7 +93,7 @@ ul, ol {
    }
    
    /* efecto al pasar el ratón por los items del menu */
-   
-  /* #menu ul li:hover {
+
+/* #menu ul li:hover {
     background:#0a4c78;
    } 
