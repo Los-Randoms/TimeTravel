@@ -33,8 +33,8 @@ create table users(
 insert into roles(name) values ('admin'), ('user'), ('editor'), ('moderator');
 insert into users set
 	username = 'admin',
-	email = 'admin@travel-time.page',
-	password = '$2a$15$mHXt5/cpp.jfIGhEaUYA0.9nf7IHtJQ8GY/LYPtSNkkvQZ7bjSsq6',
+	email = 'admin@test.xyz',
+	password = '$2y$10$KtGDLcebrR5bv/BoeNHSc.K/gOhFrxZhHKos9c9cXkqFe5.rSdeG2',
 	rol = 'admin';
 
 create table publications(
