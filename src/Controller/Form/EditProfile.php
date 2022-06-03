@@ -35,7 +35,7 @@ class EditProfile extends Form
     function verify(): bool
     {
         $this->file = FileManager::get('avatar');
-        if (!is_null($this->file)) {
+        if (!empty($this->file)) {
             FileManager::move($this->file, 'avatars');
             $this->file->save();
         }
@@ -44,15 +44,17 @@ class EditProfile extends Form
 
     function submit()
     {
-        $this->currentUser->username = $_POST['name'];
+        $_SESSION['user']->username = $_POST['name'];
 
-        if (!is_null($this->file)) {
-            $this->currentUser->avatar = $this->file->id;
-            if(!empty($this->archivo)){
-                FileManager::delete($this->archivo);
+        if (!empty($this->file)) {
+            $_SESSION['user']->avatar = $this->file->id;
+            $last_pfp = $_SESSION['pfp'];
+            if(!empty($last_pfp)){
+                FileManager::delete($last_pfp);
+                $_SESSION['pfp'] = $this->file;
             }
         }
-        $this->currentUser->update();
+        $_SESSION['user']->update();
         Message::add('Se ha actualizado su información');
         return Router::get('/perfil');
     }
