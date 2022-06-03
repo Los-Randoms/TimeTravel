@@ -22,7 +22,10 @@ class Profile extends Controller
 
     function content()
     {
-        return new View('page/profile.phtml');
+        return new View('page/profile.phtml', [
+            'pfp' => $_SESSION['pfp'],
+            'user' => $_SESSION['user'],
+        ]);
     }
 }
 
