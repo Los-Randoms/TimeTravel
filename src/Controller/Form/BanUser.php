@@ -15,7 +15,7 @@ class BanUser extends Form
 
     function __construct()
     {
-        $this->access('admin');
+        $this->access('admin', 'moderator');
         /** @var \Modules\Mysql\Driver */
         $driver = Storage::driver();
         $select = $driver->read(User::TABLE);
