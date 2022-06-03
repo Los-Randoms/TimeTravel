@@ -60,7 +60,7 @@ abstract class FileManager
 		$file->path = $new_name;
 	}
 
-	function delete(File $file)
+	static function delete(File $file)
 	{
 		$file_path = UPLOAD_DIR . "/{$file->path}";
 		if (file_exists($file_path))
