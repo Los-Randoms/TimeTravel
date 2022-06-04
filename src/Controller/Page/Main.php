@@ -3,16 +3,15 @@
 namespace Controller\Page;
 
 use Entity\Publication;
-use Error;
 use Modules\Kernel\Controller;
-use Modules\Kernel\Message;
-use Modules\Kernel\MessageTypes;
 use Modules\Kernel\Storage;
 use Modules\Kernel\View;
+use Modules\Mysql\Driver;
 
 class Main extends Controller
 {
 	protected int $page;
+	protected Driver $db;
 
 	function __construct()
 	{
@@ -20,12 +19,12 @@ class Main extends Controller
 		$this->page = $_GET['id'] ?? 1;
 		if($this->page < 1)
 			$this->page = 1;
+		$this->db = Storage::driver();
 	}
 
 	function content()
 	{
-		/** @var \Modules\Mysql\Query\Select */
-		$query = Storage::driver()
+		$query = $this->db
 			->read(Publication::TABLE);
 		$query->limit(15, $this->page);
 		$query->execute();
