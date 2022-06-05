@@ -8,12 +8,13 @@ use Modules\Kernel\File;
 use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
 use Modules\Kernel\Message;
+use Modules\Kernel\Storage;
 use Modules\Kernel\View;
+use Modules\Mysql\Driver;
 
 class CreatePublication extends Form
 {
-	protected File $file;
-
+	protected Driver $db;
 	protected array $accepts = [
 		'image/png',
 		'image/jpeg',
@@ -22,7 +23,13 @@ class CreatePublication extends Form
 
 	function __construct()
 	{
+		parent::__construct('POST', [
+			'image' => [
+				'from' => &$_FILES,
+			],
+		]);
 		$this->access('admin');
+		$this->db = Storage::driver();
 	}
 
 	function title(): string
@@ -35,23 +42,19 @@ class CreatePublication extends Form
 		return new View('page/create_publication.phtml');
 	}
 
-	function submit()
+	function submit(&$data)
 	{
 		$pub = new Publication();
 		Message::add('¡Publicacion creada!');
 		return Router::get("/publicacion?id={$pub->id}");
 	}
 
-	function verify(): bool
+	function verify(&$data)
 	{
-		if (!Form::verify($_POST, [
-			'title' => '[!?#]string|10',
-			'body' => '[!?#]string|1',
-		])) $this->error('Verifique la informacion enviada');
 		$this->file = FileManager::get('image');
 		print_r($this->file);
 		die;
 		if (!in_array($this->file->mime, $this->accepted_mimes))
-			return $this->error('La imagen enviada es incorrecta');
+			return Message::add('La imagen no esta en un formato aceptado');
 	}
 }

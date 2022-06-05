@@ -2,12 +2,12 @@
   font-family: "microns";
   font-style: normal;
   font-weight: normal;
-  src: url("/public/fonts/microns.eot");
-  src: url("/public/fonts/microns.eot?#iefix") format("embedded-opentype"),
-       url("/public/fonts/microns.woff2") format("woff2"),
-       url("/public/fonts/microns.woff") format("woff"),
-       url("/public/fonts/microns.ttf") format("truetype"),
-       url("/public/fonts/microns.svg") format("svg");
+  src: url("/fonts/microns.eot");
+  src: url("/fonts/microns.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/microns.woff2") format("woff2"),
+       url("/fonts/microns.woff") format("woff"),
+       url("/fonts/microns.ttf") format("truetype"),
+       url("/fonts/microns.svg") format("svg");
 }
 
 .mu::before {

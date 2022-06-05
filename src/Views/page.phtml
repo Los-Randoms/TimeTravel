@@ -1,5 +1,6 @@
 <?php
 
+use Modules\Account\Session;
 use Modules\Kernel\Message;
 use Modules\Kernel\View;
 
@@ -14,22 +15,22 @@ use Modules\Kernel\View;
 	<title>
 		<?= htmlentities($title) ?>
 	</title>
-	<link href="/public/favicon.ico" rel="icon" />
-	<link href="/public/global.css" rel="stylesheet" />
-	<link href="/public/site.css" rel="stylesheet" />
-	<link href="/public/site-small.css" rel="stylesheet" media="(max-width: 800px)" />
-	<?php if($_SESSION['is_admin']): ?>
-	<link href="/public/admin-toolbar.css" rel="stylesheet" />
+	<link href="/favicon.ico" rel="icon" />
+	<link href="/global.css" rel="stylesheet" />
+	<link href="/site.css" rel="stylesheet" />
+	<link href="/site-small.css" rel="stylesheet" media="(max-width: 800px)" />
+	<?php if(Session::logged() && $_SESSION['is_admin']): ?>
+	<link href="/admin-toolbar.css" rel="stylesheet" />
 	<?php endif ?>
 	<?php foreach($styles ?? [] as $href): ?>
-	<link href="/public/css/<?= urlencode($href) ?>" rel="stylesheet" />
+	<link href="/css/<?= urlencode($href) ?>" rel="stylesheet" />
 	<?php endforeach ?>
-	<script src="/public/main.js" type="module"></script>
+	<script src="/main.js" type="module"></script>
 </head>
 
 <body>
 	<?= new View('navbar.phtml') ?>
-	<?php if($_SESSION['is_admin']): ?>
+	<?php if(Session::logged() && $_SESSION['is_admin']): ?>
 		<?= new View('admin-toolbar.phtml') ?>
 	<?php endif ?>
 	<div id="site-alerts" class="alerts">
@@ -39,7 +40,7 @@ use Modules\Kernel\View;
 	</div>
 	<?= $content ?>
 	<?php foreach($scripts ?? [] as $src): ?>
-	<script src="/public/js/<?= urlencode($src) ?>" type="module"></script>
+	<script src="/js/<?= urlencode($src) ?>" type="module"></script>
 	<?php endforeach ?>
 </body>
 

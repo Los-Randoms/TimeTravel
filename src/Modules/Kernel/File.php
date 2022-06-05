@@ -8,6 +8,6 @@ class File extends Entity {
 	public string $path;
 
 	function url(): string {
-		return "/public/files/{$this->path}";
+		return "/files/{$this->path}";
 	}
 }

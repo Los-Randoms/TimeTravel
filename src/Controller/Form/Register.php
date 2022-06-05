@@ -3,7 +3,6 @@
 namespace Controller\Form;
 
 use Modules\Account\User;
-use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
 use Modules\Kernel\Message;
 use Modules\Kernel\View;
@@ -13,6 +12,27 @@ class Register extends Form
 {
 	function __construct()
 	{
+		parent::__construct('POST', [
+			'email' => [
+				'trim' => true,
+				'from' => &$_POST,
+				'filter' => [
+					'type' => FILTER_VALIDATE_EMAIL
+				],
+			],
+			'password_1' => [
+				'from' => &$_POST,
+				'length' => 7,
+			],
+			'password_2' => [
+				'from' => &$_POST,
+				'length' => 7,
+			],
+			'username' => [
+				'trim' => true,
+				'from' => &$_POST,
+			],
+		]);
 		$this->styles[] = 'register.css';
 	}
 
@@ -26,27 +46,19 @@ class Register extends Form
 		return new View('page/register.phtml');
 	}
 
-	function verify(): bool
+	function verify(&$data)
 	{
-		$this->file = FileManager::get('avatar');
-		if (!is_null($this->file)) {
-			FileManager::move($this->file, 'avatars');
-			$this->file->save();
-		}
+		if($data['password_1'] === $data['password_2'])
+			return Message::add('Las contraseñas no coinciden');
 		return true;
 	}
 
-	function submit()
+	function submit(&$data)
 	{
 		$user = new User();
-		$user->email = $_POST['email'];
-		$user->username = $_POST['username'];
-		$user->password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
-		if (!is_null($this->file)) {
-			$this->currentUser->avatar = $this->file->id;
-		}
-
+		$user->email = $data['email'];
+		$user->username = $data['username'];
+		$user->password = password_hash($data['password'], PASSWORD_BCRYPT);
 		$user->save();
 		Message::add('¡Se ha registrado correctamente!');
 		return Router::get('/iniciar-sesion');

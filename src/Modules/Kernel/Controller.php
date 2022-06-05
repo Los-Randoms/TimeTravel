@@ -3,32 +3,55 @@
 namespace Modules\Kernel;
 
 use Exception;
-use Modules\Account\User;
+use Modules\Account\Session;
 
 abstract class Controller
 {
+	/**
+	 * The access nedded for this page
+	 * @var array
+	 * */
 	private array $access;
 
-	function init() {
+	/**
+	 * Set the access needded fo this page
+	 * @param string ...$roles
+	 * */
+	protected function access(string ...$roles)
+	{
+		$this->access = $roles;
+	}
+
+	/**
+	 * Init the controller and if
+	 * the current user has permissions
+	 * */
+	function init()
+	{
 		# Check if the user has permissions
-		if(isset($this->access)) {
-			if(!$_SESSION['logged'])
-				throw new Exception('', 403);
-			if(!empty($this->access)) {
-				/** @var User */
-				if(!in_array($_SESSION['user']->rol, $this->access))
-					throw new Exception('', 403);
+		if (isset($this->access)) {
+			if (!Session::logged())
+				throw new Exception('Permiso denegado', 403);
+			if (!empty($this->access)) {
+				if (!in_array($_SESSION['user']->rol, $this->access))
+					throw new Exception('Permiso denegado', 403);
 			}
 		}
 	}
 
-	final protected function access(string ...$roles) {
-		$this->access = $roles;
-	}
-
-	function title(): string {
+	/**
+	 * Retutn the site title
+	 * the default title is the site name
+	 * @return string
+	 * */
+	function title(): string
+	{
 		return SITE_NAME;
 	}
 
+	/**
+	 * Controller content function
+	 * @return mixed $response
+	 * */
 	abstract function content();
 }

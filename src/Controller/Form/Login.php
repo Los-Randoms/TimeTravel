@@ -8,16 +8,30 @@ use Modules\Kernel\Form;
 use Modules\Kernel\Message;
 use Modules\Kernel\Storage;
 use Modules\Kernel\View;
-use Modules\Mysql\Utils;
+use Modules\Mysql\Driver;
 use Modules\Router\Router;
 
 class Login extends Form
 {
-	protected ?User $user;
+	protected Driver $db;
 
 	function __construct()
 	{
+		parent::__construct('POST', [
+			'email' => [
+				'trim' => true,
+				'from' => &$_POST,
+				'filter' => [
+					'type' => FILTER_VALIDATE_EMAIL
+				],
+			],
+			'password' => [
+				'trim' => true,
+				'from' => &$_POST,
+			],
+		]);
 		$this->styles[] = 'login.css';
+		$this->db = Storage::driver();
 	}
 
 	function title(): string
@@ -25,26 +39,24 @@ class Login extends Form
 		return 'Iniciar sesión';
 	}
 
-	function verify(): bool
+	function verify(&$data)
 	{
-		/** @var \Modules\Mysql\Driver */
-		$driver = Storage::driver();
-		$query = $driver->read(User::TABLE);
+		$query = $this->db->read(User::TABLE);
 		$query->condition('banned', false, 'i');
-		$query->condition('email', $_POST['email']);
+		$query->condition('email', $data['email']);
 		$query->execute();
 		$this->user = $query->fetch(User::class);
-
 		if (empty($this->user))
-			return $this->error('Verifique los datos');
-		if (!password_verify($_POST['password'], $this->user->password))
-			return $this->error('Verifique los datos');
+			return Message::add('Verifique los datos');
+		if (!password_verify($data['password'], $this->user->password))
+			return Message::add('Verifique los datos');
 		return true;
 	}
 
-	function submit()
+	function submit(&$data)
 	{
 		Session::login($this->user);
+		Session::save();
 		Message::add('Sesion iniciada');
 		return Router::get('/');
 	}

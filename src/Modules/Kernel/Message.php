@@ -2,8 +2,6 @@
 
 namespace Modules\Kernel;
 
-use StringBackedEnum;
-
 enum MessageTypes: string
 {
 	case Info = "info";
@@ -14,21 +12,41 @@ enum MessageTypes: string
 
 final class Message extends View
 {
-	public function __construct(string $message, MessageTypes $type)
-	{
-		parent::__construct('message.phtml', [
-			'message' => $message,
-			'type' => $type->value,
-		]);
+	/**
+	 * Initialize messages
+	 * */
+	static function init() {
+		$messages = $_COOKIE['messages'] ?? null;
+		if(!empty($_COOKIE['messages']))
+			$_COOKIE['messages'] = unserialize($messages);
+		else
+			$_COOKIE['messages'] = [];
+		setcookie('messages', serialize([]), null, '/');
 	}
 
-	# Statig messages functions
+	/**
+	 * Add a messages
+	 * */
 	static function add(string $message, MessageTypes $type = MessageTypes::Info)
 	{
-		$_SESSION['messages'][] = new Message($message, $type);
+		$_COOKIE['messages'][] = [
+			'message' => $message, 
+			'type' => $type->value,
+		];
+		setcookie('messages', serialize($_COOKIE['messages']), null, '/');
 	}
 
-	static function get(): ?Message {
-		return array_pop($_SESSION['messages']);
+	/**
+	 * Get the mesages of the user
+	 * */
+	static function get(): ?View {
+		$alert = array_pop($_COOKIE['messages']);
+		if(isset($alert)) {
+			return new View('message.phtml', [
+				'message' => $alert['message'],
+				'type' => $alert['type'],
+			]);
+		}
+		return null;
 	}
 }

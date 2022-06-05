@@ -1,3 +1,8 @@
+<?php
+
+use Modules\Account\Session;
+
+?>
 <nav id="main-navigation" class="navbar">
     <button class="back-button" element="go-back">
         <i class="mu mu-arrow-left"></i>
@@ -14,13 +19,13 @@
         </div>
     </form>
     <div class="items" element="items">
-        <?php if ($_SESSION['logged']) : ?>
+        <?php if (Session::logged()) : ?>
         <a href="/perfil" role="button" class="profile item">
             <div class="pfp">
             <?php if(!empty($_SESSION['pfp'])): ?>
-                <img src="<?= $_SESSION['pfp']->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
+                <img src="<?= $_SESSION['pfp']->path ?>" class="contains" loading="lazy" alt="Imagen de perfil">
             <?php else: ?>
-                <img src="/public/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
+                <img src="/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
             <?php endif ?>
             </div>
             <span>

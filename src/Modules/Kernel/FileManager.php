@@ -50,19 +50,22 @@ abstract class FileManager
 
 	static function move(File $file, string $prefix)
 	{
+		$root = $_SERVER['DOCUMENT_ROOT'];
 		$extension = pathinfo($file->filename, PATHINFO_EXTENSION);
 		$new_name = uniqid("{$prefix}_", true) . ".$extension";
+		$new_path = '/' . UPLOAD_DIR . "/$new_name";
 
 		if (is_uploaded_file($file->path))
-			move_uploaded_file($file->path, UPLOAD_DIR . "/$new_name");
+			move_uploaded_file("$root{$file->path}", "$root$new_path");
 		else
-			rename(UPLOAD_DIR . $file->path, UPLOAD_DIR . "/$new_name");
-		$file->path = $new_name;
+			rename("$root{$file->path}", "$root$new_path");
+		$file->path = $new_path;
 	}
 
 	static function delete(File $file)
 	{
-		$file_path = UPLOAD_DIR . "/{$file->path}";
+		$root = $_SERVER['DOCUMENT_ROOT'];
+		$file_path = "$root{$file->path}";
 		if (file_exists($file_path))
 			unlink($file_path);
 		File::remove($file->id);

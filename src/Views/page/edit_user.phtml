@@ -29,9 +29,9 @@
 			<?php if (!empty($image)) : ?>
 			<div class="avatar">
 				<?php if (!empty($image)) : ?>
-				<img src="<?= $image->url() ?>" class="contains" loading="lazy" alt="Imagen de perfil">
+				<img src="<?= $image->path ?>" class="contains" loading="lazy" alt="Imagen de perfil">
 				<?php else : ?>
-				<img src="/public/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
+				<img src="/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
 				<?php endif ?>
 			</div>
 			<?php endif ?>

@@ -7,12 +7,26 @@ use Modules\Kernel\Form;
 use Modules\Kernel\Message;
 use Modules\Kernel\Storage;
 use Modules\Kernel\View;
+use Modules\Mysql\Driver;
 use Modules\Router\Router;
 
 class ChangePass extends Form
 {
+    protected Driver $db;
+    protected ?User $user;
+
     function __construct()
     {
+        parent::__construct('POST', [
+            'email' => [
+                'trim' => true,
+                'from' => &$_POST,
+                'filter' => [
+                    'type' => FILTER_VALIDATE_EMAIL
+                ],
+            ],
+        ]);
+        $this->db = Storage::driver();
         $this->styles[] = 'change-password.css';
     }
 
@@ -21,45 +35,35 @@ class ChangePass extends Form
         return 'Cambiar contraseña';
     }
 
-    function content() {
+    function content()
+    {
         return new View('page/change_password.phtml');
     }
 
-    function verify(): bool
+    function verify(&$data)
     {
-        # if (!Form::check($_POST, [
-        #     'email' => '[!?#]string|',
-        # ])) $this->error('Formulario invalido');
-
-        /** @var \Modules\Mysql\Driver */
-        $driver = Storage::driver();
-        $select = $driver->read(User::TABLE);
-        $select->condition('email', $_POST['email'], 's', '=');
+        $select = $this->db->read(User::TABLE);
+        $select->condition('email', $data['email']);
+        $select->condition('banned', false, 'i');
         $select->execute();
-        /** @var User */
         $this->user = $select->fetch(User::class);
-        if (is_null($this->user))
-            return false;
-        return true;
+        if (empty($this->user))
+            return Message::add('Vefique la informacion proporcionada');
     }
 
-    function submit()
+    function submit(&$data)
     {
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz$#';
-        //genera carcteres aleatorio
-        $newp = substr(str_shuffle($permitted_chars), 0, 8); 
-        //encriptado de contraseña
-        $incrip = password_hash($newp, PASSWORD_DEFAULT); 
-        $this->user->password = $incrip;
+        // Genera carcteres aleatorio
+        $password = substr(str_shuffle($permitted_chars), 0, 12);
+        $this->user->password = password_hash($password, PASSWORD_BCRYPT);
         $this->user->update();
-        Message::add("Se ha enviado a su correo una nueva contraseña temporal {$newp}");
-        return Router::get('/iniciar-sesion');
-
         // mail(
         //   $correo, 
         //   'Cambio de contraseña',  
         //   "Hemos recibido su solicitud de cambio de contraseña y su nueva contraseña es: $newp"
         // );
+        Message::add('Se ha enviado a su correo una nueva contraseña temporal');
+        return Router::get('/iniciar-sesion');
     }
 }
-

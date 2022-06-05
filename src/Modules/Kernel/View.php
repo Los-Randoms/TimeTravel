@@ -6,7 +6,7 @@ class View {
 	private array $data;
 
 	function __construct(string $file, array $data = []) {
-		$this->file = "./src/Views/$file";
+		$this->file = "../src/Views/$file";
 		$this->data = $data;
 	}
 

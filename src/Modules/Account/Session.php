@@ -7,6 +7,8 @@ use Modules\Kernel\Message;
 
 abstract class Session
 {
+	static protected bool $logged = false;
+
 	/**
 	 * Check if the session file exists
 	 * @return bool true if the session file exists
@@ -29,41 +31,54 @@ abstract class Session
 	 * */
 	static function init()
 	{
-		session_start();
 		if (!self::exists())
-			self::logout();
-
-		// Check if the user exists
-		if ($_SESSION['logged']) {
-			$user = $_SESSION['user'];
-			$_SESSION['user'] = User::load($user->id);
-			if (empty($user) || $user->banned) {
-				if($user->banned)
-					Message::add('Ha sido baneado');
-				return self::logout();
-			}
+			return false;
+		
+		session_start();
+		$user = $_SESSION['user'];
+		$_SESSION['user'] = User::load($user->id);
+		if (empty($user) || $user->banned) {
+			if ($user->banned)
+				Message::add('Ha sido baneado');
+			return self::logout();
 		}
+		self::$logged = true;
+		return true;
 	}
+
 	static function login(User $user)
 	{
+		session_start();
 		$_SESSION['user'] = $user;
 		$_SESSION['is_admin'] = $user->rol === 'admin';
-		$_SESSION['logged'] = true;
 		if (!empty($user->avatar))
 			$_SESSION['pfp'] = File::load($user->avatar);
 	}
 
+	/**
+	 * Cerrar la session
+	 * */
 	static function logout()
 	{
 		$_SESSION['user'] = null;
-		$_SESSION['logged'] = false;
-		$_SESSION['messages'] = [];
 		$_SESSION['is_admin'] = false;
 		$_SESSION['pfp'] = null;
+		session_destroy();
 	}
 
-	static function stop()
+	/**
+	 * Guardar la session
+	 * */
+	static function save()
 	{
 		session_commit();
+	}
+
+	/**
+	 * La sesion ha sido iniciada
+	 * */
+	static function logged(): bool
+	{
+		return self::$logged;
 	}
 }

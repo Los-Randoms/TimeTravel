@@ -2,25 +2,24 @@
 
 namespace Controller\Form;
 
-use Modules\Account\User;
 use Modules\Kernel\File;
 use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
 use Modules\Kernel\Message;
-use Modules\Kernel\Storage;
 use Modules\Kernel\View;
 use Modules\Router\Router;
 
 class DeleteFile extends Form
 {
-    protected ?File $file;
-
     function __construct()
     {
+        parent::__construct('POST', [
+            'id' => [
+                'from' => &$_POST,
+                'type' => 'integer'
+            ],
+        ]);
         $this->access('admin');
-
-        $this->file=File::load($_GET['id']);
-
     }
 
     function title(): string
@@ -33,17 +32,17 @@ class DeleteFile extends Form
         return new View('page/deletefile.phtml');
     }
 
-    public function verify(): bool
+    public function verify(&$data)
     {
+        $this->file = File::load($data['id']);
         if (empty($this->file))
-            return $this->error('El archivo no existe');
+            return Message::add('El archivo no existe');
         return true;
     }
 
-    function submit()
+    function submit(&$data)
     {
         FileManager::delete($this->file);
-        File::remove($this->file->id);
         Message::add('Se ha eliminado el archivo');
         return Router::get('/admin/archivos');
     }
