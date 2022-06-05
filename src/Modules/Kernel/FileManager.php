@@ -53,10 +53,11 @@ abstract class FileManager
 		$root = $_SERVER['DOCUMENT_ROOT'];
 		$extension = pathinfo($file->filename, PATHINFO_EXTENSION);
 		$new_name = uniqid("{$prefix}_", true) . ".$extension";
-		$new_path = '/' . UPLOAD_DIR . "/$new_name";
+		$new_path = UPLOAD_DIR . "/$new_name";
 
+		var_dump("$root/{$file->path}", "$root$new_path");
 		if (is_uploaded_file($file->path))
-			move_uploaded_file("$root{$file->path}", "$root$new_path");
+			move_uploaded_file($file->path, "$root$new_path");
 		else
 			rename("$root{$file->path}", "$root$new_path");
 		$file->path = $new_path;

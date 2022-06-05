@@ -2,7 +2,6 @@
 
 namespace Controller\Form;
 
-use Modules\Account\User;
 use Modules\Kernel\File;
 use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
@@ -12,13 +11,24 @@ use Modules\Router\Router;
 
 class EditProfile extends Form
 {
+    protected File $file;
+
     function __construct()
     {
+        parent::__construct('POST', [
+            'name' => [
+                'trim' => true,
+                'from' => &$_POST,
+            ],
+            'avatar' => [
+                'from' => &$_FILES,
+                'optional' => true,
+            ],
+        ]);
         $this->access();
         $this->styles[] = 'editprofile.css';
-        
     }
-    
+
     function title(): string
     {
         return 'Editar información';
@@ -27,12 +37,12 @@ class EditProfile extends Form
     function content()
     {
         return new View('page/edit_account.phtml', [
-            'user' => $_SESSION['user'], 
+            'user' => $_SESSION['user'],
             'image' => $_SESSION['pfp'],
         ]);
     }
 
-    function verify(): bool
+    function verify(&$data)
     {
         $this->file = FileManager::get('avatar');
         if (!empty($this->file)) {
@@ -42,14 +52,13 @@ class EditProfile extends Form
         return true;
     }
 
-    function submit()
+    function submit(&$data)
     {
-        $_SESSION['user']->username = $_POST['name'];
-
+        $_SESSION['user']->username = $data['name'];
         if (!empty($this->file)) {
             $_SESSION['user']->avatar = $this->file->id;
             $last_pfp = $_SESSION['pfp'];
-            if(!empty($last_pfp)){
+            if (!empty($last_pfp)) {
                 FileManager::delete($last_pfp);
                 $_SESSION['pfp'] = $this->file;
             }

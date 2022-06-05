@@ -10,6 +10,7 @@
 	"/admin": "Controller\\Page\\Admin",
 	"/admin/comentarios": "Controller\\Page\\ListComments",
 	"/admin/publicaciones": "Controller\\Page\\ListPublications",
+	"/admin/publicaciones/like": "Controller\\Page\\LikePublication",
 	"/admin/publicacion/nueva": "Controller\\Form\\CreatePublication",
 	"/admin/publicacion/editar": "Controller\\Form\\EditPublication",
 	"/admin/publicacion/eliminar": "Controller\\Form\\DeletePublication",
@@ -22,5 +23,5 @@
 	"/admin/usuario/eliminar": "Controller\\Form\\DeleteUser",
 	"/admin/archivos": "Controller\\Page\\ListFiles",
 	"/admin/archivos/eliminar": "Controller\\Form\\DeleteFile",
-  "/terminos": "Controller\\Page\\Terminos"
+	"/terminos": "Controller\\Page\\Terminos"
 }

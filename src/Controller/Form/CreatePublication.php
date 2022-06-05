@@ -4,7 +4,6 @@ namespace Controller\Form;
 
 use Modules\Router\Router;
 use Entity\Publication;
-use Modules\Kernel\File;
 use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
 use Modules\Kernel\Message;

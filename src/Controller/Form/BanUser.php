@@ -7,21 +7,24 @@ use Modules\Kernel\Form;
 use Modules\Kernel\Message;
 use Modules\Kernel\Storage;
 use Modules\Kernel\View;
+use Modules\Mysql\Driver;
 use Modules\Router\Router;
 
 class BanUser extends Form
 {
     protected ?User $user;
+    protected Driver $db;
 
     function __construct()
     {
+        parent::__construct('POST', [
+            'id' => [
+                'from' => &$_POST,
+                'type' => 'integer',
+            ],
+        ]);
         $this->access('admin', 'moderator');
-        /** @var \Modules\Mysql\Driver */
-        $driver = Storage::driver();
-        $select = $driver->read(User::TABLE);
-        $select->condition('id', $_GET['id']);
-        $select->execute();
-        $this->user = $select->fetch(User::class);
+        $this->db = Storage::driver();
     }
 
     function title(): string
@@ -31,28 +34,29 @@ class BanUser extends Form
 
     function content()
     {
-
+        if(!isset($this->user))
+            $this->user = User::load($_GET['id']);
         return new View('page/ban-user.phtml', [
-            "user"=> $this->user
+            "user" => $this->user
         ]);
     }
 
-    public function verify(): bool
+    public function verify(&$data)
     {
+        $this->user = User::load($data['id']);
         if (empty($this->user))
-            return $this->error('El usuario no existe');
+            return Message::add('El usuario no existe');
         return true;
     }
 
-    function submit()
+    function submit(&$data)
     {
-        $this->user->banned=!$this->user->banned;
+        $this->user->banned = !$this->user->banned;
         $this->user->update();
-        if($this->user->banned){
+        if($this->user->banned)
             Message::add('Se ha baneado al usuario');
-        } else{
+        else
             Message::add('Se ha desbaneado al usuario');
-        }
         return Router::get('/admin/usuarios');
     }
 }

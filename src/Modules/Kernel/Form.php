@@ -2,6 +2,8 @@
 
 namespace Modules\Kernel;
 
+use Modules\Router\Route;
+
 /**
  * Controller base for forms
  * */
@@ -66,8 +68,10 @@ abstract class Form extends Controller
 
 			# Verify info and if it does not return nothing then continue
 			$validation = $this->verify($data);
-			if (!empty($validation))
-				return $this->submit($data);
+			if(!empty($validation)) {
+				if (!($validation instanceof Route))
+					return $this->submit($data);
+			}
 			return $validation;
 		}
 	}

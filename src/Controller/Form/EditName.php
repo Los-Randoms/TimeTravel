@@ -10,51 +10,55 @@ use Modules\Router\Router;
 
 class EditName extends Form
 {
-    protected User $currentUser;
     protected ?User $user;
 
     function __construct()
     {
+        parent::__construct('POST', [
+            'name' => [
+                'trim' => true,
+                'from' => &$_POST,
+            ],
+            'rol' => [
+                'trim' => true,
+                'from' => &$_POST,
+            ],
+            'id' => [
+                'type' => 'integer',
+                'from' => &$_POST,
+            ],
+        ]);
         $this->access('admin');
         $this->styles[] = 'editadmin.css';
-
-        $this->user=User::load($_POST['id']);
-
-
-        /** @var \Modules\Mysql\Driver */
-        $driver = Storage::driver();
-        $select = $driver->read('roles');
-        $select->condition('id', $_POST['rol']);
-        $select->execute();
-        $this->rol = $select->fetch();
-
+        $this->db = Storage::driver();
     }
 
-    function init()
-    {
-        if (empty($this->user))
-            return Router::get('/admin/usuarios');
-        if ($this->user->id == $_SESSION['user']->user->id)
-            return Router::get('/perfil/editar');
-        return parent::init();
-    }
     function content()
     {
         return Router::get("/admin/usuario/editar");
     }
 
-    public function verify(): bool
+    function verify(&$data)
     {
+        $this->user = User::load($data['id']);
+        $select = $this->db->read('roles');
+        $select->condition('id', $data['rol']);
+        $select->execute();
+        $this->rol = $select->fetch();
+
+        if (empty($this->user))
+            return Router::get('/admin/usuarios');
+        if ($this->user->id == $_SESSION['user']->id)
+            return Router::get('/perfil/editar');
 
         return true;
     }
 
-    function submit()
+    function submit(&$data)
     {
-        if(!empty($this->rol['name'])){
+        if (!empty($this->rol['name']))
             $this->user->rol =  $this->rol['name'];
-        }
-        $this->user->username = $_POST['name'];
+        $this->user->username = $data['name'];
         $this->user->update();
         Message::add('Se ha actualizado su información');
         return Router::get('/admin/usuarios');
