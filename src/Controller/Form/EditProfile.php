@@ -11,7 +11,7 @@ use Modules\Router\Router;
 
 class EditProfile extends Form
 {
-    protected File $file;
+    protected ?File $file;
 
     function __construct()
     {
