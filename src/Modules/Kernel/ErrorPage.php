@@ -15,7 +15,7 @@ class ErrorPage extends Controller
 	}
 	function title(): string
 	{
-		return 'ERROR';
+		return 'Oh... Algo ha salido mal';
 	}
 
 

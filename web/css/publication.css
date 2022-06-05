@@ -1,0 +1,34 @@
+.image {
+	width: 100%;
+	height: 350px;
+	overflow: hidden;
+}
+
+.image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.comments {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 2em;
+}
+.comment {
+	border-radius: 5px;
+	padding: 1em;
+	border: 1px solid var(--border-color);
+}
+
+.comment .author {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+}
+
+.comment .author .pfp {
+	width: 2em;
+	height: 2em;
+	margin-right: 1em;
+}

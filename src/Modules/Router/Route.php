@@ -8,6 +8,7 @@ class Route
 {
 	private string $path;
 	private string $controller_class;
+	public string $route;
 
 	function __construct(string $path, string $class) {
 		$this->path = $path;

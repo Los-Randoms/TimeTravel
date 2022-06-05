@@ -1,0 +1,12 @@
+<main class="container">
+    <h1>Eliminar publicacion</h1>
+    <form method="post" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="id" value="<?= htmlspecialchars($_GET['id']) ?>">
+        <p>Una vez elimines eliminada no se puede recuperar</p>
+				<button type="submit">
+					<i class="mu mu-delete"></i>
+					Eliminar
+				</button>
+        <a href="/admin/usuarios" role="button">Regresar</a>
+    </form>
+</main>

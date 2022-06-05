@@ -55,7 +55,6 @@ abstract class FileManager
 		$new_name = uniqid("{$prefix}_", true) . ".$extension";
 		$new_path = UPLOAD_DIR . "/$new_name";
 
-		var_dump("$root/{$file->path}", "$root$new_path");
 		if (is_uploaded_file($file->path))
 			move_uploaded_file($file->path, "$root$new_path");
 		else

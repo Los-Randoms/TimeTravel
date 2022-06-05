@@ -1,0 +1,29 @@
+<main class="container">
+	<h1>Editar publicación</h1>
+
+	<form enctype="multipart/form-data" method="post">
+		<input type="hidden" name="id" value="<?= htmlspecialchars($_GET['id']) ?>">
+		<label>Titulo: </label>
+		<input type="text" name="title" value="<?= htmlspecialchars($publication->title) ?>">
+		<div>
+			<label>Imagen: </label>
+			<input type="file" name="image">
+			<small>Deja el campo vacio para no cambiar la imagen</small>
+		</div>
+		<div class="input-group" style="margin-bottom: 1em">
+			<label>Cuerpo: </label>
+			<textarea name="body" rows="10" style="resize: vertical;"><?= htmlspecialchars($publication->body) ?></textarea>
+		</div>
+		<div>
+			<input type="checkbox" style="display: inline-block;" name="published" <?= $publication->published? 'checked':'' ?>>
+			<label>Publicado</label>
+		</div>
+		<div>
+			<input type="submit" value="Guardar">
+			<a role="button" href="/admin/publicaciones">
+				<i class="mu mu-cancel"></i>
+				Cancelar
+			</a>
+		</div>
+	</form>
+</main>

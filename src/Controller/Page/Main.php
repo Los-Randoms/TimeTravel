@@ -16,9 +16,9 @@ class Main extends Controller
 	function __construct()
 	{
 		$this->styles[] = 'index.css';
-		$this->page = $_GET['id'] ?? 1;
-		if($this->page < 1)
-			$this->page = 1;
+		$this->page = $_GET['id'] ?? 0;
+		if($this->page < 0)
+			$this->page = 0;
 		$this->db = Storage::driver();
 	}
 
@@ -26,10 +26,10 @@ class Main extends Controller
 	{
 		$query = $this->db
 			->read(Publication::TABLE);
-		$query->limit(15, $this->page);
+		$query->condition('published', true, 'i');
+		$query->limit(15, $this->page * 14);
 		$query->execute();
 		$publications = $query->results(Publication::class);
-
 		return new View('page/index.phtml', [
 			'publications' => $publications,
 		]);

@@ -4,17 +4,74 @@ use Modules\Utils;
 
 ?>
 <main class="container">
-    <h1>Publicaciones <hr></h1>
+    <h1>Publicaciones
+        <hr>
+    </h1>
+    <a href="/admin/publicacion/nueva" role="button">
+        <i class="mu mu-plus"></i>
+        Crear publicacion
+    </a>
     <table>
         <thead>
             <th>Id</th>
+            <th>Titulo</th>
+            <th>Fecha de creacion</th>
+            <th>Opciones</th>
         </thead>
         <?php foreach ($publications as $pub) : ?>
-            <tr>
-                <td>
-                    <?= $pub->id ?>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <?= $pub->id ?>
+            </td>
+            <td>
+                <a href="/admin/publicacion?id=<?= $pub->id ?>">
+                    <?= htmlentities(substr($pub->title, 0, 20)) ?>...
+                </a>
+            </td>
+            <td>
+                <?= Utils::date($pub->date) ?>
+            </td>
+            <td>
+                <a href="/admin/publicacion/editar?id=<?= $pub->id ?>" role="button">
+                    <i class="mu mu-edit"></i>
+                    Editar
+                </a>
+                <a href="/admin/publicacion/eliminar?id=<?= $pub->id ?>" role="button">
+                    <i class="mu mu-delete"></i>
+                    Eliminar
+                </a>
+                <?php if ($pub->published) : ?>
+                <a href="/admin/publicacion/publicar?id=<?= $pub->id ?>" role="button">
+                    <i class="mu mu-box"></i>
+                    Despublicar
+                </a>
+                <?php else : ?>
+                <a href="/admin/publicacion/publicar?id=<?= $pub->id ?>" role="button">
+                    <i class="mu mu-box-full"></i>
+                    Publicar
+                </a>
+                <?php endif ?>
+            </td>
+        </tr>
         <?php endforeach ?>
     </table>
+    <div class="pager">
+        <?php if ($page > 0) : ?>
+        <a href="?p=<?= $page - 1 ?>">&lt;</a>
+        <?php endif ?>
+        <a href="?p=<?= $page ?>">
+            <?= $page + 1 ?>
+        </a>
+        <?php if ($has_next) : ?>
+        <a href="?p=<?= $page + 1 ?>">&gt;</a>
+        <?php endif ?>
+    </div>
 </main>
+
+<style>
+    .pager {
+        margin: auto;
+        margin-top: 1em;
+        width: max-content;
+    }
+</style>

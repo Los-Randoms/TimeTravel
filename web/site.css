@@ -1,6 +1,5 @@
 @import url(/css/components/microns.css);
-@import url('https://fonts.googleapis.com/css2?family=Crete+Round&display=swap');
-@import url(https://fonts.googleapis.com/css2?family=Comfortaa&display=swap);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 
 main.container {
 	max-width: 1000px;

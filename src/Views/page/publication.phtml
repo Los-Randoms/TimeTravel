@@ -1,0 +1,77 @@
+<?php
+
+use Modules\Account\Session;
+use Modules\Account\User;
+use Modules\Kernel\File;
+use Modules\Utils;
+
+?>
+<main class="container">
+	<?php if (isset($image)) : ?>
+	<div class="image">
+		<img src="<?= $image->path ?>" />
+	</div>
+	<?php endif ?>
+	<header>
+		<h1>
+			<?= htmlspecialchars($publication->title) ?>
+		</h1>
+		<span>
+			<?= Utils::date($publication->date) ?>
+		</span>
+		<span style="float: right;">
+			Autor:
+			<?= htmlspecialchars($author->username) ?>&lt;<a href="mailto:<?= htmlspecialchars($author->email) ?>">
+				<?= htmlspecialchars($author->email) ?>
+			</a>&gt;
+		</span>
+		<hr>
+	</header>
+	<div class="content">
+		<?= htmlspecialchars($publication->body) ?>
+	</div>
+	<p>
+		<?= $likes ?> Me gusta
+	</p>
+	<?php if (Session::logged()) : ?>
+	<form action="/publicacion/like" method="post" enctype="application/x-www-form-urlencoded">
+		<input type="hidden" name="id" value="<?= $publication->id ?>">
+	</form>
+	<a  role="button">
+		<i class="mu mu-heart"></i>
+		<span>
+			<?= $liked ? 'Ya no me gusta' : 'Me gusta' ?>
+		</span>
+	</a>
+	<form action="/publicacion/comentar" method="post" enctype="application/x-www-form-urlencoded" class="comment">
+		<h2>Comentar</h2>
+		<input type="hidden" name="id" value="<?= $publication->id ?>">
+		<div class="input-group" style="margin-bottom: 1em">
+			<textarea name="body" id="" rows="8"></textarea>
+		</div>
+		<button type="submit">Comentar</button>
+	</form>
+	<?php endif ?>
+	<?php if (!empty($comments)) : ?>
+	<h2>Comentarios</h2>
+	<div class="comments">
+		<?php foreach ($comments as $comment) : ?>
+		<div class="comment">
+			<div class="author">
+				<?php $user = User::load($comment->user) ?>
+				<?php if (!empty($user->avatar)) : ?>
+				<?php $pfp = File::load($user->avatar) ?>
+				<div class="pfp">
+					<img src="<?= $pfp->path ?>" alt="Imagen de perfil">
+				</div>
+				<?php endif ?>
+				<a href="/usuario?id=<?= $user->id ?>" class="username">
+					<?= htmlspecialchars($user->username) ?>
+				</a>
+			</div>
+			<div class="body"><?= htmlspecialchars($comment->body) ?></div>
+		</div>
+		<?php endforeach ?>
+	</div>
+	<?php endif ?>
+</main>

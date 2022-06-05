@@ -32,7 +32,7 @@ try {
 			$page->set('content', $response); 
 			echo $page;
 		} elseif ($response instanceof Route)
-			header("Location: {$response->getPath()}");
+			header("Location: {$response->route}");
 		else
 			echo $response;
 	}

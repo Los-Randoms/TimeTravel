@@ -22,19 +22,21 @@ abstract class Router
 
 	static function get(string $path): ?Route
 	{
-		if (!self::exitst($path))
+		$uri = urldecode($path);
+		$uri_path = parse_url($uri)['path'];
+		if (!self::exitst($uri_path))
 			return null;
-		$route_class = self::$routes[$path];
-		return new Route($path, $route_class);
+		$route_class = self::$routes[$uri_path];
+		$route = new Route($uri_path, $route_class);
+		$route->route = $path;
+		return $route;
 	}
 
 	static function current(): Controller
 	{
-		$uri = urldecode($_SERVER['REQUEST_URI']);
-		$path = parse_url($uri)['path'];
-		if (!self::exitst($path))
+		$route = self::get($_SERVER['REQUEST_URI']);
+		if (!isset($route))
 			throw new Exception('Page not found', 404);
-		$route = Router::get($path);
 		return $route->getController();
 	}
 }

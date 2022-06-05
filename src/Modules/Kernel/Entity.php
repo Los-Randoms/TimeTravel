@@ -38,22 +38,13 @@ class Entity {
 	}
 
 	static function loadAll(int ...$ids): array {
-		$rows = [];
 		/** @var \Modules\Mysql\Driver */
 		$driver = Storage::driver();
 		$select = $driver->read(static::TABLE);
-		if(count($ids) > 0) {
-			$select->condition('id', $id);
-			foreach($ids as $id) {
-				$select->execute();
-				$rows[] = $select->fetch(static::class);
-			}
-			return $rows;
-		} else {
-			$select->execute();
-			$rows = $select->results(static::class);
-			return $rows;
-		}
+		foreach($ids as $id)
+			$select->condition('id', $id, 'i', '=', 'OR');
+		$select->execute();
+		return $select->results(static::class);
 	}
 
 	static function remove(int $id) {

@@ -20,3 +20,9 @@ button:focus, a[role=button]:focus, input[type=button]:focus, input[type=submit]
 }
 
 
+button.disabled, a[role=button].disabled, input[type=button].disabled, input[type=submit].disabled, input[type=reset].disabled, input[type=color].disabled {
+	color: var(--border-color);
+	pointer-events: none;
+}
+
+

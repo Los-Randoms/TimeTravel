@@ -22,3 +22,38 @@
 	font-size: 2.6em;
 }
 
+.publications {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 2em;
+}
+
+.publication {
+	padding: 1em;
+	border: 1px solid lightgray;
+	border-radius: 10px;
+	background-color: var(--secondary-color);
+	text-decoration: none;
+	display: block;
+	color: inherit;
+}
+
+.publication .image {
+	border-radius: 10px;
+	overflow: hidden;
+	width: 100%;
+	height: 200px;
+}
+
+.publication .title {
+	font-size: 1.4em;
+	font-weight: bold;
+	margin: 1em 0em;
+	display: block;
+}
+
+.publication .image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}

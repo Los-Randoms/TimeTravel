@@ -1,16 +1,22 @@
-<div class="container">
+<main class="container">
 	<h1>Crear una publicación</h1>
 
-	<form enctype="multipart/form-data" manager="form" action="/admin/publicaciones">
+	<form enctype="multipart/form-data" method="post">
 		<label>Titulo: </label>
-		<input type="text" name="title" size="30">
+		<input type="text" name="title">
 		<label>Imagen: </label>
 		<input type="file" name="image">
-		<label>Cuerpo: </label>
-		<textarea name="body" rows="12"></textarea>
+		<div class="input-group" style="margin-bottom: 1em">
+			<label>Cuerpo: </label>
+			<textarea name="body" rows="10" style="resize: vertical;"></textarea>
+		</div>
 		<div>
-			<button type="submit primary">Crear</button>
-			<a class="button" href="..">Cancelar</a>
+			<input type="submit" name="type" value="Publicar">
+			<input type="submit" name="type" value="Guardar">
+			<a role="button" href="..">
+				<i class="mu mu-cancel"></i>
+				Cancelar
+			</a>
 		</div>
 	</form>
-</div>
+</main>

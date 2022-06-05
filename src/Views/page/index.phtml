@@ -1,15 +1,33 @@
+<?php
+
+use Modules\Kernel\File;
+
+?>
 <div class="banner">
 	<object data="/logo2.svg"></object>
 </div>
 <main class="container">
 	<h1>Últimas publicaciones: </h1>
-	<?php if(empty($publications)): ?>
-	<p>No hay publicaciones</p>
-	<?php else: ?>
-		<?php foreach($publications as $entry): ?>
-	<div class="publication">
-		<?= print_r($entry, true) ?>
-	</div>
-		<?php endforeach ?>
+	<?php if (empty($publications)) : ?>
+		<p>No hay publicaciones</p>
+	<?php else : ?>
+		<div class="publications">
+			<?php foreach ($publications as $entry) : ?>
+				<a href="/publicacion?id=<?= $entry->id ?>" class="publication">
+					<?php if (!empty($entry->image)) : ?>
+						<?php $img = File::load($entry->image) ?>
+						<div class="image">
+							<img src="<?= $img->path ?>" />
+						</div>
+					<?php endif ?>
+					<span class="title">
+						<?= htmlspecialchars($entry->title) ?>
+					</span>
+					<p>
+						<?= htmlspecialchars(substr($entry->body, 0, 50)) ?>...
+					</p>
+				</a>
+			<?php endforeach ?>
+		</div>
 	<?php endif ?>
 </main>
