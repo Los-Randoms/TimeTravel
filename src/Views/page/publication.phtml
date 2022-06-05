@@ -21,9 +21,12 @@ use Modules\Utils;
 		</span>
 		<span style="float: right;">
 			Autor:
-			<?= htmlspecialchars($author->username) ?>&lt;<a href="mailto:<?= htmlspecialchars($author->email) ?>">
+			<?= htmlspecialchars($author->username) ?>
+			&lt;
+			<a href="mailto:<?= htmlspecialchars($author->email) ?>">
 				<?= htmlspecialchars($author->email) ?>
-			</a>&gt;
+			</a>
+			&gt;
 		</span>
 		<hr>
 	</header>
@@ -36,14 +39,14 @@ use Modules\Utils;
 	<?php if (Session::logged()) : ?>
 	<form action="/publicacion/like" method="post" enctype="application/x-www-form-urlencoded">
 		<input type="hidden" name="id" value="<?= $publication->id ?>">
+		<button type="submit">
+			<i class="mu mu-heart"></i>
+			<span>
+				<?= $liked ? 'Ya no me gusta' : 'Me gusta' ?>
+			</span>
+		</button>
 	</form>
-	<a  role="button">
-		<i class="mu mu-heart"></i>
-		<span>
-			<?= $liked ? 'Ya no me gusta' : 'Me gusta' ?>
-		</span>
-	</a>
-	<form action="/publicacion/comentar" method="post" enctype="application/x-www-form-urlencoded" class="comment">
+	<form action="/publicacion/comentar" method="post" enctype="application/x-www-form-urlencoded">
 		<h2>Comentar</h2>
 		<input type="hidden" name="id" value="<?= $publication->id ?>">
 		<div class="input-group" style="margin-bottom: 1em">
@@ -69,7 +72,9 @@ use Modules\Utils;
 					<?= htmlspecialchars($user->username) ?>
 				</a>
 			</div>
-			<div class="body"><?= htmlspecialchars($comment->body) ?></div>
+			<div class="body">
+				<?= htmlspecialchars($comment->body) ?>
+			</div>
 		</div>
 		<?php endforeach ?>
 	</div>

@@ -6,9 +6,9 @@ use Modules\Utils;
 <main class="container">
     <div class="pfp">
         <?php if (!empty($pfp)) : ?>
-        <img src="<?= $pfp->path ?>" class="contains" loading="lazy" alt="Imagen de perfil">
+            <img src="<?= $pfp->path ?>" class="contains" loading="lazy" alt="Imagen de perfil">
         <?php else : ?>
-        <img src="/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
+            <img src="/user.png" class="contains" loading="lazy" alt="Imagen de perfil">
         <?php endif ?>
     </div>
     <h1>
@@ -50,6 +50,7 @@ use Modules\Utils;
             <?= Utils::date($user->creation) ?>
         </span>
     </p>
-
-    <a href="/perfil/editar" role="button"><i class="mu mu-edit"></i>Editar usuario</a>
+    <?php if ($user->id === $_SESSION['user']->id) : ?>
+        <a href="/perfil/editar" role="button"><i class="mu mu-edit"></i>Editar</a>
+    <?php endif ?>
 </main>

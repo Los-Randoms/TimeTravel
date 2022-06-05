@@ -2,7 +2,6 @@
 
 namespace Controller\Form;
 
-use Entity\Comment;
 use Entity\Publication;
 use Modules\Router\Router;
 use Modules\Kernel\Form;
@@ -33,13 +32,24 @@ class LikePublication extends Form
 	}
 
 	function submit(&$data)
-  {
-    $comment = new Comment();
-    $comment->publication = $this->pub->id;
-    $comment->body = $data['body'];
-    $comment->user = $_SESSION['user']->id;
-		$comment->save();
-		Message::add('¡Comentario creado!');
+	{
+		$query = $this->db->read('likes');
+		$query->condition('user', $_SESSION['user']->id);
+		$query->condition('publication', $data['id']);
+		$query->execute();
+		$liked = !empty($query->fetch());
+		if ($liked) {
+			$query = $this->db->delete('likes');
+			$query->condition('user', $_SESSION['user']->id);
+			$query->condition('publication', $data['id']);
+			$query->execute();
+		} else {
+			$query = $this->db->create('likes');
+			$query->set('user', $_SESSION['user']->id, 'i');
+			$query->set('publication', $data['id'], 'i');
+			$query->execute();
+		}
+
 		return Router::get("/publicacion?id={$data['id']}");
 	}
 
