@@ -5,11 +5,15 @@ namespace Controller\Form;
 use Modules\Account\User;
 use Modules\Kernel\Form;
 use Modules\Kernel\Message;
+use Modules\Kernel\Storage;
 use Modules\Kernel\View;
+use Modules\Mysql\Driver;
 use Modules\Router\Router;
 
 class Register extends Form
 {
+	protected Driver $db;
+
 	function __construct()
 	{
 		parent::__construct('POST', [
@@ -34,6 +38,7 @@ class Register extends Form
 			],
 		]);
 		$this->styles[] = 'register.css';
+		$this->db = Storage::driver();
 	}
 
 	function title(): string
@@ -48,6 +53,11 @@ class Register extends Form
 
 	function verify(&$data)
 	{
+		$query = $this->db->read(User::TABLE);
+		$query->condition('email', $data['email']);
+		$query->execute();
+		if(!empty($query->fetch()))
+			return Message::add('El usuario ya esta registrado');
 		if($data['password_1'] !== $data['password_2'])
 			return Message::add('Las contraseñas no coinciden');
 		return true;
