@@ -19,7 +19,7 @@ use Modules\Kernel\View;
 	<link href="/global.css" rel="stylesheet" />
 	<link href="/site.css" rel="stylesheet" />
 	<link href="/site-small.css" rel="stylesheet" media="(max-width: 800px)" />
-	<?php if(Session::logged() && $_SESSION['is_admin']): ?>
+	<?php if(Session::logged() && !($_SESSION['user']->rol == 'user')): ?>
 	<link href="/admin-toolbar.css" rel="stylesheet" />
 	<?php endif ?>
 	<?php foreach($styles ?? [] as $href): ?>
