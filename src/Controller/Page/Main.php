@@ -37,6 +37,5 @@ class Main extends Controller
 			'has_next' => count($publications) > 14,
 			'page' => $this->page,
 		]);
-		
 	}
 }
