@@ -10,6 +10,7 @@
 	"/usuario": "Controller\\Page\\User",
 	"/perfil": "Controller\\Page\\Profile",
 	"/perfil/editar": "Controller\\Form\\EditProfile",
+	"/perfil/editar/cambiar-contraseña": "Controller\\Form\\ChangePassUser",
 	"/admin": "Controller\\Page\\Admin",
 	"/admin/comentarios": "Controller\\Page\\ListComments",
 	"/admin/publicaciones": "Controller\\Page\\ListPublications",
