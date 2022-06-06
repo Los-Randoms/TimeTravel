@@ -19,11 +19,9 @@ class ChangePassUser extends Form
     {
         parent::__construct('POST', [
 			'old_pass' => [
-				'trim' => true,
 				'from' => &$_POST,
 			],
             'new_pass' => [
-				'trim' => true,
 				'from' => &$_POST,
 			],
 		]);
