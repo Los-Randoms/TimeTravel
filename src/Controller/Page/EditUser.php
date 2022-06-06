@@ -28,7 +28,7 @@ class EditUser extends Controller
 
     function content()
     {
-        $user = User::load($_GET['id']);
+        $user = User::load($_GET['id'] ?? 0);
         if(empty($user))
             return Router::get('/admin/usuarios');
         if($user->id === $_SESSION['user']->id)
