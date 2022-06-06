@@ -1,13 +1,19 @@
+<?php
+	$rol = $_SESSION['user']->rol;
+?>
 <nav class="navbar" id="admin-nav">
 	<div class="items">
 		<a role="button" href="/admin">
 			<i class="mu mu-chapters"></i>
 			<span class="tooltip">Administracion</span>
 		</a>
+		<?php if($rol == 'admin' || $rol == 'editor'): ?>
 		<a role="button" href="/admin/publicaciones">
 			<i class="mu mu-edit"></i>
 			<span class="tooltip">Publicaciones</span>
 		</a>
+		<?php endif ?>
+		<?php if($rol == 'admin' || $rol == 'moderator'): ?>
 		<a role="button" href="/admin/roles">
 			<i class="mu mu-lock"></i>
 			<span class="tooltip">Roles</span>
@@ -16,9 +22,12 @@
 			<i class="mu mu-group"></i>
 			<span class="tooltip">Usuarios</span>
 		</a>
+		<?php endif ?>
+		<?php if($rol == 'admin'): ?>
 		<a role="button" href="/admin/archivos">
 			<i class="mu mu-file"></i>
 			<span class="tooltip">Archivos</span>
 		</a>
+		<?php endif ?>
 	</div>
 </nav>

@@ -30,7 +30,7 @@ use Modules\Kernel\View;
 
 <body>
 	<?= new View('navbar.phtml') ?>
-	<?php if(Session::logged() && $_SESSION['is_admin']): ?>
+	<?php if(Session::logged() && !($_SESSION['user'] !== 'user')): ?>
 		<?= new View('admin-toolbar.phtml') ?>
 	<?php endif ?>
 	<div id="site-alerts" class="alerts">
