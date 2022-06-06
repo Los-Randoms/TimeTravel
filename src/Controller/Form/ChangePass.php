@@ -49,6 +49,7 @@ class ChangePass extends Form
         $this->user = $select->fetch(User::class);
         if (empty($this->user))
             return Message::add('Vefique la informacion proporcionada');
+            return true;
     }
 
     function submit(&$data)
