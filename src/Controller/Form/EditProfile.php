@@ -2,6 +2,7 @@
 
 namespace Controller\Form;
 
+use Modules\Account\Session;
 use Modules\Kernel\File;
 use Modules\Kernel\FileManager;
 use Modules\Kernel\Form;
@@ -64,6 +65,7 @@ class EditProfile extends Form
             }
         }
         $_SESSION['user']->update();
+        Session::save();
         Message::add('Se ha actualizado su información');
         return Router::get('/perfil');
     }
