@@ -1,0 +1,19 @@
+<main class="container">
+	<h1 class="title">Cambiar contraseña</h1>
+	<div class="login">
+		<form enctype="application/x-www-form-urlencoded" class="ch__login" method="post">
+        <div>
+            <label for="input-contraseña-antigua">Ingrese su antigua contraseña:</label>
+				<input required type="password" id="contraseña-anterior" name="old_pass" placeholder="Contraseña anterior">
+			</div>
+            <div>
+            <label for="input-contraseña-nueva">Ingrese la nueva contraseña: (Mínimo 8 caracteres)</label>
+				<input required type="password" id="nueva-contraseña" name="new_pass" placeholder="Contraseña nueva">
+			</div>
+			<div>
+            <button type="submit" class="btn_act">Cambiar contraseña</button>
+			<a href="/perfil" role="button" class="back">Regresar</a>
+			</div>
+		</form>
+	</div>
+</main>

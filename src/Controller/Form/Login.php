@@ -57,7 +57,7 @@ class Login extends Form
 	{
 		Session::login($this->user);
 		Session::save();
-		Message::add('Sesion iniciada');
+		Message::add('Sesión iniciada');
 		return Router::get('/');
 	}
 

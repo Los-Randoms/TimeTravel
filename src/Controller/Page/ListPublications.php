@@ -20,6 +20,7 @@ class ListPublications extends Controller
         if($this->page < 0)
             $this->page = 0;
         $this->db = Storage::driver();
+        $this->styles[] = 'components/pager.css';
     }
 
     function title(): string
