@@ -1,0 +1,17 @@
+.pager {
+    margin: auto;
+    margin-top: 1em;
+    width: max-content;
+    font-family: sans-serif;
+    border-radius: 50%;
+}
+
+.pager a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.pager a:hover:not(.active) {
+    background-color: #ddd;
+    transition: .5s;
+}
