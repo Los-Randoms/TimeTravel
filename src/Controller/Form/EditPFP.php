@@ -42,7 +42,7 @@ class EditPFP extends Form
         if(empty($this->user))
             return Message::add('El usuario no existe');
         if(empty($this->file))
-            $this->file = FileManager::get('avatar');
+            return Message::add('No se envio un archivo');
         return true;
     }
 
