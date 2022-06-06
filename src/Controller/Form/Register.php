@@ -58,7 +58,7 @@ class Register extends Form
 		$user = new User();
 		$user->email = $data['email'];
 		$user->username = $data['username'];
-		$user->password = password_hash($data['password'], PASSWORD_BCRYPT);
+		$user->password = password_hash($data['password_1'], PASSWORD_BCRYPT);
 		$user->save();
 		Message::add('¡Se ha registrado correctamente!');
 		return Router::get('/iniciar-sesion');
