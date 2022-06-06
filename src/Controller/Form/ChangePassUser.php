@@ -8,7 +8,7 @@ use Modules\Kernel\Message;
 use Modules\Kernel\Storage;
 use Modules\Kernel\View;
 use Modules\Mysql\Driver;
-
+use Modules\Router\Router;
 
 class ChangePassUser extends Form
 {
@@ -19,13 +19,15 @@ class ChangePassUser extends Form
     {
         parent::__construct('POST', [
 			'old_pass' => [
+                'trim' =>false,
 				'from' => &$_POST,
 			],
             'new_pass' => [
+                'trim' =>false,
 				'from' => &$_POST,
 			],
 		]);
-        $this->access('');
+        $this->access();
         $this->db = Storage::driver();
         
     }
@@ -42,14 +44,15 @@ class ChangePassUser extends Form
 
     function verify(&$data)
     {
-        $select = $this->db->read(User::TABLE);
-        $select->condition('old_pass', $data['old_pass']);
-        $select->condition('banned', false, 'i');
-        $select->execute();
-        $this->user = $select->fetch(User::class);
+        $this->user= $_SESSION['user'];
         if (empty($this->user)){
             return Message::add('Vefique la informacion proporcionada');
         }
+        if (!password_verify($data['old_pass'], $this->user->password)){
+            return Message::add('Verifique los datos');
+        } 
+        $this->new_pass=$data['new_pass'];
+        return true;
     }
 
     function submit(&$data)
@@ -57,6 +60,7 @@ class ChangePassUser extends Form
         $this->new_pass=$data['new_pass'];
         $this->user->password = password_hash($this->new_pass, PASSWORD_BCRYPT);
         $this->user->update();
-        Message::add('¡Se ha registrado correctamente!');
+        Message::add('¡Se ha cambiado la contraseña correctamente!');
+        return Router::get('/perfil/editar');
     }
 }
