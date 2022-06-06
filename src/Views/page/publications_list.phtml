@@ -57,13 +57,13 @@ use Modules\Utils;
     </table>
     <div class="pager">
         <?php if ($page > 0) : ?>
-        <a href="?p=<?= $page - 1 ?>">&lt;</a>
+        <a href="?p=<?= $page - 1 ?>"><i class="mu mu-i-left"></i></a>
         <?php endif ?>
         <a href="?p=<?= $page ?>">
             <?= $page + 1 ?>
         </a>
         <?php if ($has_next) : ?>
-        <a href="?p=<?= $page + 1 ?>">&gt;</a>
+        <a href="?p=<?= $page + 1 ?>"><i class="mu mu-i-right"></i></a>
         <?php endif ?>
     </div>
 </main>

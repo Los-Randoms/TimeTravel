@@ -6,12 +6,19 @@
     border-radius: 50%;
 }
 
-.pager a.active {
-    background-color: #4CAF50;
-    color: white;
+.pager a{
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    
 }
 
+
 .pager a:hover:not(.active) {
-    background-color: #ddd;
+    background-color: rgb(179, 179, 179);
     transition: .5s;
+    border-radius: 5px;
+    
 }
