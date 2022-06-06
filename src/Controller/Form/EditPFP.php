@@ -12,7 +12,7 @@ use Modules\Router\Router;
 class EditPFP extends Form
 {
     protected User $user;
-    protected File $file;
+    protected ?File $file;
 
     function __construct()
     {
