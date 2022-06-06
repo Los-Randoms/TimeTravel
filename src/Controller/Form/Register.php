@@ -48,7 +48,7 @@ class Register extends Form
 
 	function verify(&$data)
 	{
-		if($data['password_1'] === $data['password_2'])
+		if($data['password_1'] !== $data['password_2'])
 			return Message::add('Las contraseñas no coinciden');
 		return true;
 	}
